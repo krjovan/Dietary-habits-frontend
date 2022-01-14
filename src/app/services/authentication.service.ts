@@ -31,6 +31,8 @@ export class AuthenticationService {
 
   private token: string;
 
+  private BACKEND_URL_USERS = 'http://localhost:8080/users'
+
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
@@ -84,9 +86,9 @@ export class AuthenticationService {
     let base;
 
     if (method === 'post') {
-      base = this.http.post(`/api/${type}`, user);
+      base = this.http.post(this.BACKEND_URL_USERS + `/${type}`, user);
     } else {
-      base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
+      base = this.http.get(this.BACKEND_URL_USERS + `/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
 
     const request = base.pipe(

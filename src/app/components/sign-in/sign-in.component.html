@@ -1,0 +1,30 @@
+<div class="w3-center w3-padding" style="margin:0 auto; max-width: 600px;">
+  <div class="w3-card-4">
+    <div class="w3-container w3-teal">
+      <h2>Sign-in</h2>
+    </div>
+    <form class="w3-container" #formControl="ngForm">
+      <p>
+        <label class="w3-text-teal">
+          <b>Email</b>
+        </label>
+        <label class="w3-text-grey" style="font-style: italic">
+          <b> ( someone@domain.domain )</b>
+        </label>
+        <input required [(ngModel)]="credentials.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" minlength="1" maxlength="40" name="email" type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+      </p>
+      <p>
+        <label class="w3-text-teal">
+          <b>Password</b>
+        </label>
+        <label class="w3-text-grey" style="font-style: italic">
+        </label>
+        <input required [(ngModel)]="credentials.password" minlength="1" maxlength="40" name="password" type="password" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+      </p>
+
+      <p class="w3-center">
+        <button [disabled]="!formControl.valid" (click)="login()" class="w3-btn w3-teal">Sign-in</button>
+      </p>
+    </form>
+  </div>
+</div>
