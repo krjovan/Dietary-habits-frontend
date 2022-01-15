@@ -130,4 +130,8 @@ export class AuthenticationService {
   public getHash(body): Observable<any> {
     return this.http.post(this.BACKEND_URL_USERS + '/hash', body, httpOptions);
   }
+
+  public updateUser(user): Observable<any> {
+    return this.http.put(this.BACKEND_URL_USERS + '/update/' + user._id, user ,httpOptions);
+  }
 }
