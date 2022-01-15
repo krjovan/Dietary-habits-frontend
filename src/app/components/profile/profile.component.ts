@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDetails, AuthenticationService } from '../../services/authentication.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  details: any;
+  currentPassword: '';
+  newPassword: '';
+  confirmationPassword:'';
 
-  ngOnInit(): void {
+  constructor(private auth: AuthenticationService) {}
+
+  ngOnInit() {
+    this.auth.profile().subscribe(user => {
+      this.details = user;
+    }, (err) => {
+      console.error(err);
+    });
+  }
+
+  save() {
+    var req = {
+      currentPassword: this.currentPassword,
+      salt: this.details.salt
+    };
+    this.auth.getHash(req).subscribe({
+      next: data => {
+        if (this.details.hash === data.hash) {
+          console.log('Changes saved!');
+        } else {
+          console.log('Current password is not correct!');
+        }
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
 }
