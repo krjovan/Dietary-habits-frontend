@@ -4,6 +4,14 @@
         <h2>My profile</h2>
       </div>
       <form class="w3-container" #formControl="ngForm">
+
+          <p>
+              <label class="w3-text-teal">
+                <b>Name</b>
+              </label>
+              <input required [(ngModel)]="details.name" name="name" type="text" style="text-align: center;"
+                class="w3-input w3-border w3-light-grey">
+            </p>
         <p>
           <label class="w3-text-teal">
             <b>Email</b>
