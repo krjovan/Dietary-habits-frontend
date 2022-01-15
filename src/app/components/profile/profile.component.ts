@@ -17,6 +17,10 @@ export class ProfileComponent implements OnInit {
   constructor(private auth: AuthenticationService) {}
 
   ngOnInit() {
+    this.getUserDetails();
+  }
+
+  getUserDetails() {
     this.auth.profile().subscribe(user => {
       this.details = user;
     }, (err) => {
@@ -25,6 +29,10 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
+    if(this.newPassword !== this.confirmationPassword && this.newPassword !== '' && this.confirmationPassword !== ''){
+      console.log("New password and Confirmation password do not match");
+      return;
+    }
     var req = {
       currentPassword: this.currentPassword,
       salt: this.details.salt

@@ -16,21 +16,12 @@
         </p>
         <p>
           <label class="w3-text-teal">
-            <b>Current password</b>
-          </label>
-          <label class="w3-text-grey" style="font-style: italic">
-          </label>
-          <input required [(ngModel)]="currentPassword" minlength="1" maxlength="40" name="oldpassword" type="password" style="text-align: center;"
-            class="w3-input w3-border w3-light-grey">
-        </p>
-        <p>
-          <label class="w3-text-teal">
             <b>New password</b>
           </label>
           <input [(ngModel)]="newPassword" name="newpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
             type="password" style="text-align: center;" class="w3-input w3-border w3-light-grey">
           <label class="w3-text-grey" style="font-style: italic">
-            <b>Minimum 8 and maximum 20 characters. It must contain at least one lowercase and uppercase letter, a number as well
+            <b style="font-size: 9pt;">Minimum 8 and maximum 20 characters. It must contain at least one lowercase and uppercase letter, a number as well
               as a special character.
               <span style="color: red;"> (Only if you want to change the current password)</span>
             </b>
@@ -43,11 +34,21 @@
           <input [(ngModel)]="confirmationPassword" name="confirmationpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
             type="password" style="text-align: center;" class="w3-input w3-border w3-light-grey">
           <label class="w3-text-grey" style="font-style: italic">
-            <b>Enter the new password again to confirm it.
-              <span style="color: red;"> (Only if you want to change the current password)</span>
+              <b style="font-size: 9pt;">Enter the new password again to confirm it.
+                  <span style=" color: red;"> (Only if you want to change the current password)</span>
             </b>
           </label>
         </p>
+
+        <p>
+            <label class="w3-text-teal">
+              <b>Current password <span style=" color: red;"> *</span></b>
+            </label>
+            <label class="w3-text-grey" style="font-style: italic">
+            </label>
+            <input required [(ngModel)]="currentPassword" minlength="1" maxlength="40" name="oldpassword" type="password" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+          </p>
 
         <p class="w3-center">
           <button [disabled]="!formControl.valid" (click)="save()" class="w3-btn w3-teal">Save changes</button>
