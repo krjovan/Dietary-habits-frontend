@@ -1,6 +1,78 @@
+<div class="w3-container w3-center">
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>New user form</h2>
+      </header>
+      <div class="w3-container">
+
+        <form class="w3-container" #formControl="ngForm">
+          <p>
+            <label class="w3-text-blue">
+              <b>First name</b>
+            </label>
+            <input required [(ngModel)]="firstName" minlength="2" maxlength="40" name="first" type="text" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>Last name</b>
+            </label>
+            <input required [(ngModel)]="lastName" minlength="2" maxlength="40" name="last" type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>Email</b>
+            </label>
+            <input required [(ngModel)]="credentials.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" minlength="1" maxlength="40"
+              name="email" type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>Password</b>
+            </label>
+            <label class="w3-text-grey" style="font-style: italic">
+            </label>
+            <input required [(ngModel)]="credentials.password" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$" name="password" type="password" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+              <label class="w3-text-grey" style="font-style: italic">
+                  <b style="font-size: 9pt;">Minimum 8 and maximum 20 characters. It must contain at least one lowercase and uppercase letter, a number as well
+                    as a special character.
+                  </b>
+                </label>
+          </p>
+
+          <p>
+            <label class="w3-text-blue">
+              <b>Confirmation password</b>
+            </label>
+            <label class="w3-text-grey" style="font-style: italic">
+            </label>
+            <input required [(ngModel)]="confirmationPassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$" name="password" type="password" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+            <label class="w3-text-grey" style="font-style: italic">
+              <b style="font-size: 9pt;">Enter the new password again to confirm it.</b>
+            </label>
+          </p>
+
+          <p class="w3-center">
+            <button [disabled]="!formControl.valid" (click)="addUser()" class="w3-btn w3-green">Create <i class="fa fa-check"></i></button>
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="search-container w3-center w3-padding">
     <input type="text" placeholder="Search.." name="search">
-    <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
+    <button style="margin-right: 15pt;" class="w3-button"><i class="fa fa-search"></i></button>
+    <button class="w3-button w3-green" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-user fa-fw"></i><i class="fa fa-plus"></i></button>
 </div>
 
 <div>

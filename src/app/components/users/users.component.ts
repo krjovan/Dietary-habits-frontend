@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { TokenPayload, AuthenticationService } from '../../services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -11,18 +13,42 @@ export class UsersComponent implements OnInit {
 
   selectedUser:User;
   users : User[] = [];
+  firstName: '';
+  lastName: '';
+  confirmationPassword: '';
 
-  constructor(private userService: UserService) { }
+  credentials: TokenPayload = {
+    name:'',
+    email: '',
+    password: '',
+    role: ''
+  };
+
+  constructor(private userService: UserService,private auth: AuthenticationService, private toastr: ToastrService) { }
 
   getUsers(){
     this.userService.getUsers()
       .subscribe( users => {
         this.users = users;
-      })
+      });
   }
-/*
+  
   addUser(){
+		if (this.credentials.password === this.confirmationPassword) {
+		  this.credentials.name = this.firstName + ' ' + this.lastName;
+		  this.auth.register(this.credentials).subscribe(() => {
+			this.toastr.success('You successfully added a user!', 'Success');
+			document.getElementById('id01').style.display='none'
+			this.getUsers();
+		  }, (err) => {
+			this.toastr.error(err.error.message, 'Error');
+		  });
+		} else {
+		  this.toastr.error('Password and Confirmation password do not match!', 'Error');
+		}
   }
+  
+  /*
   editUser(form){
     let newUser:User = {
       _id:this.selectedUser._id,
