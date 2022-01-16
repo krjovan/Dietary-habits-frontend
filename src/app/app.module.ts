@@ -10,11 +10,13 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'users', component: UsersComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
@@ -25,7 +27,8 @@ const routes: Routes = [
     HomeComponent,
     ProfileComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
