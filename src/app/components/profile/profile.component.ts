@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDetails, AuthenticationService } from '../../services/authentication.service';
 import * as CryptoJS from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit {
   newPassword = '';
   confirmationPassword = '';
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.getUserDetails();
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
   save() {
     if(this.newPassword !== this.confirmationPassword) {
-      console.log("New password and Confirmation password do not match");
+      this.toastr.error('New password and Confirmation password do not match!', 'Error');
       return;
     }
     var req = {
@@ -49,9 +50,9 @@ export class ProfileComponent implements OnInit {
                 this.details.password = this.currentPassword;
               }
               this.auth.login(this.details).subscribe(() => {
-                console.log('Changes saved!');
+                this.toastr.success('Changes saved successfully!', 'Success');
               }, (err) => {
-                console.error(err);
+                this.toastr.error('Could not update your profile!', 'Error');
               });
               this.getUserDetails();
               this.currentPassword = '';
@@ -59,11 +60,11 @@ export class ProfileComponent implements OnInit {
               this.confirmationPassword = '';
             },
             error: error => {
-              console.log(error);
+              this.toastr.error('Could not update your profile!', 'Error');
             }
           });
         } else {
-          console.log('Current password is not correct!');
+          this.toastr.error('Current password is not correct!', 'Error');
         }
       },
       error: error => {

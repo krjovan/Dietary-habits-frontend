@@ -3,7 +3,7 @@
 </head>
 <div class="topnav" id="myTopnav">
   <a routerLink="/home"><i class="fa fa-home"></i> Home</a>
-
+	<a style="cursor: pointer;" routerLink="/users"><i class="fa fa-users"></i> Users</a>
   <a *ngIf="!auth.isLoggedIn()" class="w3-right" id="navSignIn" routerLink="/sign-in"><i class="fa fa-sign-in"></i> Sign in</a>
 
   <div class="dropdown w3-right" id="userDropdown" *ngIf="auth.isLoggedIn()">
@@ -24,11 +24,11 @@
 <router-outlet></router-outlet>
 
 <footer class="w3-container w3-padding-32 w3-dark-grey w3-center">
-  <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact</span></div>
-    <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  John Kennedy 36, New Belgrade, Serbia</p>
-    <p><i class="fa fa-clock-o w3-text-teal w3-xlarge"></i>  Mon-Fri : 09-17h</p>
-    <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +38165515524</p>
-    <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  contact@dietaryhabits.com</p>
+  <div class="w3-padding-16"><span class="w3-xlarge w3-border-blue w3-bottombar">Contact</span></div>
+    <p><i class="fa fa-map-marker w3-text-blue w3-xlarge"></i>  John Kennedy 36, New Belgrade, Serbia</p>
+    <p><i class="fa fa-clock-o w3-text-blue w3-xlarge"></i>  Mon-Fri : 09-17h</p>
+    <p><i class="fa fa-phone w3-text-blue w3-xlarge"></i>  +38165515524</p>
+    <p><i class="fa fa-envelope-o w3-text-blue w3-xlarge"></i>  contact@dietaryhabits.com</p>
 <a class="w3-button w3-black w3-margin" (click)="toTop()"><i class="fa fa-arrow-up w3-margin-right"></i>To top</a>
 <div class="w3-xlarge w3-section">
 <i class="fa fa-facebook-official w3-hover-opacity" style="padding: 5pt;"></i>
