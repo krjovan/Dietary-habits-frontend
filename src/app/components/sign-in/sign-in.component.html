@@ -1,17 +1,17 @@
 <div class="w3-center w3-padding" style="margin:0 auto; max-width: 600px;">
   <div class="w3-card-4">
-    <div class="w3-container w3-teal">
+    <div class="w3-container w3-blue">
       <h2>Sign-in</h2>
     </div>
     <form class="w3-container" #formControl="ngForm">
       <p>
-        <label class="w3-text-teal">
+        <label class="w3-text-blue">
           <b>Email</b>
         </label>
         <input required [(ngModel)]="credentials.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" minlength="1" maxlength="40" name="email" type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
       </p>
       <p>
-        <label class="w3-text-teal">
+        <label class="w3-text-blue">
           <b>Password</b>
         </label>
         <label class="w3-text-grey" style="font-style: italic">
@@ -20,9 +20,9 @@
       </p>
 
       <p class="w3-center">
-        <button [disabled]="!formControl.valid" (click)="login()" class="w3-btn w3-teal">Sign-in</button>
+        <button [disabled]="!formControl.valid" (click)="login()" class="w3-btn w3-blue">Sign-in</button>
       </p>
     </form>
   </div>
-  <div class="w3-padding-32">If you don't have an account <a style="cursor: pointer;" routerLink="/register"> <button class="w3-btn w3-teal"><i class="fa fa-user"></i> Register</button></a></div>
+  <div class="w3-padding-32">If you don't have an account <a style="cursor: pointer;" routerLink="/register"> <button class="w3-btn w3-blue"><i class="fa fa-user"></i> Register</button></a></div>
 </div>
