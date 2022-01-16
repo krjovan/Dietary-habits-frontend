@@ -1,0 +1,18 @@
+<div class="search-container w3-center w3-padding">
+    <input type="text" placeholder="Search.." name="search">
+    <button class="w3-button" type="submit"><i class="fa fa-search"></i></button>
+</div>
+
+<div>
+  <div class="row">
+    <div class="column w3-card w3-hover-blue" *ngFor="let user of users">
+      <h3 style="text-align: center">{{user.name}}</h3>
+      <p style="text-align: center">{{user.email}}</p>
+      <p style="text-align: center">Role: {{user.role}}</p>
+      <div class="w3-center w3-padding">
+        <button style="margin-right: 5pt" class="w3-button w3-black"><i class="fa fa-edit"></i></button>
+        <button class="w3-button w3-red"><i class="fa fa-trash-o"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
