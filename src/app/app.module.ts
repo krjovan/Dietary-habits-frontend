@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,9 +34,15 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+	BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+      closeButton: true,
+      preventDuplicates: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
