@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenPayload, AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,14 +16,15 @@ export class SignInComponent implements OnInit {
     role: ''
   };
 
-  constructor( private auth: AuthenticationService, private router: Router ) {}
+  constructor( private auth: AuthenticationService, private router: Router, private toastr: ToastrService ) {}
 
 
   login() {
     this.auth.login(this.credentials).subscribe(() => {
       this.router.navigateByUrl('/profile');
+	  this.toastr.success('You successfully signed-in!', 'Welcome ' + this.auth.getUserDetails().name);
     }, (err) => {
-      console.error(err);
+      this.toastr.error('Check email and password fields!', 'Error');
     });
   }
 

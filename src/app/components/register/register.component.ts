@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
     role: ''
   };
 
-  constructor(private auth: AuthenticationService, private router: Router) { }
+  constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -29,12 +30,13 @@ export class RegisterComponent implements OnInit {
     if (this.credentials.password === this.confirmationPassword) {
       this.credentials.name = this.firstName + ' ' + this.lastName;
       this.auth.register(this.credentials).subscribe(() => {
+		this.toastr.success('You successfully made an account!', 'Welcome ' + this.auth.getUserDetails().name);
         this.router.navigateByUrl('/profile');
       }, (err) => {
-        console.error(err);
+        this.toastr.error(err.error.message, 'Error');
       });
     } else {
-      console.log('Password and Confirmation password do not match');
+      this.toastr.error('Password and Confirmation password do not match!', 'Error');
     }
 
   }
