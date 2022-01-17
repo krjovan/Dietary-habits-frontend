@@ -38,8 +38,9 @@ export class UserService {
   }
   public updateDeo(deo: Deo): Observable<any> {
     return this.httpClient.put(this.API_URL + '/' + deo.DEO_ID, deo, httpOptions);
-  }
-  public deleteDeo(id: number): Observable<any> {
-    return this.httpClient.delete(this.API_URL + '/' + id);
   }*/
+  
+  public deleteUser(id): Observable<any> {
+    return this.httpClient.delete(this.API_URL + '/delete/' + id);
+  }
 }
