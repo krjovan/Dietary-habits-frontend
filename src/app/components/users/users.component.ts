@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
 
-  selectedUser:User;
+  selectedUser: User;
   users : User[] = [];
   firstName: '';
   lastName: '';
@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
     role: ''
   };
 
-  constructor(private userService: UserService,private auth: AuthenticationService, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private toastr: ToastrService) { }
 
   getUsers(){
     this.userService.getUsers()
@@ -36,9 +36,10 @@ export class UsersComponent implements OnInit {
   addUser(){
 		if (this.credentials.password === this.confirmationPassword) {
 		  this.credentials.name = this.firstName + ' ' + this.lastName;
-		  this.auth.register(this.credentials).subscribe(() => {
+		  this.userService.addUser(this.credentials).subscribe(() => {
 			this.toastr.success('You successfully added a user!', 'Success');
 			document.getElementById('id01').style.display='none'
+			this.clearDialog();
 			this.getUsers();
 		  }, (err) => {
 			this.toastr.error(err.error.message, 'Error');
@@ -86,6 +87,16 @@ export class UsersComponent implements OnInit {
       behavior: 'smooth'
     });
   }*/
+  
+  clearDialog() {
+    this.firstName = '';
+    this.lastName = '';
+    this.confirmationPassword = '';
+    this.credentials.email = '';
+    this.credentials.name = '';
+    this.credentials.password = '';
+    this.credentials.role = '';
+  }
 
   ngOnInit() {
     this.getUsers();
