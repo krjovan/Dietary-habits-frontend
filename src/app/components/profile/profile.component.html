@@ -1,19 +1,19 @@
 <div class="w3-center w3-padding" style="margin:0 auto; max-width: 600px;">
     <div class="w3-card-4">
-      <div class="w3-container w3-teal">
+      <div class="w3-container w3-blue">
         <h2>My profile</h2>
       </div>
       <form class="w3-container" #formControl="ngForm">
 
           <p>
-              <label class="w3-text-teal">
+              <label class="w3-text-blue">
                 <b>Name</b>
               </label>
               <input required [(ngModel)]="details.name" name="name" type="text" style="text-align: center;"
                 class="w3-input w3-border w3-light-grey">
             </p>
         <p>
-          <label class="w3-text-teal">
+          <label class="w3-text-blue">
             <b>Email</b>
           </label>
           <input required [(ngModel)]="details.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" type="text" style="text-align: center;"
@@ -23,7 +23,7 @@
           </label>
         </p>
         <p>
-          <label class="w3-text-teal">
+          <label class="w3-text-blue">
             <b>New password</b>
           </label>
           <input [(ngModel)]="newPassword" name="newpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
@@ -36,7 +36,7 @@
           </label>
         </p>
         <p>
-          <label class="w3-text-teal">
+          <label class="w3-text-blue">
             <b>Confirmation password</b>
           </label>
           <input [(ngModel)]="confirmationPassword" name="confirmationpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
@@ -49,7 +49,7 @@
         </p>
 
         <p>
-            <label class="w3-text-teal">
+            <label class="w3-text-blue">
               <b>Current password <span style=" color: red;"> *</span></b>
             </label>
             <label class="w3-text-grey" style="font-style: italic">
@@ -59,7 +59,7 @@
           </p>
 
         <p class="w3-center">
-          <button [disabled]="!formControl.valid" (click)="save()" class="w3-btn w3-teal">Save changes</button>
+          <button [disabled]="!formControl.valid" (click)="save()" class="w3-btn w3-blue">Save changes</button>
         </p>
       </form>
     </div>
