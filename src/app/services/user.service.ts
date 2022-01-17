@@ -28,4 +28,8 @@ export class UserService {
   public deleteUser(id): Observable<any> {
     return this.httpClient.delete(this.API_URL + '/delete/' + id);
   }
+  
+  public resetPassword(user): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/resetPassword', user);
+  }
 }

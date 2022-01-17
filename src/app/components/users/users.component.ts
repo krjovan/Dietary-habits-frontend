@@ -56,10 +56,8 @@ export class UsersComponent implements OnInit {
   }
   
   updateUser(){
-    console.log(this.selectedUser);
     this.userService.updateUser(this.selectedUser)
       .subscribe( data=>{
-        console.log(data);
         document.getElementById('id02').style.display='none';
         this.toastr.success('You successfully updated this user!', 'Success');
         this.getUsers();
@@ -72,7 +70,6 @@ export class UsersComponent implements OnInit {
   deleteUser(){
     this.userService.deleteUser(this.selectedUser._id)
       .subscribe( data=>{
-        console.log(data);
 		document.getElementById('id03').style.display='none';
         this.toastr.success('You successfully deleted this user!', 'Success');
         if(data.n == 1){
@@ -84,6 +81,15 @@ export class UsersComponent implements OnInit {
 		}, (err) => {
 			this.toastr.error(err.error.message, 'Error');
 		});
+  }
+  
+  resetPassword() {
+    this.userService.resetPassword(this.selectedUser).subscribe(() => {
+      this.toastr.success('You successfully reset the password for user!', 'Success');
+      document.getElementById('id02').style.display='none';
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
+    });
   }
   
   selectUser(option, user) {
