@@ -64,29 +64,37 @@ export class UsersComponent implements OnInit {
         this.getUsers();
       });
       this.toggleForm = !this.toggleForm;
-  }
-  deleteUser(id){
-    this.dataService.deleteUser(id)
+  }*/
+  
+  
+  deleteUser(){
+    this.userService.deleteUser(this.selectedUser._id)
       .subscribe( data=>{
         console.log(data);
+		document.getElementById('id03').style.display='none';
+        this.toastr.success('You successfully deleted this user!', 'Success');
         if(data.n == 1){
-          for(var i=0;i<this.userList.length;i++){
-            if(id == this.userList[i]._id){
-              this.userList.splice(i,1);
-            }
-          }
-        }
-      })
+          for(var i=0;i<this.users.length;i++){
+            if(this.selectedUser._id == this.users[i]._id){
+              this.users.splice(i,1);
+			}
+			}
+		}, (err) => {
+			this.toastr.error(err.error.message, 'Error');
+		});
   }
-  showEditForm(user){
-    this.selectedUser=user;
-    this.toggleForm = !this.toggleForm;
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }*/
+  
+  selectUser(option, user) {
+    this.selectedUser = user;
+    console.log(this.selectedUser);
+    if (option === 2) {
+
+    } else if (option === 3) {
+      document.getElementById('id03').style.display='block';
+    } else {
+      console.log("Something unexpected hapend!");
+    }
+  }
   
   clearDialog() {
     this.firstName = '';
