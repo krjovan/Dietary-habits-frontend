@@ -21,24 +21,9 @@ export class UserService {
     return this.httpClient.post(this.API_URL + '/add', user);
   }
   
-/*
-  public getDeloviByKataloski(searchKataloski: string): Observable<Deo[]> {
-    let params = new HttpParams();
-    params = params.append('kataloskiBroj', searchKataloski);
-    this.httpClient.get<Deo[]>(this.API_URL, {params}).subscribe(data => {
-        this.dataChange.next(data);
-    },
-    (error: HttpErrorResponse) => {
-        console.log(error.name + ' ' + error.message);
-    });
-    return this.dataChange.asObservable();
+  public updateUser(user): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/admin/update/' + user._id, user);
   }
-  public addDeo(deo: Deo): Observable<any> {
-    return this.httpClient.post(this.API_URL, deo, httpOptions);
-  }
-  public updateDeo(deo: Deo): Observable<any> {
-    return this.httpClient.put(this.API_URL + '/' + deo.DEO_ID, deo, httpOptions);
-  }*/
   
   public deleteUser(id): Observable<any> {
     return this.httpClient.delete(this.API_URL + '/delete/' + id);

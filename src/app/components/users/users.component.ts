@@ -11,7 +11,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
 
-  selectedUser: User;
+  selectedUser: User = {
+    email:'',
+    name:'',
+    hash:'',
+    role:'',
+    salt:''
+  }
   users : User[] = [];
   firstName: '';
   lastName: '';
@@ -49,22 +55,18 @@ export class UsersComponent implements OnInit {
 		}
   }
   
-  /*
-  editUser(form){
-    let newUser:User = {
-      _id:this.selectedUser._id,
-      name:form.value.name,
-      email:form.value.email,
-      role:form.value.role,
-      hash:this.selectedUser.hash,
-      salt:this.selectedUser.salt
-    }
-    this.dataService.updateUser(newUser)
-      .subscribe( result => {
+  updateUser(){
+    console.log(this.selectedUser);
+    this.userService.updateUser(this.selectedUser)
+      .subscribe( data=>{
+        console.log(data);
+        document.getElementById('id02').style.display='none';
+        this.toastr.success('You successfully updated this user!', 'Success');
         this.getUsers();
+		}, (err) => {
+        this.toastr.error(err.error.message, 'Error');
       });
-      this.toggleForm = !this.toggleForm;
-  }*/
+  }
   
   
   deleteUser(){
@@ -85,14 +87,15 @@ export class UsersComponent implements OnInit {
   }
   
   selectUser(option, user) {
-    this.selectedUser = user;
-    console.log(this.selectedUser);
-    if (option === 2) {
-
-    } else if (option === 3) {
-      document.getElementById('id03').style.display='block';
-    } else {
-      console.log("Something unexpected hapend!");
+    if(user != null && option != null) {
+      this.selectedUser = user;
+      if (option === 2) {
+        document.getElementById('id02').style.display='block'
+      } else if (option === 3) {
+        document.getElementById('id03').style.display='block';
+      } else {
+        console.log("Something unexpected hapend!");
+      }
     }
   }
   
