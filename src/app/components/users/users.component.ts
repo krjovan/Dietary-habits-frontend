@@ -12,19 +12,19 @@ import { ToastrService } from 'ngx-toastr';
 export class UsersComponent implements OnInit {
 
   selectedUser: User = {
-    email:'',
-    name:'',
-    hash:'',
-    role:'',
-    salt:''
+    email: '',
+    name: '',
+    hash: '',
+    role: '',
+    salt: ''
   }
-  users : User[] = [];
+  users: User[] = [];
   firstName: '';
   lastName: '';
   confirmationPassword: '';
 
   credentials: TokenPayload = {
-    name:'',
+    name: '',
     email: '',
     password: '',
     role: ''
@@ -32,79 +32,80 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
-  getUsers(){
+  getUsers() {
     this.userService.getUsers()
-      .subscribe( users => {
+      .subscribe(users => {
         this.users = users;
       });
   }
-  
-  addUser(){
-		if (this.credentials.password === this.confirmationPassword) {
-		  this.credentials.name = this.firstName + ' ' + this.lastName;
-		  this.userService.addUser(this.credentials).subscribe(() => {
-			this.toastr.success('You successfully added a user!', 'Success');
-			document.getElementById('id01').style.display='none'
-			this.clearDialog();
-			this.getUsers();
-		  }, (err) => {
-			this.toastr.error(err.error.message, 'Error');
-		  });
-		} else {
-		  this.toastr.error('Password and Confirmation password do not match!', 'Error');
-		}
+
+  addUser() {
+    if (this.credentials.password === this.confirmationPassword) {
+      this.credentials.name = this.firstName + ' ' + this.lastName;
+      this.userService.addUser(this.credentials).subscribe(() => {
+        this.toastr.success('You successfully added a user!', 'Success');
+        document.getElementById('id01').style.display = 'none'
+        this.clearDialog();
+        this.getUsers();
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
+    } else {
+      this.toastr.error('Password and Confirmation password do not match!', 'Error');
+    }
   }
-  
-  updateUser(){
+
+  updateUser() {
     this.userService.updateUser(this.selectedUser)
-      .subscribe( data=>{
-        document.getElementById('id02').style.display='none';
+      .subscribe(data => {
+        document.getElementById('id02').style.display = 'none';
         this.toastr.success('You successfully updated this user!', 'Success');
         this.getUsers();
-		}, (err) => {
+      }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
   }
-  
-  
-  deleteUser(){
+
+
+  deleteUser() {
     this.userService.deleteUser(this.selectedUser._id)
-      .subscribe( data=>{
-		document.getElementById('id03').style.display='none';
+      .subscribe(data => {
+        document.getElementById('id03').style.display = 'none';
         this.toastr.success('You successfully deleted this user!', 'Success');
-        if(data.n == 1){
-          for(var i=0;i<this.users.length;i++){
-            if(this.selectedUser._id == this.users[i]._id){
-              this.users.splice(i,1);
-			}
-			}
-		}, (err) => {
-			this.toastr.error(err.error.message, 'Error');
-		});
+        if (data.n == 1) {
+          for (var i = 0; i < this.users.length; i++) {
+            if (this.selectedUser._id == this.users[i]._id) {
+              this.users.splice(i, 1);
+            }
+          }
+        }
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
   }
-  
+
   resetPassword() {
     this.userService.resetPassword(this.selectedUser).subscribe(() => {
       this.toastr.success('You successfully reset the password for user!', 'Success');
-      document.getElementById('id02').style.display='none';
+      document.getElementById('id02').style.display = 'none';
     }, (err) => {
       this.toastr.error(err.error.message, 'Error');
     });
   }
-  
+
   selectUser(option, user) {
-    if(user != null && option != null) {
+    if (user != null && option != null) {
       this.selectedUser = user;
       if (option === 2) {
-        document.getElementById('id02').style.display='block'
+        document.getElementById('id02').style.display = 'block'
       } else if (option === 3) {
-        document.getElementById('id03').style.display='block';
+        document.getElementById('id03').style.display = 'block';
       } else {
         console.log("Something unexpected hapend!");
       }
     }
   }
-  
+
   clearDialog() {
     this.firstName = '';
     this.lastName = '';
