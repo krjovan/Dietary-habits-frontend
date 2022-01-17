@@ -11,7 +11,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
 
-  selectedUser:User;
+  selectedUser: User = {
+    email:'',
+    name:'',
+    hash:'',
+    role:'',
+    salt:''
+  }
   users : User[] = [];
   firstName: '';
   lastName: '';
@@ -24,7 +30,7 @@ export class UsersComponent implements OnInit {
     role: ''
   };
 
-  constructor(private userService: UserService,private auth: AuthenticationService, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private toastr: ToastrService) { }
 
   getUsers(){
     this.userService.getUsers()
@@ -36,9 +42,10 @@ export class UsersComponent implements OnInit {
   addUser(){
 		if (this.credentials.password === this.confirmationPassword) {
 		  this.credentials.name = this.firstName + ' ' + this.lastName;
-		  this.auth.register(this.credentials).subscribe(() => {
+		  this.userService.addUser(this.credentials).subscribe(() => {
 			this.toastr.success('You successfully added a user!', 'Success');
 			document.getElementById('id01').style.display='none'
+			this.clearDialog();
 			this.getUsers();
 		  }, (err) => {
 			this.toastr.error(err.error.message, 'Error');
@@ -48,44 +55,65 @@ export class UsersComponent implements OnInit {
 		}
   }
   
-  /*
-  editUser(form){
-    let newUser:User = {
-      _id:this.selectedUser._id,
-      name:form.value.name,
-      email:form.value.email,
-      role:form.value.role,
-      hash:this.selectedUser.hash,
-      salt:this.selectedUser.salt
-    }
-    this.dataService.updateUser(newUser)
-      .subscribe( result => {
-        this.getUsers();
-      });
-      this.toggleForm = !this.toggleForm;
-  }
-  deleteUser(id){
-    this.dataService.deleteUser(id)
+  updateUser(){
+    this.userService.updateUser(this.selectedUser)
       .subscribe( data=>{
-        console.log(data);
-        if(data.n == 1){
-          for(var i=0;i<this.userList.length;i++){
-            if(id == this.userList[i]._id){
-              this.userList.splice(i,1);
-            }
-          }
-        }
-      })
+        document.getElementById('id02').style.display='none';
+        this.toastr.success('You successfully updated this user!', 'Success');
+        this.getUsers();
+		}, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
   }
-  showEditForm(user){
-    this.selectedUser=user;
-    this.toggleForm = !this.toggleForm;
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
+  
+  
+  deleteUser(){
+    this.userService.deleteUser(this.selectedUser._id)
+      .subscribe( data=>{
+		document.getElementById('id03').style.display='none';
+        this.toastr.success('You successfully deleted this user!', 'Success');
+        if(data.n == 1){
+          for(var i=0;i<this.users.length;i++){
+            if(this.selectedUser._id == this.users[i]._id){
+              this.users.splice(i,1);
+			}
+			}
+		}, (err) => {
+			this.toastr.error(err.error.message, 'Error');
+		});
+  }
+  
+  resetPassword() {
+    this.userService.resetPassword(this.selectedUser).subscribe(() => {
+      this.toastr.success('You successfully reset the password for user!', 'Success');
+      document.getElementById('id02').style.display='none';
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
     });
-  }*/
+  }
+  
+  selectUser(option, user) {
+    if(user != null && option != null) {
+      this.selectedUser = user;
+      if (option === 2) {
+        document.getElementById('id02').style.display='block'
+      } else if (option === 3) {
+        document.getElementById('id03').style.display='block';
+      } else {
+        console.log("Something unexpected hapend!");
+      }
+    }
+  }
+  
+  clearDialog() {
+    this.firstName = '';
+    this.lastName = '';
+    this.confirmationPassword = '';
+    this.credentials.email = '';
+    this.credentials.name = '';
+    this.credentials.password = '';
+    this.credentials.role = '';
+  }
 
   ngOnInit() {
     this.getUsers();
