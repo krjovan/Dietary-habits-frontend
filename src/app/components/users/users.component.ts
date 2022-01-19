@@ -30,6 +30,7 @@ export class UsersComponent implements OnInit {
     role: ''
   };
   
+  search = '';
   currentPage = 0;
   currnetLimit = 8;
   numberOfPages = 0;
@@ -37,7 +38,8 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
   getUsers() {
-    this.userService.getUsersWithPagination(this.currentPage, this.currnetLimit)
+    if (this.search === '') {
+      this.userService.getUsersWithPagination(this.currentPage, this.currnetLimit)
       .subscribe(users => {
         this.users = users;
       });
@@ -45,6 +47,13 @@ export class UsersComponent implements OnInit {
       .subscribe(res => {
         this.numberOfPages = Math.ceil(res.numberOfUsers / this.currnetLimit);
       });
+	} else {
+      this.userService.getUsers(this.search)
+      .subscribe(users => {
+        this.users = users;
+        this.toastr.success('Found ' + users.length + ' user/s', 'Success');
+      });
+    }
   }
 
   addUser() {
