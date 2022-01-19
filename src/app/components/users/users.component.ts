@@ -29,14 +29,31 @@ export class UsersComponent implements OnInit {
     password: '',
     role: ''
   };
+  
+  search = '';
+  currentPage = 0;
+  currnetLimit = 8;
+  numberOfPages = 0;
 
   constructor(private userService: UserService, private toastr: ToastrService) { }
 
   getUsers() {
-    this.userService.getUsers()
+    if (this.search === '') {
+      this.userService.getUsersWithPagination(this.currentPage, this.currnetLimit)
       .subscribe(users => {
         this.users = users;
       });
+	this.userService.getUsersCount()
+      .subscribe(res => {
+        this.numberOfPages = Math.ceil(res.numberOfUsers / this.currnetLimit);
+      });
+	} else {
+      this.userService.getUsers(this.search)
+      .subscribe(users => {
+        this.users = users;
+        this.toastr.success('Found ' + users.length + ' user/s', 'Success');
+      });
+    }
   }
 
   addUser() {
@@ -114,6 +131,38 @@ export class UsersComponent implements OnInit {
     this.credentials.name = '';
     this.credentials.password = '';
     this.credentials.role = '';
+  }
+  
+  nextPage() {
+    if (this.currentPage >= this.numberOfPages - 1) {
+      this.toastr.error('No next page!', 'Error');
+      return;
+    }
+    ++this.currentPage;
+    this.getUsers();
+  }
+
+  previousPage() {
+    if (this.currentPage <= 0) {
+      this.toastr.error('No previous page!', 'Error');
+      return;
+    }
+    --this.currentPage;
+    this.getUsers();
+  }
+
+  jumpToPage(event) {
+    if (event.target.value >= 1 && event.target.value <= this.numberOfPages) {
+      this.currentPage = event.target.value - 1;
+      this.getUsers();
+    } else {
+      this.toastr.error('This page does not exist!', 'Error');
+    }
+  }
+
+  onLimitChange(value) {
+    this.currentPage = 0;
+    this.getUsers();
   }
 
   ngOnInit() {
