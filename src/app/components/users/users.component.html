@@ -117,7 +117,9 @@
             </button>
           </p>
           <p>
-              <button (click)="resetPassword()" class="w3-btn w3-black">Reset Password <i class="fa fa-key"></i></button>
+              <button (click)="resetPassword()" class="w3-btn w3-black">Reset Password
+              <i class="fa fa-key"></i>
+            </button>
           </p>
         </form>
 
@@ -146,8 +148,8 @@
 </div>
 
 <div class="search-container w3-center w3-padding">
-    <input type="text" placeholder="Search.." name="search">
-  <button style="margin-right: 15pt;" class="w3-button">
+    <input [(ngModel)]="search" type="text" placeholder="Search.." name="search">
+  <button (click)="getUsers()" style="margin-right: 15pt;" class="w3-button">
     <i class="fa fa-search"></i>
   </button>
   <button class="w3-button w3-green" onclick="document.getElementById('id01').style.display='block'">
@@ -171,5 +173,23 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+
+<div *ngIf="search===''" class="w3-center w3-padding">
+  <div class="w3-bar w3-border w3-round">
+    <button (click)="previousPage()" [disabled]="currentPage <= 0" class="w3-button">&laquo;</button>
+    <p style="display: inline; margin-left: 1vw; margin-right: 1vw;">Page {{currentPage + 1}} of {{numberOfPages}}</p>
+    <button (click)="nextPage()" [disabled]="currentPage >= numberOfPages - 1" class="w3-button">&raquo;</button>
+    <span style="margin-left: 0.5vw">Jump to </span>
+    <input style="width: 6vw; margin-right: 1vw;" type="number" (keyup.enter)="jumpToPage($event)">
+    <span style="margin-left: 0.5vw;">Per page
+      <select style="margin-right: 1vw" [(ngModel)]="currnetLimit" name="option" (ngModelChange)="onLimitChange($event)">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+      </select>
+    </span>
+
   </div>
 </div>
