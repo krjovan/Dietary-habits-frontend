@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.API_URL + '/all');
+  public getUsers(search): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.API_URL + '/all?search=' + search);
   }
   
   public getUsersWithPagination(page, limit): Observable<User[]> {
