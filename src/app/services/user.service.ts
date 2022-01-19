@@ -17,6 +17,14 @@ export class UserService {
     return this.httpClient.get<User[]>(this.API_URL + '/all');
   }
   
+  public getUsersWithPagination(page, limit): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.API_URL + '/withPagination?page=' + page + '&limit=' + limit);
+  }
+
+  public getUsersCount(): Observable<any> {
+    return this.httpClient.get<any>(this.API_URL + '/numberOfUsers');
+  }
+  
   public addUser(user: TokenPayload): Observable<any> {
     return this.httpClient.post(this.API_URL + '/add', user);
   }
