@@ -14,6 +14,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { NutritionComponent } from './components/nutrition/nutrition.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
     ProfileComponent,
     SignInComponent,
     RegisterComponent,
-    UsersComponent
+    UsersComponent,
+    NutritionComponent
   ],
   imports: [
     BrowserModule,
