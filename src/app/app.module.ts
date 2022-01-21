@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'users', component: UsersComponent, canActivate: [AdminAuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'nutrition', component: NutritionComponent, canActivate: [AdminAuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
