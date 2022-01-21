@@ -59,7 +59,7 @@ export class AuthenticationService {
     let payload;
     if (token) {
       payload = token.split('.')[1];
-      payload = window.atob(payload);
+      payload = this.b64DecodeUnicode(payload);
       return JSON.parse(payload);
     } else {
       return null;
@@ -133,5 +133,11 @@ export class AuthenticationService {
 
   public updateUser(user): Observable<any> {
     return this.http.put(this.BACKEND_URL_USERS + '/update/' + user._id, user ,httpOptions);
+  }
+  
+  b64DecodeUnicode(str) {
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
   }
 }
