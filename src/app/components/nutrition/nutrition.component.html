@@ -1,1 +1,1152 @@
-<p>nutrition works!</p>
+<div class="w3-container w3-center">
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue">
+        <span class="w3-button w3-display-topleft" (click)="clearDialog()">Clear
+          <i class="fa fa-eraser"></i>
+        </span>
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <h2>New nutrition form</h2>
+      </header>
+      <div class="w3-container">
+
+        <form class="w3-container" #formControl="ngForm">
+          <p>
+            <label class="w3-text-blue">
+              <b>Name</b>
+            </label>
+            <input required [(ngModel)]="nutrition.name" minlength="2" name="name" type="text" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>Calories</b>
+            </label>
+            <input name="calories" [(ngModel)]="nutrition.calories" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>total_fat_g</b>
+            </label>
+            <input name="total_fat_g" [(ngModel)]="nutrition.
+          total_fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>saturated_fat_g</b>
+            </label>
+            <input name="saturated_fat_g" [(ngModel)]="nutrition.
+          saturated_fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cholesterol_mg</b>
+            </label>
+            <input name="cholesterol_mg" [(ngModel)]="nutrition.
+          cholesterol_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sodium_mg</b>
+            </label>
+            <input name="sodium_mg" [(ngModel)]="nutrition.
+          sodium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>choline_mg</b>
+            </label>
+            <input name="choline_mg" [(ngModel)]="nutrition.
+          choline_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>folate_mcg</b>
+            </label>
+            <input name="folate_mcg" [(ngModel)]="nutrition.
+          folate_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>folic_acid_mcg</b>
+            </label>
+            <input name="folic_acid_mcg" [(ngModel)]="nutrition.
+          folic_acid_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>niacin_mg</b>
+            </label>
+            <input name="niacin_mg" [(ngModel)]="nutrition.
+          niacin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>pantothenic_acid_mg</b>
+            </label>
+            <input name="pantothenic_acid_mg" [(ngModel)]="nutrition.
+          pantothenic_acid_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>riboflavin_mg</b>
+            </label>
+            <input name="riboflavin_mg" [(ngModel)]="nutrition.
+          riboflavin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>thiamin_mg</b>
+            </label>
+            <input name="thiamin_mg" [(ngModel)]="nutrition.
+          thiamin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_a_IU</b>
+            </label>
+            <input name="vitamin_a_IU" [(ngModel)]="nutrition.
+          vitamin_a_IU" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_a_rae_mcg</b>
+            </label>
+            <input name="vitamin_a_rae_mcg" [(ngModel)]="nutrition.
+          vitamin_a_rae_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carotene_alpha_mcg</b>
+            </label>
+            <input name="carotene_alpha_mcg" [(ngModel)]="nutrition.
+          carotene_alpha_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carotene_beta_mcg</b>
+            </label>
+            <input name="carotene_beta_mcg" [(ngModel)]="nutrition.
+          carotene_beta_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cryptoxanthin_beta_mcg</b>
+            </label>
+            <input name="cryptoxanthin_beta_mcg" [(ngModel)]="nutrition.
+          cryptoxanthin_beta_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lutein_zeaxanthin_mcg</b>
+            </label>
+            <input name="lutein_zeaxanthin_mcg" [(ngModel)]="nutrition.
+          lutein_zeaxanthin_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_b12_mcg</b>
+            </label>
+            <input name="vitamin_b12_mcg" [(ngModel)]="nutrition.
+          vitamin_b12_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_b6_mg</b>
+            </label>
+            <input name="vitamin_b6_mg" [(ngModel)]="nutrition.
+          vitamin_b6_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_c_mg</b>
+            </label>
+            <input name="vitamin_c_mg" [(ngModel)]="nutrition.
+          vitamin_c_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_d_IU</b>
+            </label>
+            <input name="vitamin_d_IU" [(ngModel)]="nutrition.
+          vitamin_d_IU" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_e_mg</b>
+            </label>
+            <input name="vitamin_e_mg" [(ngModel)]="nutrition.
+          vitamin_e_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tocopherol_alpha_mg</b>
+            </label>
+            <input name="tocopherol_alpha_mg" [(ngModel)]="nutrition.
+          tocopherol_alpha_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_k_mcg</b>
+            </label>
+            <input name="vitamin_k_mcg" [(ngModel)]="nutrition.
+          vitamin_k_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+
+          <p>
+            <label class="w3-text-blue">
+              <b>calcium_mg</b>
+            </label>
+            <input name="calcium_mg" [(ngModel)]="nutrition.
+          calcium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>copper_mg</b>
+            </label>
+            <input name="copper_mg" [(ngModel)]="nutrition.
+          copper_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>irom_mg</b>
+            </label>
+            <input name="irom_mg" [(ngModel)]="nutrition.
+          irom_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>magnesium_mg</b>
+            </label>
+            <input name="magnesium_mg" [(ngModel)]="nutrition.
+          magnesium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>manganese_mg</b>
+            </label>
+            <input name="manganese_mg" [(ngModel)]="nutrition.
+          manganese_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>phosphorous_mg</b>
+            </label>
+            <input name="phosphorous_mg" [(ngModel)]="nutrition.
+          phosphorous_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>potassium_mg</b>
+            </label>
+            <input name="potassium_mg" [(ngModel)]="nutrition.
+          potassium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>selenium_mcg</b>
+            </label>
+            <input name="selenium_mcg" [(ngModel)]="nutrition.
+          selenium_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>zink_mg</b>
+            </label>
+            <input name="zink_mg" [(ngModel)]="nutrition.
+          zink_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>protein_g</b>
+            </label>
+            <input name="protein_g" [(ngModel)]="nutrition.
+          protein_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>alanine_g</b>
+            </label>
+            <input name="alanine_g" [(ngModel)]="nutrition.
+          alanine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>arginine_g</b>
+            </label>
+            <input name="arginine_g" [(ngModel)]="nutrition.
+          arginine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>aspartic_acid_g</b>
+            </label>
+            <input name="aspartic_acid_g" [(ngModel)]="nutrition.
+          aspartic_acid_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cystine_g</b>
+            </label>
+            <input name="cystine_g" [(ngModel)]="nutrition.
+          cystine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glutamic_acid_g</b>
+            </label>
+            <input name="glutamic_acid_g" [(ngModel)]="nutrition.
+          glutamic_acid_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glycine_g</b>
+            </label>
+            <input name="glycine_g" [(ngModel)]="nutrition.
+          glycine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>histidine_g</b>
+            </label>
+            <input name="histidine_g" [(ngModel)]="nutrition.
+          histidine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>hydroxyproline_g</b>
+            </label>
+            <input name="hydroxyproline_g" [(ngModel)]="nutrition.
+          hydroxyproline_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>isoleucine_g</b>
+            </label>
+            <input name="isoleucine_g" [(ngModel)]="nutrition.
+          isoleucine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>leucine_g</b>
+            </label>
+            <input name="leucine_g" [(ngModel)]="nutrition.
+          leucine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lysine_g</b>
+            </label>
+            <input name="lysine_g" [(ngModel)]="nutrition.
+          lysine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>methionine_g</b>
+            </label>
+            <input name="methionine_g" [(ngModel)]="nutrition.
+          methionine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>phenylalanine_g</b>
+            </label>
+            <input name="phenylalanine_g" [(ngModel)]="nutrition.
+          phenylalanine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>proline_g</b>
+            </label>
+            <input name="proline_g" [(ngModel)]="nutrition.
+          proline_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>serine_g</b>
+            </label>
+            <input name="serine_g" [(ngModel)]="nutrition.
+          serine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>threonine_g</b>
+            </label>
+            <input name="threonine_g" [(ngModel)]="nutrition.
+          threonine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tryptophan_g</b>
+            </label>
+            <input name="tryptophan_g" [(ngModel)]="nutrition.
+          tryptophan_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tyrosine_g</b>
+            </label>
+            <input name="tyrosine_g" [(ngModel)]="nutrition.
+          tyrosine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>valine_g</b>
+            </label>
+            <input name="valine_g" [(ngModel)]="nutrition.
+          valine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carbohydrate_g</b>
+            </label>
+            <input name="carbohydrate_g" [(ngModel)]="nutrition.
+          carbohydrate_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fiber_g</b>
+            </label>
+            <input name="fiber_g" [(ngModel)]="nutrition.
+          fiber_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sugars_g</b>
+            </label>
+            <input name="sugars_g" [(ngModel)]="nutrition.
+          sugars_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fructose_g</b>
+            </label>
+            <input name="fructose_g" [(ngModel)]="nutrition.
+          fructose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>galactose_g</b>
+            </label>
+            <input name="galactose_g" [(ngModel)]="nutrition.
+          galactose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glucose_g</b>
+            </label>
+            <input name="glucose_g" [(ngModel)]="nutrition.
+          glucose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lactose_g</b>
+            </label>
+            <input name="lactose_g" [(ngModel)]="nutrition.
+          lactose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>maltose_g</b>
+            </label>
+            <input name="maltose_g" [(ngModel)]="nutrition.
+          maltose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sucrose_g</b>
+            </label>
+            <input name="sucrose_g" [(ngModel)]="nutrition.
+          sucrose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fat_g</b>
+            </label>
+            <input name="fat_g" [(ngModel)]="nutrition.
+          fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>saturated_fatty_acids_g</b>
+            </label>
+            <input name="saturated_fatty_acids_g" [(ngModel)]="nutrition.
+          saturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>monounsaturated_fatty_acids_g</b>
+            </label>
+            <input name="monounsaturated_fatty_acids_g" [(ngModel)]="nutrition.
+          monounsaturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>polyunsaturated_fatty_acids_g</b>
+            </label>
+            <input name="polyunsaturated_fatty_acids_g" [(ngModel)]="nutrition.
+          polyunsaturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fatty_acids_total_trans_g</b>
+            </label>
+            <input name="fatty_acids_total_trans_g" [(ngModel)]="nutrition.
+          fatty_acids_total_trans_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>alcohol_g</b>
+            </label>
+            <input name="alcohol_g" [(ngModel)]="nutrition.
+          alcohol_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>ash_g</b>
+            </label>
+            <input name="ash_g" [(ngModel)]="nutrition.
+          ash_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>caffeine_mg</b>
+            </label>
+            <input name="caffeine_mg" [(ngModel)]="nutrition.
+          caffeine_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>theobromine_mg</b>
+            </label>
+            <input name="theobromine_mg" [(ngModel)]="nutrition.
+          theobromine_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>water_g</b>
+            </label>
+            <input name="water_g" [(ngModel)]="nutrition.
+          water_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+
+
+          <p class="w3-center">
+            <button [disabled]="!formControl.valid" (click)="addNutrition()" class="w3-btn w3-green">Create
+              <i class="fa fa-check"></i>
+            </button>
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="w3-container w3-center">
+
+  <div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue">
+        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <h2>Update nutrition form</h2>
+      </header>
+      <div class="w3-container">
+        <form class="w3-container" #formControlEdit="ngForm">
+          <p>
+            <label class="w3-text-blue">
+              <b>Name</b>
+            </label>
+            <input required [(ngModel)]="selectedNutrition.name" minlength="2" name="name" type="text" style="text-align: center;"
+              class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>Calories</b>
+            </label>
+            <input required [(ngModel)]="selectedNutrition.calories" name="calories" onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+
+
+          <p>
+            <label class="w3-text-blue">
+              <b>total_fat_g</b>
+            </label>
+            <input name="total_fat_g" [(ngModel)]="selectedNutrition.
+          total_fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>saturated_fat_g</b>
+            </label>
+            <input name="saturated_fat_g" [(ngModel)]="selectedNutrition.
+          saturated_fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cholesterol_mg</b>
+            </label>
+            <input name="cholesterol_mg" [(ngModel)]="selectedNutrition.
+          cholesterol_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sodium_mg</b>
+            </label>
+            <input name="sodium_mg" [(ngModel)]="selectedNutrition.
+          sodium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>choline_mg</b>
+            </label>
+            <input name="choline_mg" [(ngModel)]="selectedNutrition.
+          choline_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>folate_mcg</b>
+            </label>
+            <input name="folate_mcg" [(ngModel)]="selectedNutrition.
+          folate_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>folic_acid_mcg</b>
+            </label>
+            <input name="folic_acid_mcg" [(ngModel)]="selectedNutrition.
+          folic_acid_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>niacin_mg</b>
+            </label>
+            <input name="niacin_mg" [(ngModel)]="selectedNutrition.
+          niacin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>pantothenic_acid_mg</b>
+            </label>
+            <input name="pantothenic_acid_mg" [(ngModel)]="selectedNutrition.
+          pantothenic_acid_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>riboflavin_mg</b>
+            </label>
+            <input name="riboflavin_mg" [(ngModel)]="selectedNutrition.
+          riboflavin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>thiamin_mg</b>
+            </label>
+            <input name="thiamin_mg" [(ngModel)]="selectedNutrition.
+          thiamin_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_a_IU</b>
+            </label>
+            <input name="vitamin_a_IU" [(ngModel)]="selectedNutrition.
+          vitamin_a_IU" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_a_rae_mcg</b>
+            </label>
+            <input name="vitamin_a_rae_mcg" [(ngModel)]="selectedNutrition.
+          vitamin_a_rae_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carotene_alpha_mcg</b>
+            </label>
+            <input name="carotene_alpha_mcg" [(ngModel)]="selectedNutrition.
+          carotene_alpha_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carotene_beta_mcg</b>
+            </label>
+            <input name="carotene_beta_mcg" [(ngModel)]="selectedNutrition.
+          carotene_beta_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cryptoxanthin_beta_mcg</b>
+            </label>
+            <input name="cryptoxanthin_beta_mcg" [(ngModel)]="selectedNutrition.
+          cryptoxanthin_beta_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lutein_zeaxanthin_mcg</b>
+            </label>
+            <input name="lutein_zeaxanthin_mcg" [(ngModel)]="selectedNutrition.
+          lutein_zeaxanthin_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_b12_mcg</b>
+            </label>
+            <input name="vitamin_b12_mcg" [(ngModel)]="selectedNutrition.
+          vitamin_b12_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_b6_mg</b>
+            </label>
+            <input name="vitamin_b6_mg" [(ngModel)]="selectedNutrition.
+          vitamin_b6_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_c_mg</b>
+            </label>
+            <input name="vitamin_c_mg" [(ngModel)]="selectedNutrition.
+          vitamin_c_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_d_IU</b>
+            </label>
+            <input name="vitamin_d_IU" [(ngModel)]="selectedNutrition.
+          vitamin_d_IU" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_e_mg</b>
+            </label>
+            <input name="vitamin_e_mg" [(ngModel)]="selectedNutrition.
+          vitamin_e_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tocopherol_alpha_mg</b>
+            </label>
+            <input name="tocopherol_alpha_mg" [(ngModel)]="selectedNutrition.
+          tocopherol_alpha_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>vitamin_k_mcg</b>
+            </label>
+            <input name="vitamin_k_mcg" [(ngModel)]="selectedNutrition.
+          vitamin_k_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+
+          <p>
+            <label class="w3-text-blue">
+              <b>calcium_mg</b>
+            </label>
+            <input name="calcium_mg" [(ngModel)]="selectedNutrition.
+          calcium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>copper_mg</b>
+            </label>
+            <input name="copper_mg" [(ngModel)]="selectedNutrition.
+          copper_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>irom_mg</b>
+            </label>
+            <input name="irom_mg" [(ngModel)]="selectedNutrition.
+          irom_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>magnesium_mg</b>
+            </label>
+            <input name="magnesium_mg" [(ngModel)]="selectedNutrition.
+          magnesium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>manganese_mg</b>
+            </label>
+            <input name="manganese_mg" [(ngModel)]="selectedNutrition.
+          manganese_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>phosphorous_mg</b>
+            </label>
+            <input name="phosphorous_mg" [(ngModel)]="selectedNutrition.
+          phosphorous_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>potassium_mg</b>
+            </label>
+            <input name="potassium_mg" [(ngModel)]="selectedNutrition.
+          potassium_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>selenium_mcg</b>
+            </label>
+            <input name="selenium_mcg" [(ngModel)]="selectedNutrition.
+          selenium_mcg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>zink_mg</b>
+            </label>
+            <input name="zink_mg" [(ngModel)]="selectedNutrition.
+          zink_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>protein_g</b>
+            </label>
+            <input name="protein_g" [(ngModel)]="selectedNutrition.
+          protein_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>alanine_g</b>
+            </label>
+            <input name="alanine_g" [(ngModel)]="selectedNutrition.
+          alanine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>arginine_g</b>
+            </label>
+            <input name="arginine_g" [(ngModel)]="selectedNutrition.
+          arginine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>aspartic_acid_g</b>
+            </label>
+            <input name="aspartic_acid_g" [(ngModel)]="selectedNutrition.
+          aspartic_acid_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>cystine_g</b>
+            </label>
+            <input name="cystine_g" [(ngModel)]="selectedNutrition.
+          cystine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glutamic_acid_g</b>
+            </label>
+            <input name="glutamic_acid_g" [(ngModel)]="selectedNutrition.
+          glutamic_acid_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glycine_g</b>
+            </label>
+            <input name="glycine_g" [(ngModel)]="selectedNutrition.
+          glycine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>histidine_g</b>
+            </label>
+            <input name="histidine_g" [(ngModel)]="selectedNutrition.
+          histidine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>hydroxyproline_g</b>
+            </label>
+            <input name="hydroxyproline_g" [(ngModel)]="selectedNutrition.
+          hydroxyproline_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>isoleucine_g</b>
+            </label>
+            <input name="isoleucine_g" [(ngModel)]="selectedNutrition.
+          isoleucine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>leucine_g</b>
+            </label>
+            <input name="leucine_g" [(ngModel)]="selectedNutrition.
+          leucine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lysine_g</b>
+            </label>
+            <input name="lysine_g" [(ngModel)]="selectedNutrition.
+          lysine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>methionine_g</b>
+            </label>
+            <input name="methionine_g" [(ngModel)]="selectedNutrition.
+          methionine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>phenylalanine_g</b>
+            </label>
+            <input name="phenylalanine_g" [(ngModel)]="selectedNutrition.
+          phenylalanine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>proline_g</b>
+            </label>
+            <input name="proline_g" [(ngModel)]="selectedNutrition.
+          proline_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>serine_g</b>
+            </label>
+            <input name="serine_g" [(ngModel)]="selectedNutrition.
+          serine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>threonine_g</b>
+            </label>
+            <input name="threonine_g" [(ngModel)]="selectedNutrition.
+          threonine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tryptophan_g</b>
+            </label>
+            <input name="tryptophan_g" [(ngModel)]="selectedNutrition.
+          tryptophan_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>tyrosine_g</b>
+            </label>
+            <input name="tyrosine_g" [(ngModel)]="selectedNutrition.
+          tyrosine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>valine_g</b>
+            </label>
+            <input name="valine_g" [(ngModel)]="selectedNutrition.
+          valine_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>carbohydrate_g</b>
+            </label>
+            <input name="carbohydrate_g" [(ngModel)]="selectedNutrition.
+          carbohydrate_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fiber_g</b>
+            </label>
+            <input name="fiber_g" [(ngModel)]="selectedNutrition.
+          fiber_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sugars_g</b>
+            </label>
+            <input name="sugars_g" [(ngModel)]="selectedNutrition.
+          sugars_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fructose_g</b>
+            </label>
+            <input name="fructose_g" [(ngModel)]="selectedNutrition.
+          fructose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>galactose_g</b>
+            </label>
+            <input name="galactose_g" [(ngModel)]="selectedNutrition.
+          galactose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>glucose_g</b>
+            </label>
+            <input name="glucose_g" [(ngModel)]="selectedNutrition.
+          glucose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>lactose_g</b>
+            </label>
+            <input name="lactose_g" [(ngModel)]="selectedNutrition.
+          lactose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>maltose_g</b>
+            </label>
+            <input name="maltose_g" [(ngModel)]="selectedNutrition.
+          maltose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>sucrose_g</b>
+            </label>
+            <input name="sucrose_g" [(ngModel)]="selectedNutrition.
+          sucrose_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fat_g</b>
+            </label>
+            <input name="fat_g" [(ngModel)]="selectedNutrition.
+          fat_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>saturated_fatty_acids_g</b>
+            </label>
+            <input name="saturated_fatty_acids_g" [(ngModel)]="selectedNutrition.
+          saturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>monounsaturated_fatty_acids_g</b>
+            </label>
+            <input name="monounsaturated_fatty_acids_g" [(ngModel)]="selectedNutrition.
+          monounsaturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>polyunsaturated_fatty_acids_g</b>
+            </label>
+            <input name="polyunsaturated_fatty_acids_g" [(ngModel)]="selectedNutrition.
+          polyunsaturated_fatty_acids_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>fatty_acids_total_trans_g</b>
+            </label>
+            <input name="fatty_acids_total_trans_g" [(ngModel)]="selectedNutrition.
+          fatty_acids_total_trans_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>alcohol_g</b>
+            </label>
+            <input name="alcohol_g" [(ngModel)]="selectedNutrition.
+          alcohol_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>ash_g</b>
+            </label>
+            <input name="ash_g" [(ngModel)]="selectedNutrition.
+          ash_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>caffeine_mg</b>
+            </label>
+            <input name="caffeine_mg" [(ngModel)]="selectedNutrition.
+          caffeine_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>theobromine_mg</b>
+            </label>
+            <input name="theobromine_mg" [(ngModel)]="selectedNutrition.
+          theobromine_mg" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+          <p>
+            <label class="w3-text-blue">
+              <b>water_g</b>
+            </label>
+            <input name="water_g" [(ngModel)]="selectedNutrition.
+          water_g" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
+          </p>
+
+
+          <p class="w3-center">
+            <button [disabled]="!formControlEdit.valid" (click)="updateNutrition()" class="w3-btn w3-blue">Update
+              <i class="fa fa-check"></i>
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="id03" class="modal">
+  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">×</span>
+  <form class="modal-content">
+    <div class="container">
+      <h1>Delete nutrition</h1>
+      <p>Name: {{selectedNutrition?.name}}</p>
+      <p>Are you sure you want to delete this nutrition?</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="button" (click)="deleteNutrition()" class="deletebtn">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="search-container w3-center w3-padding">
+  <input [(ngModel)]="search" type="text" placeholder="Search by name" name="search">
+  <button (click)="getNutritions()" style="margin-right: 15pt;" class="w3-button">
+    <i class="fa fa-search"></i>
+  </button>
+  <button class="w3-button w3-green" onclick="document.getElementById('id01').style.display='block'">
+    <i class="fa fa-cutlery fa-fw"></i>
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<div>
+  <div class="row">
+    <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
+      <h3 style="text-align: center">{{nutrition.name}}</h3>
+      <div class="w3-center w3-padding">
+        <button style="margin-right: 5pt" class="w3-button w3-black" (click)="selectNutrition(2, nutrition)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="w3-button w3-red" (click)="selectNutrition(3, nutrition)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="search===''" class="w3-center w3-padding">
+  <div class="w3-bar w3-border w3-round">
+    <button (click)="previousPage()" [disabled]="currentPage <= 0" class="w3-button">&laquo;</button>
+    <p style="display: inline; margin-left: 1vw; margin-right: 1vw;">Page {{currentPage + 1}} of {{numberOfPages}}</p>
+    <button (click)="nextPage()" [disabled]="currentPage >= numberOfPages - 1" class="w3-button">&raquo;</button>
+    <span style="margin-left: 0.5vw">Jump to </span>
+    <input style="width: 6vw; margin-right: 1vw;" type="number" (keyup.enter)="jumpToPage($event)">
+    <span style="margin-left: 0.5vw;">Per page
+      <select style="margin-right: 1vw" [(ngModel)]="currnetLimit" name="option" (ngModelChange)="onLimitChange($event)">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+      </select>
+    </span>
+
+  </div>
+</div>
