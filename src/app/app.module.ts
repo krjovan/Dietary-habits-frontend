@@ -15,6 +15,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './components/users/users.component';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
+import { SearchAndAddNutritionComponent } from './components/search-and-add-nutrition/search-and-add-nutrition.component';
+import { MyDietComponent } from './components/my-diet/my-diet.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,7 +36,9 @@ const routes: Routes = [
     SignInComponent,
     RegisterComponent,
     UsersComponent,
-    NutritionComponent
+    NutritionComponent,
+    SearchAndAddNutritionComponent,
+    MyDietComponent
   ],
   imports: [
     BrowserModule,
