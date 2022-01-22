@@ -25,6 +25,8 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent, canActivate: [AdminAuthGuardService] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'nutrition', component: NutritionComponent, canActivate: [AdminAuthGuardService] },
+  { path: 'search-add', component: SearchAndAddNutritionComponent, canActivate: [AuthGuardService] },
+  { path: 'my-diet', component: MyDietComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 

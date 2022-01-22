@@ -1,1 +1,13 @@
-<p>my-diet works!</p>
+<div style="overflow-x:auto;" class="w3-padding w3-container">
+  <div style="display: table; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
+
+    <div style="display: table-cell; font-size: 2em;" class="w3-center">Lookup date</div>
+    <div>
+		<input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
+    </div>
+	
+
+  </div>
+  
+  
+</div>

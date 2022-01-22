@@ -1,1 +1,22 @@
-<p>search-and-add-nutrition works!</p>
+<div class="search-container w3-center w3-padding">
+  <input [(ngModel)]="search" type="text" placeholder="Search by name" name="search">
+  <button (click)="getNutritions()" style="margin-right: 15pt;" class="w3-button">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+
+<div>
+  <div class="row">
+    <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
+      <h3 style="text-align: center">{{nutrition.name}}</h3>
+	  <div class="w3-center">
+		<input attr.id="{{nutrition._id}}" type="number" style="width: 50pt;">
+	  </div>
+      <div class="w3-center w3-padding">
+        <button style="margin-right: 5pt" class="w3-button w3-black" (click)="addNutrition(nutrition._id)">
+          Add <i class="fa fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserNutritionService } from '../../services/user-nutrition.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-diet',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyDietComponent implements OnInit {
 
-  constructor() { }
+  dateOfConsumption = new Date();
+  nutritions: any [] = [];
+
+  constructor(
+	private userNutritionService :UserNutritionService,
+	private auth :AuthenticationService,
+	private toastr: ToastrService
+  ) { }
+  
+  onDateChange(date){
+	  var body = {
+		  id: this.auth.getUserDetails()._id,
+		  date_of_consumption: date
+	  }
+	  this.userNutritionService.getUserNutritions(body)
+      .subscribe(nutritions => {
+        this.nutritions = nutritions;
+        this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
+	  });
+  }
 
   ngOnInit(): void {
+	  
   }
 
 }

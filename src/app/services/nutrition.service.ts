@@ -15,6 +15,10 @@ export class NutritionService {
   public getNutritions(search): Observable<Nutrition[]> {
     return this.httpClient.get<Nutrition[]>(this.API_URL + '/all?search=' + search);
   }
+  
+  public getNutritionNamesAndIds(search): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.API_URL + '/getNutritionsNameAndId?search=' + search);
+  }
 
   public getNutritionsWithPagination(page, limit): Observable<Nutrition[]> {
     return this.httpClient.get<Nutrition[]>(this.API_URL + '/withPagination?page=' + page + '&limit=' + limit);
