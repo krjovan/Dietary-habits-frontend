@@ -30,9 +30,17 @@ export class MyDietComponent implements OnInit {
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
 	  });
   }
+  
+  updateUserNutrition(nutrition) {
+	  console.log(nutrition);
+  }
+  
+  deleteUserNutrition(nutrition) {
+	  console.log(nutrition);
+  }
 
   ngOnInit(): void {
-	  
+	  this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
   }
 
 }

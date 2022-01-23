@@ -1,13 +1,33 @@
-<div style="overflow-x:auto;" class="w3-padding w3-container">
-  <div style="display: table; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
+<div style="display: table; margin-top: 10px; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
+<div id="date_label" style="font-size: 20px; display: table-cell;" class="w3-center w3-padding">Date </div>
+<div>
+	<input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
+</div>
+</div>
 
-    <div style="display: table-cell; font-size: 2em;" class="w3-center">Lookup date</div>
-    <div>
-		<input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
-    </div>
-	
-
-  </div>
-  
+<div style="overflow-x:auto; overflow-y:auto;" class="w3-padding w3-container w3-responsive">
+  <table style="margin-bottom: 3vw;" class="w3-table-all w3-card-4" id="user-nutritions">
+    <tr class="w3-blue">
+      <th class="w3-center"><div style="width: 200px;">Food</div></th>
+      <th class="w3-center">Quantity</th>
+      <th class="w3-center">Calories</th>
+      <th class="w3-center">Action</th>
+    </tr>
+    <tr *ngFor="let nutrition of nutritions">
+      <td class="w3-center"><div style="width: 200px;">{{nutrition.nutrition.name}}</div></td>
+      <td class="w3-center">{{nutrition.quantity}} g</td>
+      <td class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.calories}}</td>
+      <td class="w3-center">
+        <div class="w3-center">
+          <button style="width: 70px; height: 30px;" (click)="updateUserNutrition(nutrition)" class="w3-btn w3-blue">Update
+          </button>
+        </div>
+		<div class="w3-center">
+          <button style="width: 70px; height: 30px;" (click)="deleteUserNutrition(nutrition)" class="w3-btn w3-red">Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
   
 </div>
