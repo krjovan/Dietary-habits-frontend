@@ -95,7 +95,6 @@ export class MyDietComponent implements OnInit {
   ) { }
 
   onDateChange(date) {
-    console.log(date);
     this.dateOfConsumption = new Date(date);
 	  this.isLoaded = false;
 	  var body = {
@@ -280,11 +279,15 @@ export class MyDietComponent implements OnInit {
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
-
   }
 
-  deleteUserNutrition(nutrition) {
-	  console.log(nutrition);
+  deleteUserNutrition(id) {
+    this.userNutritionService.deleteNutrition(id).subscribe(() => {
+      this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+      this.toastr.success('You successfully deleted the food!', 'Success');
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
+    });
   }
 
   ngOnInit(): void {
