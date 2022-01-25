@@ -89,7 +89,8 @@
     </tr>
     <tr *ngFor="let nutrition of nutritions">
       <td class="w3-center"><div style="width: 200px;">{{nutrition.nutrition.name}}</div></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity}} g</td>
+      <td style="white-space: nowrap;" class="w3-center"><input attr.id="{{nutrition._id}}" value="{{nutrition.quantity}}" type="number" style="width: 50pt;"> g</td>
+      <!--<td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity}} g</td>-->
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.calories}}</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.total_fat_g}} g</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.saturated_fat_g}} g</td>

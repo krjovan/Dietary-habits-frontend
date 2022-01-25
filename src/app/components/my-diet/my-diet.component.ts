@@ -94,7 +94,9 @@ export class MyDietComponent implements OnInit {
 	private toastr: ToastrService
   ) { }
 
-  onDateChange(date){
+  onDateChange(date) {
+    console.log(date);
+    this.dateOfConsumption = new Date(date);
 	  this.isLoaded = false;
 	  var body = {
 		  id: this.auth.getUserDetails()._id,
@@ -103,8 +105,8 @@ export class MyDietComponent implements OnInit {
 	  this.userNutritionService.getUserNutritions(body)
       .subscribe(nutritions => {
         this.nutritions = nutritions;
-		this.calculateSum(nutritions);
-		this.isLoaded = true;
+		    this.calculateSum(nutritions);
+		    this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
 	  });
   }
@@ -268,7 +270,17 @@ export class MyDietComponent implements OnInit {
   }
 
   updateUserNutrition(nutrition) {
-	  console.log(nutrition);
+    var req = JSON.parse(JSON.stringify(nutrition));
+    delete req.nutrition;
+    const x = document.getElementById(req._id.toString()) as HTMLInputElement;
+    req.quantity = Number(x.value);
+    this.userNutritionService.updateNutrition(req).subscribe(() => {
+        this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+        this.toastr.success('You successfully updated the quantity!', 'Success');
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
+
   }
 
   deleteUserNutrition(nutrition) {

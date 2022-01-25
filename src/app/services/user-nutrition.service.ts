@@ -18,4 +18,12 @@ export class UserNutritionService {
   public addNutrition(nutrition: any): Observable<any> {
     return this.httpClient.post(this.API_URL + '/add', nutrition);
   }
+
+  public updateNutrition(nutrition: any): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/update/' + nutrition._id, nutrition);
+  }
+
+  public deleteNutrition(id): Observable<any> {
+    return this.httpClient.delete(this.API_URL + '/delete/' + id);
+  }
 }
