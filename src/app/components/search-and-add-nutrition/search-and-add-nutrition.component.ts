@@ -14,6 +14,7 @@ export class SearchAndAddNutritionComponent implements OnInit {
   search = '';
   nutritions: any [] = [];
   isLoaded: Boolean = true;
+  dateOfConsumption = new Date();
 
   constructor(private nutritionService: NutritionService,
 			  private auth: AuthenticationService,
@@ -32,7 +33,7 @@ export class SearchAndAddNutritionComponent implements OnInit {
   
   addNutrition(id: number) {
     const x = document.getElementById(id.toString()) as HTMLInputElement;
-	var d = new Date();
+	var d = new Date(this.dateOfConsumption);
 	d.setHours(12,0,0,0);
 	var nutrition = {
 		quantity: Number(x.value),
@@ -46,6 +47,10 @@ export class SearchAndAddNutritionComponent implements OnInit {
     }, (err) => {
       this.toastr.error(err.error.message, 'Error');
     });
+  }
+  
+  onDateChange(date){
+	  this.dateOfConsumption = date;
   }
 
 

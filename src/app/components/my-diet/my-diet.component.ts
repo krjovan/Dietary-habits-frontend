@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MyDietComponent implements OnInit {
 
+  isLoaded: Boolean = false;
   dateOfConsumption = new Date();
   nutritions: any [] = [];
   sumquantity = 0;
@@ -94,6 +95,7 @@ export class MyDietComponent implements OnInit {
   ) { }
 
   onDateChange(date){
+	  this.isLoaded = false;
 	  var body = {
 		  id: this.auth.getUserDetails()._id,
 		  date_of_consumption: date
@@ -102,6 +104,7 @@ export class MyDietComponent implements OnInit {
       .subscribe(nutritions => {
         this.nutritions = nutritions;
 		this.calculateSum(nutritions);
+		this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
 	  });
   }

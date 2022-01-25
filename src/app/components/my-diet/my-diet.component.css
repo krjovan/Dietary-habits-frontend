@@ -1,4 +1,29 @@
-#user-nutritions {
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgb(46, 143, 235);
+  border-bottom: 16px solid blue;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*#user-nutritions {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   margin-left: auto;
@@ -18,8 +43,67 @@
   padding-top: 12px;
   padding-bottom: 12px;
   color: white;
+}*/
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 15px;
+  border: 3px solid rgb(31, 101, 182);
 }
 
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid grey;
+}
+table {
+  overflow: hidden;
+}
 
+td, th {
+  padding: 10px;
+  position: relative;
+  outline: 0;
+}
 
+body:not(.nohover) tbody tr:hover {
+  background-color: rgb(207, 207, 196);
+}
 
+td:hover::after,
+thead th:not(:empty):hover::after,
+td:focus::after,
+thead th:not(:empty):focus::after {
+  content: '';
+  height: 10000px;
+  left: 0;
+  position: absolute;
+  top: -5000px;
+  width: 100%;
+  z-index: -1;
+}
+
+td:hover::after,
+th:hover::after {
+  background-color: rgb(207, 207, 196);
+}
+
+td:focus::after,
+th:focus::after {
+  background-color: lightblue;
+}
+
+/* Focus stuff for mobile */
+td:focus::before,
+tbody th:focus::before {
+  background-color: lightblue;
+  content: '';
+  height: 100%;
+  top: 0;
+  left: -5000px;
+  position: absolute;
+  width: 10000px;
+  z-index: -1;
+}
