@@ -5,7 +5,9 @@
   </button>
 </div>
 
-<div>
+<div *ngIf="!isLoaded" class="loader"></div>
+
+<div *ngIf="isLoaded">
   <div class="row">
     <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
       <h3 style="text-align: center">{{nutrition.name}}</h3>

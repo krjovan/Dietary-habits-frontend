@@ -13,6 +13,7 @@ export class SearchAndAddNutritionComponent implements OnInit {
 
   search = '';
   nutritions: any [] = [];
+  isLoaded: Boolean = true;
 
   constructor(private nutritionService: NutritionService,
 			  private auth: AuthenticationService,
@@ -20,9 +21,11 @@ export class SearchAndAddNutritionComponent implements OnInit {
 			  private toastr: ToastrService) { }
 
   getNutritions() {
+	  this.isLoaded = false;
       this.nutritionService.getNutritionNamesAndIds(this.search)
       .subscribe(nutritions => {
         this.nutritions = nutritions;
+		this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
 	  });
   }
@@ -38,6 +41,7 @@ export class SearchAndAddNutritionComponent implements OnInit {
 		nutrition_id: id
 	};
 	this.userNutritionService.addNutrition(nutrition).subscribe(() => {
+	  this.nutritions = [];
       this.toastr.success('You successfully added the food!', 'Success');
     }, (err) => {
       this.toastr.error(err.error.message, 'Error');
