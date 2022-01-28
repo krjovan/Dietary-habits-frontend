@@ -269,16 +269,20 @@ export class MyDietComponent implements OnInit {
   }
 
   updateUserNutrition(nutrition) {
-    var req = JSON.parse(JSON.stringify(nutrition));
-    delete req.nutrition;
-    const x = document.getElementById(req._id.toString()) as HTMLInputElement;
-    req.quantity = Number(x.value);
-    this.userNutritionService.updateNutrition(req).subscribe(() => {
-        this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
-        this.toastr.success('You successfully updated the quantity!', 'Success');
-      }, (err) => {
-        this.toastr.error(err.error.message, 'Error');
-      });
+	var req = JSON.parse(JSON.stringify(nutrition));
+	const x = document.getElementById(req._id.toString()) as HTMLInputElement;
+	if (Number(x.value) === 0) {
+		this.toastr.error('Enter valid quantity of food.', 'Error');
+	} else {
+		delete req.nutrition;
+		req.quantity = Number(x.value);
+		this.userNutritionService.updateNutrition(req).subscribe(() => {
+			this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+			this.toastr.success('You successfully updated the quantity!', 'Success');
+		}, (err) => {
+			this.toastr.error(err.error.message, 'Error');
+		});
+	}
   }
 
   deleteUserNutrition(id) {
