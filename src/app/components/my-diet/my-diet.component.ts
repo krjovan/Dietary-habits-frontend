@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserNutritionService } from '../../services/user-nutrition.service';
+import { DriService } from '../../services/dri.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MyDietComponent implements OnInit {
 
+  dri: any = <any>{};
   isLoaded: Boolean = false;
   dateOfConsumption = new Date();
   nutritions: any [] = [];
@@ -91,7 +93,8 @@ export class MyDietComponent implements OnInit {
   constructor(
 	private userNutritionService :UserNutritionService,
 	private auth :AuthenticationService,
-	private toastr: ToastrService
+	private driService: DriService,
+	private toastr: ToastrService,
   ) { }
 
   onDateChange(date) {
@@ -296,6 +299,11 @@ export class MyDietComponent implements OnInit {
 
   ngOnInit(): void {
 	  this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+	  this.driService.getDris()
+      .subscribe(dris => {
+		Object.assign(this.dri, dris[0]);
+	  });
+	  console.log(this.dri);
   }
 
 }
