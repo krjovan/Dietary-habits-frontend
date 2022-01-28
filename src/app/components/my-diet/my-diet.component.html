@@ -1,9 +1,13 @@
+<div class="w3-center" style="padding-top: 10px;"><a style="cursor: pointer;" routerLink="/search-add"> <button class="w3-btn w3-green"><i class="fa fa-cutlery"></i> Add food</button></a></div>
+
+
 <div style="display: table; margin-top: 10px; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
 <div id="date_label" style="font-size: 20px; display: table-cell;" class="w3-center w3-padding">Date </div>
 <div>
 	<input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
 </div>
 </div>
+
 
 <div *ngIf="!isLoaded" class="loader"></div>
 

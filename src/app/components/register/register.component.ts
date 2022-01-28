@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       this.credentials.name = this.firstName + ' ' + this.lastName;
       this.auth.register(this.credentials).subscribe(() => {
 		this.toastr.success('You successfully made an account!', 'Welcome ' + this.auth.getUserDetails().name);
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/my-diet');
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
