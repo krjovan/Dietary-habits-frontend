@@ -16,6 +16,7 @@
     <tr class="w3-blue">
       <th class="w3-center"><div style="width: 200px;">Food</div></th>
       <th class="w3-center">Quantity (g)</th>
+	  <th class="w3-center">Action</th>
       <th class="w3-center">Calories</th>
       <th class="w3-center">Total fat (g)</th>
       <th class="w3-center">Saturated fat (g)</th>
@@ -89,12 +90,20 @@
       <th class="w3-center">Caffeine (mg)</th>
       <th class="w3-center">Theobromine (mg)</th>
       <th class="w3-center">Water (g)</th>
-      <th class="w3-center">Action</th>
+
     </tr>
     <tr *ngFor="let nutrition of nutritions">
       <td class="w3-center"><div style="width: 200px;">{{nutrition.nutrition.name}}</div></td>
       <td style="white-space: nowrap;" class="w3-center"><input attr.id="{{nutrition._id}}" value="{{nutrition.quantity}}" type="number" style="width: 50pt;"> g</td>
-      <!--<td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity}} g</td>-->
+      <td class="w3-center">
+        <div class="w3-center">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="updateUserNutrition(nutrition)" class="w3-blue"><i class="fa fa-edit"> Update</i></button>
+        </div>
+		<div style="padding-top: 4px;"></div>
+		<div class="w3-center">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="deleteUserNutrition(nutrition._id)" class="w3-red"><i class="fa fa-trash"> Delete</i></button>
+        </div>
+      </td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.calories}}</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.total_fat_g}} g</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.saturated_fat_g}} g</td>
@@ -168,20 +177,11 @@
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.caffeine_mg}} mg</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.theobromine_mg}} mg</td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g</td>
-      <td class="w3-center">
-        <div class="w3-center">
-          <button style="width: 70px; height: 30px;" (click)="updateUserNutrition(nutrition)" class="w3-btn w3-blue">Update
-          </button>
-        </div>
-		<div class="w3-center">
-          <button style="width: 70px; height: 30px;" (click)="deleteUserNutrition(nutrition._id)" class="w3-btn w3-red">Delete
-          </button>
-        </div>
-      </td>
     </tr>
 	<tr style="background-color: #d9d9d0;">
       <th class="w3-center"><div style="width: 200px;">Total</div></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumquantity}} g</th>
+	  <th style="white-space: nowrap;" class="w3-center"> - </th>
       <th style="white-space: nowrap;" class="w3-center">{{sumcalories}}</th>
       <th style="white-space: nowrap;" class="w3-center">{{sumtotal_fat_g}} g</th>
       <th style="white-space: nowrap;" class="w3-center">{{sumsaturated_fat_g}} g</th>

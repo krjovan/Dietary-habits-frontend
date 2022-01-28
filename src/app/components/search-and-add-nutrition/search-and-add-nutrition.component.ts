@@ -33,20 +33,27 @@ export class SearchAndAddNutritionComponent implements OnInit {
   
   addNutrition(id: number) {
     const x = document.getElementById(id.toString()) as HTMLInputElement;
-	var d = new Date(this.dateOfConsumption);
-	d.setHours(12,0,0,0);
-	var nutrition = {
-		quantity: Number(x.value),
-		date_of_consumption: d.toISOString(),
-		user_id: this.auth.getUserDetails()._id,
-		nutrition_id: id
-	};
-	this.userNutritionService.addNutrition(nutrition).subscribe(() => {
-	  this.nutritions = [];
-      this.toastr.success('You successfully added the food!', 'Success');
-    }, (err) => {
-      this.toastr.error(err.error.message, 'Error');
-    });
+	console.log(x);
+	console.log(Number(x.value));
+	if(Number(x.value) === 0) {
+		this.toastr.error('You must enter a proper value for quantity.', 'Error');
+	} else {
+		var d = new Date(this.dateOfConsumption);
+		d.setHours(12,0,0,0);
+		var nutrition = {
+			quantity: Number(x.value),
+			date_of_consumption: d.toISOString(),
+			user_id: this.auth.getUserDetails()._id,
+			nutrition_id: id
+		};
+		this.userNutritionService.addNutrition(nutrition).subscribe(() => {
+		  this.nutritions = [];
+		  this.toastr.success('You successfully added the food!', 'Success');
+		  window.scrollTo(0, 0);
+		}, (err) => {
+		  this.toastr.error(err.error.message, 'Error');
+		});
+	}
   }
   
   onDateChange(date){

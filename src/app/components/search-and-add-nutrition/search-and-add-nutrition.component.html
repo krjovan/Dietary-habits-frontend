@@ -17,12 +17,14 @@
 <div *ngIf="isLoaded">
   <div class="row">
     <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
-      <h3 style="text-align: center">{{nutrition.name}}</h3>
+      <p style="text-align: center">{{nutrition.name}}</p>
 	  <div class="w3-center">
+		<label style="margin-right:5px;">Quantity</label>
 		<input attr.id="{{nutrition._id}}" type="number" style="width: 50pt;">
+		<label style="margin-left:5px;">(g)</label>
 	  </div>
       <div class="w3-center w3-padding">
-        <button style="margin-right: 5pt" class="w3-button w3-black" (click)="addNutrition(nutrition._id)">
+        <button style="margin-right: 5pt" class="w3-button w3-green" (click)="addNutrition(nutrition._id)">
           Add <i class="fa fa-check"></i>
         </button>
       </div>
