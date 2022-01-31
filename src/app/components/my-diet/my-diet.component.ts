@@ -299,7 +299,7 @@ export class MyDietComponent implements OnInit {
 
   ngOnInit(): void {
 	  this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
-	  this.driService.getDris()
+	  this.driService.getUserActiveDris()
       .subscribe(dris => {
 		Object.assign(this.dri, dris[0]);
 	  });

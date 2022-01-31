@@ -27,6 +27,15 @@
 	margin-bottom: 4vw;
 }
 
+.tableFixHead          { overflow: auto; height: 300px; }
+.tableFixHead th { position: sticky; top: 0; z-index: 1; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
+
+/*
 table {
   font-family: Arial, Helvetica, sans-serif;
   border: 1px solid #9e9e9e;
@@ -70,9 +79,9 @@ td:focus::after,
 th:focus::after {
   background-color: lightblue;
 }
-
+*/
 /* Focus stuff for mobile */
-td:focus::before,
+/*td:focus::before,
 tbody th:focus::before {
   background-color: lightblue;
   content: '';
@@ -82,4 +91,4 @@ tbody th:focus::before {
   position: absolute;
   width: 10000px;
   z-index: -1;
-}
+}*/
