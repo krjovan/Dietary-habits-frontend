@@ -11,8 +11,9 @@
 
 <div *ngIf="!isLoaded" class="loader"></div>
 
-<div *ngIf="isLoaded" id="divForTable" class="tableFixHead w3-container w3-responsive">
-  <table id="user-nutritions">
+<div *ngIf="isLoaded" id="divForTable" class="tableFixHead">
+  <table style="width:80vw;" id="user-nutritions">
+  <thead>
     <tr class="w3-blue">
       <th class="w3-center"><div style="width: 200px;">Food</div></th>
       <th class="w3-center">Quantity (g)</th>
@@ -92,6 +93,7 @@
       <th class="w3-center">Water (g)</th>
 
     </tr>
+	</thead>
     <tr *ngFor="let nutrition of nutritions">
       <td class="w3-center"><div style="width: 200px;">{{nutrition.nutrition.name}}</div></td>
       <td style="white-space: nowrap;" class="w3-center"><input attr.id="{{nutrition._id}}" value="{{nutrition.quantity}}" type="number" style="width: 50pt;"> g</td>
@@ -178,6 +180,7 @@
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.theobromine_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.theobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.water_g/dri.water_g_min*100).toFixed(2)}} %) </span></td>
     </tr>
+	<tfoot>
 	<tr style="background-color: #d9d9d0;">
       <th class="w3-center"><div style="width: 200px;">Total</div></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumquantity}} g</th>
@@ -256,6 +259,8 @@
       <th style="white-space: nowrap;" class="w3-center">{{sumtheobromine_mg}} mg <span class="w3-text-green">({{(sumtheobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumwater_g}} g <span class="w3-text-green">({{(sumwater_g/dri.water_g_min*100).toFixed(2)}} %)</span></th>
     </tr>
+	</tfoot>
   </table>
 
 </div>
+<div style="margin-bottom: 4vw;"></div>
