@@ -32,11 +32,16 @@
 thead, tfoot {position:sticky;background-color:#000; color:#fff;}
 thead {top:0; }
 tfoot {bottom:0;}
-.tableFixHead { overflow: auto; height: 60vh; width: 95vw; }
+.tableFixHead {
+	overflow: auto;
+	height: 60vh;
+	width: 95vw;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 tr:hover {background-color: #ffeb3b;}
 tr:nth-child(even):hover {background-color: #ffeb3b;}
 table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
-th     { background:#2196F3; }
+thead     { background:#2196F3; }
 tr:nth-child(even) {background-color: #f2f2f2;}
 /*table-end*/
