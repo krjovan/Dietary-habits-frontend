@@ -26,27 +26,28 @@
 	  <th class="w3-center">Fiber (g)</th>
 	  <th class="w3-center">Protein (g)</th>
       <th class="w3-center">Sodium (mg)</th>
+	  <th class="w3-center">Water (g)</th>
 	  <th class="w3-center">Cholesterol (mg)</th>
       <th class="w3-center">Choline (mg)</th>
-      <th class="w3-center">Folate (mcg)</th>
+      <th class="w3-center">Folate - B9 (mcg)</th>
       <th class="w3-center">Folic acid (mcg)</th>
-      <th class="w3-center">Niacin (mg)</th>
-      <th class="w3-center">Pantothenic acid (mg)</th>
-      <th class="w3-center">Riboflavin (mg)</th>
-      <th class="w3-center">Thiamin (mg)</th>
-      <th class="w3-center">Vitamin a (IU)</th>
-      <th class="w3-center">Vitamin a rae (mcg)</th>
+      <th class="w3-center">Niacin - B3 (mg)</th>
+      <th class="w3-center">Pantothenic acid - B5 (mg)</th>
+      <th class="w3-center">Riboflavin - B2 (mg)</th>
+      <th class="w3-center">Thiamin - B1 (mg)</th>
+      <th class="w3-center">Vitamin A (IU)</th>
+      <th class="w3-center">Vitamin A RAE (mcg)</th>
       <th class="w3-center">Carotene alpha (mcg)</th>
       <th class="w3-center">Carotene beta (mcg)</th>
       <th class="w3-center">Cryptoxanthin beta (mcg)</th>
       <th class="w3-center">Lutein zeaxanthin (mcg)</th>
-      <th class="w3-center">Vitamin b12 (mcg)</th>
-      <th class="w3-center">Vitamin b6 (mg)</th>
-      <th class="w3-center">Vitamin c (mg)</th>
-      <th class="w3-center">Vitamin d (IU)</th>
-      <th class="w3-center">Vitamin e (mg)</th>
+      <th class="w3-center">Vitamin B12 (mcg)</th>
+      <th class="w3-center">Vitamin B6 (mg)</th>
+      <th class="w3-center">Vitamin C (mg)</th>
+      <th class="w3-center">Vitamin D (IU)</th>
+      <th class="w3-center">Vitamin E (mg)</th>
       <th class="w3-center">Tocopherol alpha (mg)</th>
-      <th class="w3-center">Vitamin k (mcg)</th>
+      <th class="w3-center">Vitamin K (mcg)</th>
       <th class="w3-center">Calcium (mg)</th>
       <th class="w3-center">Copper (mg)</th>
       <th class="w3-center">Irom (mg)</th>
@@ -90,8 +91,6 @@
       <th class="w3-center">Ash (g)</th>
       <th class="w3-center">Caffeine (mg)</th>
       <th class="w3-center">Theobromine (mg)</th>
-      <th class="w3-center">Water (g)</th>
-
     </tr>
 	</thead>
     <tr *ngFor="let nutrition of nutritions">
@@ -114,6 +113,7 @@
 	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fiber_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fiber_g/dri.fiber_g_min*100).toFixed(2)}} %) </span></td>
 	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.protein_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.protein_g/dri.protein_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sodium_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %) </span></td>
+	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.water_g/dri.water_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.cholesterol_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.cholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %) </span></td>
 	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.choline_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.choline_mg/dri.choline_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.folate_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.folate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %) </span></td>
@@ -178,7 +178,6 @@
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.ash_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.ash_g/dri.ash_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.caffeine_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.caffeine_mg/dri.caffeine_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.theobromine_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.theobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.water_g/dri.water_g_min*100).toFixed(2)}} %) </span></td>
     </tr>
 	<tfoot>
 	<tr style="background-color: #c2c1be;">
@@ -193,7 +192,8 @@
 	  <th style="white-space: nowrap;" class="w3-center">{{sumfiber_g}} g <span class="w3-text-green">({{(sumfiber_g/dri.fiber_g_min*100).toFixed(2)}} %)</span></th>
 	  <th style="white-space: nowrap;" class="w3-center">{{sumprotein_g}} g <span class="w3-text-green">({{(sumprotein_g/dri.protein_g_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumsodium_mg}} mg <span class="w3-text-green">({{(sumsodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sumcholesterol_mg}} mg <span class="w3-text-green">({{(sumcholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sumwater_g}} g <span class="w3-text-green">({{(sumwater_g/dri.water_g_min*100).toFixed(2)}} %)</span></th>
+	  <th style="white-space: nowrap;" class="w3-center">{{sumcholesterol_mg}} mg <span class="w3-text-green">({{(sumcholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %)</span></th>
 	  <th style="white-space: nowrap;" class="w3-center">{{sumcholine_mg}} mg <span class="w3-text-green">({{(sumcholine_mg/dri.choline_mg_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumfolate_mcg}} mcg <span class="w3-text-green">({{(sumfolate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumfolic_acid_mcg}} mcg <span class="w3-text-green">({{(sumfolic_acid_mcg/dri.folic_acid_mcg_min*100).toFixed(2)}} %)</span></th>
@@ -257,7 +257,6 @@
       <th style="white-space: nowrap;" class="w3-center">{{sumash_g}} g <span class="w3-text-green">({{(sumash_g/dri.ash_g_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumcaffeine_mg}} mg <span class="w3-text-green">({{(sumcaffeine_mg/dri.caffeine_mg_min*100).toFixed(2)}} %)</span></th>
       <th style="white-space: nowrap;" class="w3-center">{{sumtheobromine_mg}} mg <span class="w3-text-green">({{(sumtheobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sumwater_g}} g <span class="w3-text-green">({{(sumwater_g/dri.water_g_min*100).toFixed(2)}} %)</span></th>
     </tr>
 	</tfoot>
   </table>
