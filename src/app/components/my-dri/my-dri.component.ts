@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./my-dri.component.css']
 })
 export class MyDriComponent implements OnInit {
-	
+
   dri: any = <any>{};
   isLoaded: Boolean = false;
 
@@ -18,10 +18,13 @@ export class MyDriComponent implements OnInit {
   ngOnInit(): void {
 	  this.driService.getUserActiveDris()
       .subscribe(dris => {
-		Object.assign(this.dri, dris[0]);
-		this.isLoaded = true;
-	  });
+		    Object.assign(this.dri, dris[0]);
+		    this.isLoaded = true;
+	    });
 	  console.log(this.dri);
   }
 
+  save() {
+
+  }
 }
