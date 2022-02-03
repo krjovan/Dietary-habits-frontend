@@ -17,6 +17,7 @@ import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { NutritionComponent } from './components/nutrition/nutrition.component';
 import { SearchAndAddNutritionComponent } from './components/search-and-add-nutrition/search-and-add-nutrition.component';
 import { MyDietComponent } from './components/my-diet/my-diet.component';
+import { MyDriComponent } from './components/my-dri/my-dri.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
     UsersComponent,
     NutritionComponent,
     SearchAndAddNutritionComponent,
-    MyDietComponent
+    MyDietComponent,
+    MyDriComponent
   ],
   imports: [
     BrowserModule,
