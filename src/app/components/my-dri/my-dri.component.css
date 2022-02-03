@@ -24,3 +24,18 @@
   100% { transform: rotate(360deg); }
 }
 /*spinner-end*/
+
+.main-div {
+  display:flex;
+  justify-content: center;
+}
+
+.left-div {
+  float: left;
+  margin-right: 7px;
+}
+
+.small-input {
+  text-align: center;
+  width: 80px;
+}

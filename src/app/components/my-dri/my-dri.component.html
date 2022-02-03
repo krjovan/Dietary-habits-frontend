@@ -1,12 +1,5 @@
 <div *ngIf="!isLoaded" class="loader"></div>
 
-<div *ngIf="isLoaded">
-  <div>{{dri.name}}</div>
-  <div>{{dri.active}}</div>
-  <div>{{dri.calories_min}}</div>
-  <div>{{dri.calories_max}}</div>
-</div>
-
 <div *ngIf="isLoaded" class="w3-center w3-padding" style="margin:0 auto; max-width: 600px;">
   <div class="w3-card-4">
     <div class="w3-container w3-blue">
@@ -19,25 +12,29 @@
         </label>
         <input required [(ngModel)]="dri.name" name="name" type="text" style="text-align: center;" class="w3-input w3-border w3-light-grey">
       </p>
+
+
       <div class="w3-text-blue">
         <b>Calories</b>
-        <div style="display:flex; justify-content: center;">
-          <div style="float: left; margin-right: 7px;">
+        <div class="main-div">
+          <div class="left-div">
             <label class="w3-text-blue">
               <b>Min</b>
             </label>
             <input name="calories_min" [(ngModel)]="dri.calories_min" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)'
-              type="text" style="text-align: center; width: 80px;" class="w3-input w3-border w3-light-grey">
+              type="text" class="small-input w3-input w3-border w3-light-grey">
           </div>
           <div>
             <label class="w3-text-blue">
               <b>Max</b>
             </label>
             <input name="calories_max" [(ngModel)]="dri.calories_max" required onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)'
-              type="text" style="text-align: center; width: 80px;" class="w3-input w3-border w3-light-grey">
+              type="text" class="small-input w3-input w3-border w3-light-grey">
           </div>
         </div>
       </div>
+
+
       <div>
         <p class="w3-center">
           <button [disabled]="!formControl.valid" (click)="save()" class="w3-btn w3-blue">Save changes</button>
