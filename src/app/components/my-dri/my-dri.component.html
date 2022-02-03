@@ -1,1 +1,8 @@
-<p>my-dri works!</p>
+<div *ngIf="!isLoaded" class="loader"></div>
+
+<div *ngIf="isLoaded">
+	<div>{{dri.name}}</div>
+	<div>{{dri.active}}</div>
+	<div>{{dri.calories_min}}</div>
+	<div>{{dri.calories_max}}</div>
+</div>

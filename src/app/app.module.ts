@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'nutrition', component: NutritionComponent, canActivate: [AdminAuthGuardService] },
   { path: 'search-add', component: SearchAndAddNutritionComponent, canActivate: [AuthGuardService] },
   { path: 'my-diet', component: MyDietComponent, canActivate: [AuthGuardService] },
+  { path: 'my-dri', component: MyDriComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
