@@ -25,6 +25,7 @@
 }
 /*spinner-end*/
 
+/*updating-current-dri*/
 .main-div {
   display:flex;
   justify-content: center;
@@ -45,3 +46,21 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+/*updating-current-dri-end*/
+
+/*table*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  margin-top: 3vh;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+/*table-end*/

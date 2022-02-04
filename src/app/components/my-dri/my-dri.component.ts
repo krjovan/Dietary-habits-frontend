@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class MyDriComponent implements OnInit {
 
   dri: any = <any>{};
+  dris: any [] = [];
   isLoaded: Boolean = false;
 
   constructor(private driService: DriService,
@@ -18,10 +19,9 @@ export class MyDriComponent implements OnInit {
   ngOnInit(): void {
 	  this.driService.getUserActiveDris()
       .subscribe(dris => {
-		    Object.assign(this.dri, dris[0]);
+		    this.dris = dris;
 		    this.isLoaded = true;
 	    });
-	  console.log(this.dri);
   }
 
   save() {
@@ -33,5 +33,14 @@ export class MyDriComponent implements OnInit {
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
+  }
+
+  openUpdateForm(dri) {
+    this.dri = dri;
+    document.getElementById('id02').style.display = 'block'
+  }
+
+  openDeleteForm(dri) {
+    this.dri = dri;
   }
 }
