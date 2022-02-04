@@ -25,6 +25,13 @@ export class MyDriComponent implements OnInit {
   }
 
   save() {
-
+    this.isLoaded = false;
+    this.driService.updateDri(this.dri)
+      .subscribe(data => {
+        this.toastr.success('You successfully updated your DRI!', 'Success');
+        this.ngOnInit();
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
   }
 }

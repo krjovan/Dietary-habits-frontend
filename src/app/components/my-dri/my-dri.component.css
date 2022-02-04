@@ -39,3 +39,9 @@
   text-align: center;
   width: 80px;
 }
+
+.separator {
+  border-top: 3px solid #bbb;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -16,4 +16,8 @@ export class DriService {
   public getUserActiveDris(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.API_URL + '/user-active-dri/' + this.auth.getUserDetails()._id);
   }
+
+  public updateDri(dri): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/update/' + dri._id, dri);
+  }
 }
