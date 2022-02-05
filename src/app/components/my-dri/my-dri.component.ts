@@ -24,7 +24,35 @@ export class MyDriComponent implements OnInit {
 	    });
   }
 
+  openUpdateForm(dri) {
+    this.dri = dri;
+    document.getElementById('id02').style.display = 'block'
+  }
+
   save() {
+    const ordered = Object.keys(this.dri).sort().reduce(
+      (obj, key) => {
+        obj[key] = this.dri[key];
+        return obj;
+      },
+      {}
+    );
+    delete ordered['active'];
+    delete ordered['name'];
+    delete ordered['user_id'];
+    delete ordered['__v'];
+    delete ordered['_id'];
+    for (let i = 0; i < Object.values(ordered).length; i+=2) {
+      if (Object.values(ordered)[i] === null || Object.values(ordered)[i+1] === null) {
+        continue;
+      } else {
+        if (Object.values(ordered)[i] < Object.values(ordered)[i+1]) {
+          this.toastr.error('Max value for ' + Object.keys(ordered)[i] + ' must be less than min.', 'Error');
+          return;
+        }
+      }
+    }
+    document.getElementById('id02').style.display = 'none'
     this.isLoaded = false;
     this.driService.updateDri(this.dri)
       .subscribe(data => {
@@ -33,11 +61,6 @@ export class MyDriComponent implements OnInit {
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
-  }
-
-  openUpdateForm(dri) {
-    this.dri = dri;
-    document.getElementById('id02').style.display = 'block'
   }
 
   openDeleteForm(dri) {
