@@ -27,6 +27,10 @@ export class DriService {
     return this.httpClient.post(this.API_URL + '/add', dri);
   }
 
+  public setStatusToActive(dri): Observable<any> {
+    return this.httpClient.put(this.API_URL + '/setStatusToActive', dri);
+  }
+
   public updateDri(dri): Observable<any> {
     return this.httpClient.put(this.API_URL + '/update/' + dri._id, dri);
   }

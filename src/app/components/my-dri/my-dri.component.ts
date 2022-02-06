@@ -30,6 +30,7 @@ export class MyDriComponent implements OnInit {
   }
 
   add() {
+    this.isLoaded = false;
     this.driService.addDri(this.dri).subscribe(() => {
       this.toastr.success('You successfully added a DRI!', 'Success');
       document.getElementById('id01').style.display = 'none'
@@ -95,6 +96,18 @@ export class MyDriComponent implements OnInit {
             }
           }
         }
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
+  }
+
+  setAsActive(dri) {
+    dri.active = true;
+    this.isLoaded = false;
+    this.driService.setStatusToActive(dri)
+      .subscribe(data => {
+        this.toastr.success('"' + dri.name + '" set as currently active DRI!', 'Success');
+        this.ngOnInit();
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
