@@ -17,11 +17,26 @@ export class MyDriComponent implements OnInit {
 			  private toastr: ToastrService) { }
 
   ngOnInit(): void {
-	  this.driService.getUserActiveDris()
+	  this.driService.getUserDris()
       .subscribe(dris => {
 		    this.dris = dris;
 		    this.isLoaded = true;
 	    });
+  }
+
+  openAddForm() {
+    document.getElementById('id01').style.display = 'block'
+    this.dri = {};
+  }
+
+  add() {
+    this.driService.addDri(this.dri).subscribe(() => {
+      this.toastr.success('You successfully added a DRI!', 'Success');
+      document.getElementById('id01').style.display = 'none'
+      this.ngOnInit();
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
+    });
   }
 
   openUpdateForm(dri) {
@@ -29,7 +44,7 @@ export class MyDriComponent implements OnInit {
     document.getElementById('id02').style.display = 'block'
   }
 
-  save() {
+  update() {
     const ordered = Object.keys(this.dri).sort().reduce(
       (obj, key) => {
         obj[key] = this.dri[key];
@@ -65,5 +80,23 @@ export class MyDriComponent implements OnInit {
 
   openDeleteForm(dri) {
     this.dri = dri;
+    document.getElementById('id03').style.display = 'block'
+  }
+
+  delete() {
+    this.driService.deleteDri(this.dri._id)
+      .subscribe(data => {
+        document.getElementById('id03').style.display = 'none';
+        this.toastr.success('You successfully deleted this DRI!', 'Success');
+        if (data.n == 1) {
+          for (var i = 0; i < this.dris.length; i++) {
+            if (this.dri._id == this.dris[i]._id) {
+              this.dris.splice(i, 1);
+            }
+          }
+        }
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
   }
 }

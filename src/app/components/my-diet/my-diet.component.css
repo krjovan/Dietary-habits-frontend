@@ -35,7 +35,7 @@ thead {top:0; }
 tfoot {bottom:0;}
 .tableFixHead {
 	overflow: auto;
-	height: 60vh;
+	max-height: 60vh;
 	width: 95vw;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

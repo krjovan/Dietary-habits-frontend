@@ -17,7 +17,21 @@ export class DriService {
     return this.httpClient.get<any[]>(this.API_URL + '/user-active-dri/' + this.auth.getUserDetails()._id);
   }
 
+  public getUserDris(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.API_URL + '/user-dris/' + this.auth.getUserDetails()._id);
+  }
+
+  public addDri(dri): Observable<any> {
+    dri.user_id = this.auth.getUserDetails()._id;
+    dri.active = true;
+    return this.httpClient.post(this.API_URL + '/add', dri);
+  }
+
   public updateDri(dri): Observable<any> {
     return this.httpClient.put(this.API_URL + '/update/' + dri._id, dri);
+  }
+
+  public deleteDri(id): Observable<any> {
+    return this.httpClient.delete(this.API_URL + '/delete/' + id);
   }
 }
