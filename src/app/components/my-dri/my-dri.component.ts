@@ -25,63 +25,51 @@ export class MyDriComponent implements OnInit {
   }
 
   openAddForm() {
-    document.getElementById('id01').style.display = 'block'
-    this.dri = {};
+    this.dri = JSON.parse(JSON.stringify(this.dris[0]));
+    delete this.dri['active'];
+    delete this.dri['name'];
+    delete this.dri['user_id'];
+    delete this.dri['__v'];
+    delete this.dri['_id'];
+    Object.keys(this.dri).forEach((i) => this.dri[i] = null);
+    document.getElementById('id01').style.display = 'block';
   }
 
   add() {
-    this.isLoaded = false;
-    this.driService.addDri(this.dri).subscribe(() => {
-      this.toastr.success('You successfully added a DRI!', 'Success');
-      document.getElementById('id01').style.display = 'none'
-      this.ngOnInit();
-    }, (err) => {
-      this.toastr.error(err.error.message, 'Error');
-    });
+    if (this.isInputValid()) {
+      this.isLoaded = false;
+      document.getElementById('id01').style.display = 'none';
+      this.driService.addDri(this.dri).subscribe(() => {
+        this.toastr.success('You successfully added a DRI!', 'Success');
+        this.ngOnInit();
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
+    }
   }
 
   openUpdateForm(dri) {
     this.dri = dri;
-    document.getElementById('id02').style.display = 'block'
+    document.getElementById('id02').style.display = 'block';
   }
 
   update() {
-    const ordered = Object.keys(this.dri).sort().reduce(
-      (obj, key) => {
-        obj[key] = this.dri[key];
-        return obj;
-      },
-      {}
-    );
-    delete ordered['active'];
-    delete ordered['name'];
-    delete ordered['user_id'];
-    delete ordered['__v'];
-    delete ordered['_id'];
-    for (let i = 0; i < Object.values(ordered).length; i+=2) {
-      if (Object.values(ordered)[i] === null || Object.values(ordered)[i+1] === null) {
-        continue;
-      } else {
-        if (Object.values(ordered)[i] < Object.values(ordered)[i+1]) {
-          this.toastr.error('Max value for ' + Object.keys(ordered)[i] + ' must be less than min.', 'Error');
-          return;
-        }
-      }
-    }
-    document.getElementById('id02').style.display = 'none'
-    this.isLoaded = false;
-    this.driService.updateDri(this.dri)
+    if (this.isInputValid()) {
+      this.isLoaded = false;
+      document.getElementById('id02').style.display = 'none';
+      this.driService.updateDri(this.dri)
       .subscribe(data => {
         this.toastr.success('You successfully updated your DRI!', 'Success');
         this.ngOnInit();
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
+    }
   }
 
   openDeleteForm(dri) {
     this.dri = dri;
-    document.getElementById('id03').style.display = 'block'
+    document.getElementById('id03').style.display = 'block';
   }
 
   delete() {
@@ -111,5 +99,31 @@ export class MyDriComponent implements OnInit {
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
+  }
+
+  isInputValid(): boolean {
+    const ordered = Object.keys(this.dri).sort().reduce(
+      (obj, key) => {
+        obj[key] = this.dri[key];
+        return obj;
+      },
+      {}
+    );
+    delete ordered['active'];
+    delete ordered['name'];
+    delete ordered['user_id'];
+    delete ordered['__v'];
+    delete ordered['_id'];
+    for (let i = 0; i < Object.values(ordered).length; i+=2) {
+      if (Object.values(ordered)[i] === null || Object.values(ordered)[i+1] === null) {
+        continue;
+      } else {
+        if (Object.values(ordered)[i] < Object.values(ordered)[i+1]) {
+          this.toastr.error('Max value for ' + Object.keys(ordered)[i] + ' must be less than min.', 'Error');
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
