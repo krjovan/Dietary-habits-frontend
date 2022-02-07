@@ -5,7 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
 
+
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -47,17 +50,26 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-	BrowserAnimationsModule,
+	  BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       closeButton: true,
       preventDuplicates: true
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha.siteKey,
+      } as RecaptchaSettings,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

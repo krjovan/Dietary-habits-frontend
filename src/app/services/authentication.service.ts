@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -134,7 +135,12 @@ export class AuthenticationService {
   public updateUser(user): Observable<any> {
     return this.http.put(this.BACKEND_URL_USERS + '/update/' + user._id, user ,httpOptions);
   }
-  
+
+  public verifyRecaptcha(responseFromClientSide): Observable<any> {
+    responseFromClientSide.secret = environment.recaptcha.secreatKey;
+    return this.http.post(this.BACKEND_URL_USERS + '/verifyRecaptcha', responseFromClientSide);
+  }
+
   b64DecodeUnicode(str) {
     return decodeURIComponent(atob(str).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);

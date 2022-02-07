@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   firstName: '';
   lastName: '';
   confirmationPassword: '';
+  isRecaptchaValid = false;
 
   credentials: TokenPayload = {
     name:'',
@@ -26,7 +27,28 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  resolved(recaptchaResponse) {
+    var req = {};
+    req['response'] = recaptchaResponse;
+    this.auth.verifyRecaptcha(req)
+      .subscribe(res => {
+        if (JSON.parse(res).success) {
+          this.isRecaptchaValid = true;
+        } else {
+          this.isRecaptchaValid = false;
+        }
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+        console.log(err.error.message);
+      });
+
+  }
+
   register() {
+    if (!this.isRecaptchaValid) {
+      this.toastr.error('Must complete reCAPTCHA!', 'Error');
+      return;
+    }
     if (this.credentials.password === this.confirmationPassword) {
       this.credentials.name = this.firstName + ' ' + this.lastName;
       this.auth.register(this.credentials).subscribe(() => {

@@ -51,7 +51,9 @@
             <b style="font-size: 9pt;">Enter the new password again to confirm it.</b>
           </label>
         </p>
-
+        <div class="text-center">
+        <re-captcha class="g-recaptcha" required id="recaptcha" name="recaptcha" (resolved)="resolved($event)"></re-captcha>
+      </div>
         <p class="w3-center">
           <button [disabled]="!formControl.valid" (click)="register()" class="w3-btn w3-blue">Register</button>
         </p>
