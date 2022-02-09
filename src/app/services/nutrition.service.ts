@@ -8,7 +8,7 @@ import { Nutrition } from '../models/nutrition';
 })
 export class NutritionService {
 
-  private API_URL = 'https://dietary-habits.herokuapp.com/nutritions';
+  private API_URL = 'https://mydietaryhabits.herokuapp.com/nutritions';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -38,7 +38,7 @@ export class AuthenticationService {
 
   private token: string;
 
-  private BACKEND_URL_USERS = 'https://dietary-habits.herokuapp.com/users'
+  private BACKEND_URL_USERS = 'https://mydietaryhabits.herokuapp.com/users'
 
   constructor(private http: HttpClient, private router: Router) {}
 

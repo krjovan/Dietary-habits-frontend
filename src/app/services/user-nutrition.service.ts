@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserNutritionService {
 
-  private API_URL = 'https://dietary-habits.herokuapp.com/user-nutrition';
+  private API_URL = 'https://mydietaryhabits.herokuapp.com/user-nutrition';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { AuthenticationService } from './authentication.service';
 })
 export class DriService {
 
-  private API_URL = 'https://dietary-habits.herokuapp.com/dri';
+  private API_URL = 'https://mydietaryhabits.herokuapp.com/dri';
 
   constructor(private httpClient: HttpClient,
 			  private auth: AuthenticationService) { }

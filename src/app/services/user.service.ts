@@ -9,7 +9,7 @@ import { TokenPayload } from './authentication.service';
 })
 export class UserService {
 
-  private API_URL = 'https://dietary-habits.herokuapp.com/users';
+  private API_URL = 'https://mydietaryhabits.herokuapp.com/users';
 
   constructor(private httpClient: HttpClient) { }
 
