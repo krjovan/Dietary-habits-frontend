@@ -321,13 +321,61 @@ export class MyDietComponent implements OnInit {
     });
 
     chart.render();
+
+
+    var chart1 = new CanvasJS.Chart("chartContainer1", {
+      animationEnabled: true,
+      title: {
+        text: "Vitamins"
+      },
+      axisX: {
+        interval: 1
+      },
+      data: [{
+        type: "bar",
+        toolTipContent: "<b>{label}</b>",
+        dataPoints: [
+          { label: "Vitamin B2", y: this.sumriboflavin_mg/this.dri.riboflavin_mg_min*100 },
+          { label: "Vitamin B3", y: this.sumniacin_mg/this.dri.niacin_mg_min*100 }
+        ]
+      }]
+    });
+    chart1.render();
+
+
+
+
+
+
+    let chart2 = new CanvasJS.Chart("chartContainer2", {
+      theme: "light2",
+      animationEnabled: true,
+      exportEnabled: true,
+      title:{
+        text: "Macronuntritions"
+      },
+      data: [{
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "<b>{name}</b>: {y} g (#percent%)",
+        indexLabel: "{name} - #percent%",
+        dataPoints: [
+          { y: this.sumprotein_g, name: "Protein" },
+          { y: this.sumcarbohydrate_g, name: "Carbohydrate" },
+          { y: this.sumtotal_fat_g, name: "Fat" }
+        ]
+      }]
+    });
+
+    chart2.render();
   }
 
   ngOnInit(): void {
 	  this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
 	  this.driService.getUserActiveDris()
       .subscribe(dris => {
-		    Object.assign(this.dri, dris[0]);
+        Object.assign(this.dri, dris[0]);
+        this.updateCharts();
 	  });
   }
 
