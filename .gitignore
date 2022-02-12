@@ -7,6 +7,7 @@
 /src/environments
 # Only exists if Bazel was run
 /bazel-out
+/src/assets/canvasjs.min.js
 
 # dependencies
 /node_modules

@@ -3,6 +3,7 @@ import { UserNutritionService } from '../../services/user-nutrition.service';
 import { DriService } from '../../services/dri.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import * as CanvasJS from '../../../assets/canvasjs.min.js';
 
 @Component({
   selector: 'app-my-diet',
@@ -107,7 +108,8 @@ export class MyDietComponent implements OnInit {
 	  this.userNutritionService.getUserNutritions(body)
       .subscribe(nutritions => {
         this.nutritions = nutritions;
-		    this.calculateSum(nutritions);
+        this.calculateSum(nutritions);
+        this.updateCharts();
 		    this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
 	  });
@@ -297,13 +299,36 @@ export class MyDietComponent implements OnInit {
     });
   }
 
+  updateCharts() {
+    let chart = new CanvasJS.Chart("chartContainer", {
+      theme: "light2",
+      animationEnabled: true,
+      exportEnabled: true,
+      title:{
+        text: "Macronuntritions"
+      },
+      data: [{
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "<b>{name}</b>: {y} g (#percent%)",
+        indexLabel: "{name} - #percent%",
+        dataPoints: [
+          { y: this.sumprotein_g, name: "Protein" },
+          { y: this.sumcarbohydrate_g, name: "Carbohydrate" },
+          { y: this.sumtotal_fat_g, name: "Fat" }
+        ]
+      }]
+    });
+
+    chart.render();
+  }
+
   ngOnInit(): void {
 	  this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
 	  this.driService.getUserActiveDris()
       .subscribe(dris => {
-		Object.assign(this.dri, dris[0]);
+		    Object.assign(this.dri, dris[0]);
 	  });
-	  console.log(this.dri);
   }
 
 }
