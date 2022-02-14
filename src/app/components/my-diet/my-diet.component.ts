@@ -251,6 +251,47 @@ export class MyDietComponent implements OnInit {
     chart.render();
 
     console.log(this.notNullDri);
+    var arrayForVitamins = [];
+
+    for (let i = 0; i < Object.values(this.notNullDri).length; i += 2) {
+      if (Object.keys(this.notNullDri)[i]) {
+        arrayForVitamins.push();
+      }
+    }
+
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+      animationEnabled: true,
+      theme: "light2",
+      title:{
+        text: "Water intake"
+      },
+      axisY: {
+        title: "Water (g)"
+      },
+      toolTip: {
+        shared: true
+      },
+      data: [{
+        type: "column",
+        name: "Consumed",
+        color: "#0099cc",
+        toolTipContent: "<span style=\"color:#0099cc\">{name}</span>: {y} (g)",
+        dataPoints: [
+            { y: this.sum.sumwater_g, label: "Today" }
+          ]
+        },
+        {
+          type: "error",
+          name: "Variance",
+          color: "red",
+          toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]} (g)",
+          dataPoints: [
+            { y: [this.dri.water_g_min, this.dri.water_g_max], label: "Today" }
+          ]
+        }
+      ]
+    });
+    chart2.render();
 
     var chart1 = new CanvasJS.Chart("chartContainer1", {
       animationEnabled: true,
@@ -292,33 +333,6 @@ export class MyDietComponent implements OnInit {
       ]
     });
     chart1.render();
-
-
-
-
-
-
-    let chart2 = new CanvasJS.Chart("chartContainer2", {
-      theme: "light2",
-      animationEnabled: true,
-      exportEnabled: true,
-      title: {
-        text: "Macronuntritions"
-      },
-      data: [{
-        type: "pie",
-        showInLegend: true,
-        toolTipContent: "<b>{name}</b>: {y} g (#percent%)",
-        indexLabel: "{name} - #percent%",
-        dataPoints: [
-          { y: this.sum.sumprotein_g, name: "Protein" },
-          { y: this.sum.sumcarbohydrate_g, name: "Carbohydrate" },
-          { y: this.sum.sumtotal_fat_g, name: "Fat" }
-        ]
-      }]
-    });
-
-    chart2.render();
   }
 
   ngOnInit(): void {
@@ -424,5 +438,4 @@ export class MyDietComponent implements OnInit {
     this.sum['sumtheobromine_mg'] = 0;
     this.sum['sumwater_g'] = 0;
   }
-
 }
