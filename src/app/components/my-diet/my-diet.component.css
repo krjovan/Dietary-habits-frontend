@@ -9,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20%;
-  margin-bottom: 20%;
+  margin-bottom: 80%;
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
 }
@@ -58,6 +58,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .wrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 1vh;
 }
 
 .graph-div {

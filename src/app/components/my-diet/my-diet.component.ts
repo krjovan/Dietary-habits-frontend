@@ -35,10 +35,10 @@ export class MyDietComponent implements OnInit {
     }
     this.userNutritionService.getUserNutritions(body)
       .subscribe(nutritions => {
+        this.isLoaded = true;
         this.nutritions = nutritions;
         this.calculateSum(nutritions);
         this.updateCharts();
-        this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
       });
   }
@@ -250,6 +250,7 @@ export class MyDietComponent implements OnInit {
 
     chart.render();
 
+    console.log(this.notNullDri);
 
     var chart1 = new CanvasJS.Chart("chartContainer1", {
       animationEnabled: true,
@@ -321,6 +322,33 @@ export class MyDietComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.driService.getUserActiveDris()
+      .subscribe(dris => {
+        this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+        Object.assign(this.dri, dris[0]);
+        this.notNullDri = {};
+        const ordered = Object.keys(this.dri).sort().reduce(
+          (obj, key) => {
+            obj[key] = this.dri[key];
+            return obj;
+          },
+          {}
+        );
+        delete ordered['active'];
+        delete ordered['name'];
+        delete ordered['user_id'];
+        delete ordered['__v'];
+        delete ordered['_id'];
+        for (let i = 0; i < Object.values(ordered).length; i += 2) {
+          if (Object.values(ordered)[i] === null || Object.values(ordered)[i + 1] === null) {
+            continue;
+          } else {
+            this.notNullDri[Object.keys(ordered)[i]] = Object.values(ordered)[i];
+            this.notNullDri[Object.keys(ordered)[i+1]] = Object.values(ordered)[i+1];
+          }
+        }
+        this.updateCharts();
+      });
     this.sum['sumquantity'] = 0;
     this.sum['sumcalories'] = 0;
     this.sum['sumtotal_fat_g'] = 0;
@@ -395,37 +423,6 @@ export class MyDietComponent implements OnInit {
     this.sum['sumcaffeine_mg'] = 0;
     this.sum['sumtheobromine_mg'] = 0;
     this.sum['sumwater_g'] = 0;
-    this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
-    this.driService.getUserActiveDris()
-      .subscribe(dris => {
-        Object.assign(this.dri, dris[0]);
-        this.notNullDri = {};
-        const ordered = Object.keys(this.dri).sort().reduce(
-          (obj, key) => {
-            obj[key] = this.dri[key];
-            return obj;
-          },
-          {}
-        );
-        delete ordered['active'];
-        delete ordered['name'];
-        delete ordered['user_id'];
-        delete ordered['__v'];
-        delete ordered['_id'];
-        for (let i = 0; i < Object.values(ordered).length; i += 2) {
-          if (Object.values(ordered)[i] === null || Object.values(ordered)[i + 1] === null) {
-            continue;
-          } else {
-            this.notNullDri[Object.keys(ordered)[i]] = Object.values(ordered)[i];
-            this.notNullDri[Object.keys(ordered)[i+1]] = Object.values(ordered)[i+1];
-          }
-        }
-        console.log(Object.keys(this.notNullDri)[0]);
-        console.log(Object.values(this.notNullDri)[0]);
-        console.log(this.notNullDri);
-        console.log(this.sum);
-        this.updateCharts();
-      });
   }
 
 }
