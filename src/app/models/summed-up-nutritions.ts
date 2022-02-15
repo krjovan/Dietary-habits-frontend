@@ -1,0 +1,35 @@
+export class SummedUpNutritions {
+  calories: number = 0;
+  carbohydrate_g: number = 0;
+  fiber_g: number = 0;
+  protein_g: number = 0;
+  total_fat_g: number = 0;
+  saturated_fat_g: number = 0;
+  fatty_acids_total_trans_g: number = 0;
+  cholesterol_mg: number = 0;
+  sugars_g: number = 0;
+  water_g: number = 0;
+  vitamin_a_rae_mcg: number = 0;
+  thiamin_mg: number = 0;
+  riboflavin_mg: number = 0;
+  niacin_mg: number = 0;
+  pantothenic_acid_mg: number = 0;
+  vitamin_b6_mg: number = 0;
+  folate_mcg: number = 0;
+  vitamin_b12_mcg: number = 0;
+  choline_mg: number = 0;
+  vitamin_c_mg: number = 0;
+  vitamin_d_IU: number = 0;
+  vitamin_e_mg: number = 0;
+  vitamin_k_mcg: number = 0;
+  calcium_mg: number = 0;
+  copper_mg: number = 0;
+  irom_mg: number = 0;
+  magnesium_mg: number = 0;
+  manganese_mg: number = 0;
+  phosphorous_mg: number = 0;
+  potassium_mg: number = 0;
+  selenium_mcg: number = 0;
+  sodium_mg: number = 0;
+  zink_mg: number = 0;
+}
