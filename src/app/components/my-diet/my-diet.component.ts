@@ -47,158 +47,50 @@ export class MyDietComponent implements OnInit {
     this.setAllToZero();
 
     for (let i = 0; i < nutritions.length; i++) {
-      this.sum.sumquantity += nutritions[i].quantity;
-      this.sum.sumcalories += nutritions[i].nutrition.calories * nutritions[i].quantity / 100;
-      this.sum.sumtotal_fat_g += nutritions[i].nutrition.total_fat_g * nutritions[i].quantity / 100;
-      this.sum.sumsaturated_fat_g += nutritions[i].nutrition.saturated_fat_g * nutritions[i].quantity / 100;
-      this.sum.sumcholesterol_mg += nutritions[i].nutrition.cholesterol_mg * nutritions[i].quantity / 100;
-      this.sum.sumsodium_mg += nutritions[i].nutrition.sodium_mg * nutritions[i].quantity / 100;
-      this.sum.sumcholine_mg += nutritions[i].nutrition.choline_mg * nutritions[i].quantity / 100;
-      this.sum.sumfolate_mcg += nutritions[i].nutrition.folate_mcg * nutritions[i].quantity / 100;
-      this.sum.sumfolic_acid_mcg += nutritions[i].nutrition.folic_acid_mcg * nutritions[i].quantity / 100;
-      this.sum.sumniacin_mg += nutritions[i].nutrition.niacin_mg * nutritions[i].quantity / 100;
-      this.sum.sumpantothenic_acid_mg += nutritions[i].nutrition.pantothenic_acid_mg * nutritions[i].quantity / 100;
-      this.sum.sumriboflavin_mg += nutritions[i].nutrition.riboflavin_mg * nutritions[i].quantity / 100;
-      this.sum.sumthiamin_mg += nutritions[i].nutrition.thiamin_mg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_a_IU += nutritions[i].nutrition.vitamin_a_IU * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_a_rae_mcg += nutritions[i].nutrition.vitamin_a_rae_mcg * nutritions[i].quantity / 100;
-      this.sum.sumcarotene_alpha_mcg += nutritions[i].nutrition.carotene_alpha_mcg * nutritions[i].quantity / 100;
-      this.sum.sumcarotene_beta_mcg += nutritions[i].nutrition.carotene_beta_mcg * nutritions[i].quantity / 100;
-      this.sum.sumcryptoxanthin_beta_mcg += nutritions[i].nutrition.cryptoxanthin_beta_mcg * nutritions[i].quantity / 100;
-      this.sum.sumlutein_zeaxanthin_mcg += nutritions[i].nutrition.lutein_zeaxanthin_mcg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_b12_mcg += nutritions[i].nutrition.vitamin_b12_mcg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_b6_mg += nutritions[i].nutrition.vitamin_b6_mg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_c_mg += nutritions[i].nutrition.vitamin_c_mg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_d_IU += nutritions[i].nutrition.vitamin_d_IU * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_e_mg += nutritions[i].nutrition.vitamin_e_mg * nutritions[i].quantity / 100;
-      this.sum.sumtocopherol_alpha_mg += nutritions[i].nutrition.tocopherol_alpha_mg * nutritions[i].quantity / 100;
-      this.sum.sumvitamin_k_mcg += nutritions[i].nutrition.vitamin_k_mcg * nutritions[i].quantity / 100;
-      this.sum.sumcalcium_mg += nutritions[i].nutrition.calcium_mg * nutritions[i].quantity / 100;
-      this.sum.sumcopper_mg += nutritions[i].nutrition.copper_mg * nutritions[i].quantity / 100;
-      this.sum.sumirom_mg += nutritions[i].nutrition.irom_mg * nutritions[i].quantity / 100;
-      this.sum.summagnesium_mg += nutritions[i].nutrition.magnesium_mg * nutritions[i].quantity / 100;
-      this.sum.summanganese_mg += nutritions[i].nutrition.manganese_mg * nutritions[i].quantity / 100;
-      this.sum.sumphosphorous_mg += nutritions[i].nutrition.phosphorous_mg * nutritions[i].quantity / 100;
-      this.sum.sumpotassium_mg += nutritions[i].nutrition.potassium_mg * nutritions[i].quantity / 100;
-      this.sum.sumselenium_mcg += nutritions[i].nutrition.selenium_mcg * nutritions[i].quantity / 100;
-      this.sum.sumzink_mg += nutritions[i].nutrition.zink_mg * nutritions[i].quantity / 100;
-      this.sum.sumprotein_g += nutritions[i].nutrition.protein_g * nutritions[i].quantity / 100;
-      this.sum.sumalanine_g += nutritions[i].nutrition.alanine_g * nutritions[i].quantity / 100;
-      this.sum.sumarginine_g += nutritions[i].nutrition.arginine_g * nutritions[i].quantity / 100;
-      this.sum.sumaspartic_acid_g += nutritions[i].nutrition.aspartic_acid_g * nutritions[i].quantity / 100;
-      this.sum.sumcystine_g += nutritions[i].nutrition.cystine_g * nutritions[i].quantity / 100;
-      this.sum.sumglutamic_acid_g += nutritions[i].nutrition.glutamic_acid_g * nutritions[i].quantity / 100;
-      this.sum.sumglycine_g += nutritions[i].nutrition.glycine_g * nutritions[i].quantity / 100;
-      this.sum.sumhistidine_g += nutritions[i].nutrition.histidine_g * nutritions[i].quantity / 100;
-      this.sum.sumhydroxyproline_g += nutritions[i].nutrition.hydroxyproline_g * nutritions[i].quantity / 100;
-      this.sum.sumisoleucine_g += nutritions[i].nutrition.isoleucine_g * nutritions[i].quantity / 100;
-      this.sum.sumleucine_g += nutritions[i].nutrition.leucine_g * nutritions[i].quantity / 100;
-      this.sum.sumlysine_g += nutritions[i].nutrition.lysine_g * nutritions[i].quantity / 100;
-      this.sum.summethionine_g += nutritions[i].nutrition.methionine_g * nutritions[i].quantity / 100;
-      this.sum.sumphenylalanine_g += nutritions[i].nutrition.phenylalanine_g * nutritions[i].quantity / 100;
-      this.sum.sumproline_g += nutritions[i].nutrition.proline_g * nutritions[i].quantity / 100;
-      this.sum.sumserine_g += nutritions[i].nutrition.serine_g * nutritions[i].quantity / 100;
-      this.sum.sumthreonine_g += nutritions[i].nutrition.threonine_g * nutritions[i].quantity / 100;
-      this.sum.sumtryptophan_g += nutritions[i].nutrition.tryptophan_g * nutritions[i].quantity / 100;
-      this.sum.sumtyrosine_g += nutritions[i].nutrition.tyrosine_g * nutritions[i].quantity / 100;
-      this.sum.sumvaline_g += nutritions[i].nutrition.valine_g * nutritions[i].quantity / 100;
-      this.sum.sumcarbohydrate_g += nutritions[i].nutrition.carbohydrate_g * nutritions[i].quantity / 100;
-      this.sum.sumfiber_g += nutritions[i].nutrition.fiber_g * nutritions[i].quantity / 100;
-      this.sum.sumsugars_g += nutritions[i].nutrition.sugars_g * nutritions[i].quantity / 100;
-      this.sum.sumfructose_g += nutritions[i].nutrition.fructose_g * nutritions[i].quantity / 100;
-      this.sum.sumgalactose_g += nutritions[i].nutrition.galactose_g * nutritions[i].quantity / 100;
-      this.sum.sumglucose_g += nutritions[i].nutrition.glucose_g * nutritions[i].quantity / 100;
-      this.sum.sumlactose_g += nutritions[i].nutrition.lactose_g * nutritions[i].quantity / 100;
-      this.sum.summaltose_g += nutritions[i].nutrition.maltose_g * nutritions[i].quantity / 100;
-      this.sum.sumsucrose_g += nutritions[i].nutrition.sucrose_g * nutritions[i].quantity / 100;
-      this.sum.sumfat_g += nutritions[i].nutrition.fat_g * nutritions[i].quantity / 100;
-      this.sum.sumsaturated_fatty_acids_g += nutritions[i].nutrition.saturated_fatty_acids_g * nutritions[i].quantity / 100;
-      this.sum.summonounsaturated_fatty_acids_g += nutritions[i].nutrition.monounsaturated_fatty_acids_g * nutritions[i].quantity / 100;
-      this.sum.sumpolyunsaturated_fatty_acids_g += nutritions[i].nutrition.polyunsaturated_fatty_acids_g * nutritions[i].quantity / 100;
-      this.sum.sumfatty_acids_total_trans_g += nutritions[i].nutrition.fatty_acids_total_trans_g * nutritions[i].quantity / 100;
-      this.sum.sumalcohol_g += nutritions[i].nutrition.alcohol_g * nutritions[i].quantity / 100;
-      this.sum.sumash_g += nutritions[i].nutrition.ash_g * nutritions[i].quantity / 100;
-      this.sum.sumcaffeine_mg += nutritions[i].nutrition.caffeine_mg * nutritions[i].quantity / 100;
-      this.sum.sumtheobromine_mg += nutritions[i].nutrition.theobromine_mg * nutritions[i].quantity / 100;
-      this.sum.sumwater_g += nutritions[i].nutrition.water_g * nutritions[i].quantity / 100;
+      this.sum.quantity += nutritions[i].quantity;
+
+      this.sum.calories += nutritions[i].nutrition.calories * nutritions[i].quantity / 100;
+      this.sum.carbohydrate_g += nutritions[i].nutrition.carbohydrate_g * nutritions[i].quantity / 100;
+      this.sum.fiber_g += nutritions[i].nutrition.fiber_g * nutritions[i].quantity / 100;
+      this.sum.protein_g += nutritions[i].nutrition.protein_g * nutritions[i].quantity / 100;
+      this.sum.total_fat_g += nutritions[i].nutrition.total_fat_g * nutritions[i].quantity / 100;
+      this.sum.saturated_fat_g += nutritions[i].nutrition.saturated_fat_g * nutritions[i].quantity / 100;
+      this.sum.fatty_acids_total_trans_g += nutritions[i].nutrition.fatty_acids_total_trans_g * nutritions[i].quantity / 100;
+      this.sum.cholesterol_mg += nutritions[i].nutrition.cholesterol_mg * nutritions[i].quantity / 100;
+      this.sum.sugars_g += nutritions[i].nutrition.sugars_g * nutritions[i].quantity / 100;
+      this.sum.water_g += nutritions[i].nutrition.water_g * nutritions[i].quantity / 100;
+
+      this.sum.vitamin_a_rae_mcg += nutritions[i].nutrition.vitamin_a_rae_mcg * nutritions[i].quantity / 100;
+      this.sum.thiamin_mg += nutritions[i].nutrition.thiamin_mg * nutritions[i].quantity / 100;
+      this.sum.riboflavin_mg += nutritions[i].nutrition.riboflavin_mg * nutritions[i].quantity / 100;
+      this.sum.niacin_mg += nutritions[i].nutrition.niacin_mg * nutritions[i].quantity / 100;
+      this.sum.pantothenic_acid_mg += nutritions[i].nutrition.pantothenic_acid_mg * nutritions[i].quantity / 100;
+      this.sum.vitamin_b6_mg += nutritions[i].nutrition.vitamin_b6_mg * nutritions[i].quantity / 100;
+      this.sum.folate_mcg += nutritions[i].nutrition.folate_mcg * nutritions[i].quantity / 100;
+      this.sum.vitamin_b12_mcg += nutritions[i].nutrition.vitamin_b12_mcg * nutritions[i].quantity / 100;
+      this.sum.choline_mg += nutritions[i].nutrition.choline_mg * nutritions[i].quantity / 100;
+      this.sum.vitamin_c_mg += nutritions[i].nutrition.vitamin_c_mg * nutritions[i].quantity / 100;
+      this.sum.vitamin_d_IU += nutritions[i].nutrition.vitamin_d_IU * nutritions[i].quantity / 100;
+      this.sum.vitamin_e_mg += nutritions[i].nutrition.vitamin_e_mg * nutritions[i].quantity / 100;
+      this.sum.vitamin_k_mcg += nutritions[i].nutrition.vitamin_k_mcg * nutritions[i].quantity / 100;
+
+      this.sum.calcium_mg += nutritions[i].nutrition.calcium_mg * nutritions[i].quantity / 100;
+      this.sum.copper_mg += nutritions[i].nutrition.copper_mg * nutritions[i].quantity / 100;
+      this.sum.irom_mg += nutritions[i].nutrition.irom_mg * nutritions[i].quantity / 100;
+      this.sum.magnesium_mg += nutritions[i].nutrition.magnesium_mg * nutritions[i].quantity / 100;
+      this.sum.manganese_mg += nutritions[i].nutrition.manganese_mg * nutritions[i].quantity / 100;
+      this.sum.phosphorous_mg += nutritions[i].nutrition.phosphorous_mg * nutritions[i].quantity / 100;
+      this.sum.potassium_mg += nutritions[i].nutrition.potassium_mg * nutritions[i].quantity / 100;
+      this.sum.selenium_mcg += nutritions[i].nutrition.selenium_mcg * nutritions[i].quantity / 100;
+      this.sum.sodium_mg += nutritions[i].nutrition.sodium_mg * nutritions[i].quantity / 100;
+      this.sum.zink_mg += nutritions[i].nutrition.zink_mg * nutritions[i].quantity / 100;
     }
   }
 
   setAllToZero() {
-    this.sum.sumquantity = 0;
-    this.sum.sumcalories = 0;
-    this.sum.sumtotal_fat_g = 0;
-    this.sum.sumsaturated_fat_g = 0;
-    this.sum.sumcholesterol_mg = 0;
-    this.sum.sumsodium_mg = 0;
-    this.sum.sumcholine_mg = 0;
-    this.sum.sumfolate_mcg = 0;
-    this.sum.sumfolic_acid_mcg = 0;
-    this.sum.sumniacin_mg = 0;
-    this.sum.sumpantothenic_acid_mg = 0;
-    this.sum.sumriboflavin_mg = 0;
-    this.sum.sumthiamin_mg = 0;
-    this.sum.sumvitamin_a_IU = 0;
-    this.sum.sumvitamin_a_rae_mcg = 0;
-    this.sum.sumcarotene_alpha_mcg = 0;
-    this.sum.sumcarotene_beta_mcg = 0;
-    this.sum.sumcryptoxanthin_beta_mcg = 0;
-    this.sum.sumlutein_zeaxanthin_mcg = 0;
-    this.sum.sumvitamin_b12_mcg = 0;
-    this.sum.sumvitamin_b6_mg = 0;
-    this.sum.sumvitamin_c_mg = 0;
-    this.sum.sumvitamin_d_IU = 0;
-    this.sum.sumvitamin_e_mg = 0;
-    this.sum.sumtocopherol_alpha_mg = 0;
-    this.sum.sumvitamin_k_mcg = 0;
-    this.sum.sumcalcium_mg = 0;
-    this.sum.sumcopper_mg = 0;
-    this.sum.sumirom_mg = 0;
-    this.sum.summagnesium_mg = 0;
-    this.sum.summanganese_mg = 0;
-    this.sum.sumphosphorous_mg = 0;
-    this.sum.sumpotassium_mg = 0;
-    this.sum.sumselenium_mcg = 0;
-    this.sum.sumzink_mg = 0;
-    this.sum.sumprotein_g = 0;
-    this.sum.sumalanine_g = 0;
-    this.sum.sumarginine_g = 0;
-    this.sum.sumaspartic_acid_g = 0;
-    this.sum.sumcystine_g = 0;
-    this.sum.sumglutamic_acid_g = 0;
-    this.sum.sumglycine_g = 0;
-    this.sum.sumhistidine_g = 0;
-    this.sum.sumhydroxyproline_g = 0;
-    this.sum.sumisoleucine_g = 0;
-    this.sum.sumleucine_g = 0;
-    this.sum.sumlysine_g = 0;
-    this.sum.summethionine_g = 0;
-    this.sum.sumphenylalanine_g = 0;
-    this.sum.sumproline_g = 0;
-    this.sum.sumserine_g = 0;
-    this.sum.sumthreonine_g = 0;
-    this.sum.sumtryptophan_g = 0;
-    this.sum.sumtyrosine_g = 0;
-    this.sum.sumvaline_g = 0;
-    this.sum.sumcarbohydrate_g = 0;
-    this.sum.sumfiber_g = 0;
-    this.sum.sumsugars_g = 0;
-    this.sum.sumfructose_g = 0;
-    this.sum.sumgalactose_g = 0;
-    this.sum.sumglucose_g = 0;
-    this.sum.sumlactose_g = 0;
-    this.sum.summaltose_g = 0;
-    this.sum.sumsucrose_g = 0;
-    this.sum.sumfat_g = 0;
-    this.sum.sumsaturated_fatty_acids_g = 0;
-    this.sum.summonounsaturated_fatty_acids_g = 0;
-    this.sum.sumpolyunsaturated_fatty_acids_g = 0;
-    this.sum.sumfatty_acids_total_trans_g = 0;
-    this.sum.sumalcohol_g = 0;
-    this.sum.sumash_g = 0;
-    this.sum.sumcaffeine_mg = 0;
-    this.sum.sumtheobromine_mg = 0;
-    this.sum.sumwater_g = 0;
+    for (let i = 0; i < Object.keys(this.sum).length; i++) {
+      this.sum[Object.keys(this.sum)[i]] = 0;
+    }
   }
 
   updateUserNutrition(nutrition) {
@@ -241,9 +133,9 @@ export class MyDietComponent implements OnInit {
         toolTipContent: "<b>{name}</b>: {y} g (#percent%)",
         indexLabel: "{name} - #percent%",
         dataPoints: [
-          { y: this.sum.sumprotein_g, name: "Protein" },
-          { y: this.sum.sumcarbohydrate_g, name: "Carbohydrate" },
-          { y: this.sum.sumtotal_fat_g, name: "Fat" }
+          { y: this.sum.protein_g, name: "Protein" },
+          { y: this.sum.carbohydrate_g, name: "Carbohydrate" },
+          { y: this.sum.total_fat_g, name: "Fat" }
         ]
       }]
     });
@@ -277,7 +169,7 @@ export class MyDietComponent implements OnInit {
         color: "#0099cc",
         toolTipContent: "<span style=\"color:#0099cc\">{name}</span>: {y} (g)",
         dataPoints: [
-            { y: this.sum.sumwater_g, label: "Today" }
+            { y: this.sum.water_g, label: "Today" }
           ]
         },
         {
@@ -315,9 +207,9 @@ export class MyDietComponent implements OnInit {
         type: "bar",
         toolTipContent: "<b>{label}</b>",
         dataPoints: [
-          { label: "Vitamin C", y: this.sum.sumvitamin_c_mg / this.dri.vitamin_c_mg_min * 100 },
-          { label: "Vitamin B3", y: this.sum.sumniacin_mg / this.dri.niacin_mg_min * 100 },
-          { label: "Vitamin B2", y: this.sum.sumriboflavin_mg / this.dri.riboflavin_mg_min * 100 }
+          { label: "Vitamin C", y: this.sum.vitamin_c_mg / this.dri.vitamin_c_mg_min * 100 },
+          { label: "Vitamin B3", y: this.sum.niacin_mg / this.dri.niacin_mg_min * 100 },
+          { label: "Vitamin B2", y: this.sum.riboflavin_mg / this.dri.riboflavin_mg_min * 100 }
         ]
       },
       {
@@ -363,79 +255,42 @@ export class MyDietComponent implements OnInit {
         }
         this.updateCharts();
       });
-    this.sum['sumquantity'] = 0;
-    this.sum['sumcalories'] = 0;
-    this.sum['sumtotal_fat_g'] = 0;
-    this.sum['sumsaturated_fat_g'] = 0;
-    this.sum['sumcholesterol_mg'] = 0;
-    this.sum['sumsodium_mg'] = 0;
-    this.sum['sumcholine_mg'] = 0;
-    this.sum['sumfolate_mcg'] = 0;
-    this.sum['sumfolic_acid_mcg'] = 0;
-    this.sum['sumniacin_mg'] = 0;
-    this.sum['sumpantothenic_acid_mg'] = 0;
-    this.sum['sumriboflavin_mg'] = 0;
-    this.sum['sumthiamin_mg'] = 0;
-    this.sum['sumvitamin_a_IU'] = 0;
-    this.sum['sumvitamin_a_rae_mcg'] = 0;
-    this.sum['sumcarotene_alpha_mcg'] = 0;
-    this.sum['sumcarotene_beta_mcg'] = 0;
-    this.sum['sumcryptoxanthin_beta_mcg'] = 0;
-    this.sum['sumlutein_zeaxanthin_mcg'] = 0;
-    this.sum['sumvitamin_b12_mcg'] = 0;
-    this.sum['sumvitamin_b6_mg'] = 0;
-    this.sum['sumvitamin_c_mg'] = 0;
-    this.sum['sumvitamin_d_IU'] = 0;
-    this.sum['sumvitamin_e_mg'] = 0;
-    this.sum['sumtocopherol_alpha_mg'] = 0;
-    this.sum['sumvitamin_k_mcg'] = 0;
-    this.sum['sumcalcium_mg'] = 0;
-    this.sum['sumcopper_mg'] = 0;
-    this.sum['sumirom_mg'] = 0;
-    this.sum['summagnesium_mg'] = 0;
-    this.sum['summanganese_mg'] = 0;
-    this.sum['sumphosphorous_mg'] = 0;
-    this.sum['sumpotassium_mg'] = 0;
-    this.sum['sumselenium_mcg'] = 0;
-    this.sum['sumzink_mg'] = 0;
-    this.sum['sumprotein_g'] = 0;
-    this.sum['sumalanine_g'] = 0;
-    this.sum['sumarginine_g'] = 0;
-    this.sum['sumaspartic_acid_g'] = 0;
-    this.sum['sumcystine_g'] = 0;
-    this.sum['sumglutamic_acid_g'] = 0;
-    this.sum['sumglycine_g'] = 0;
-    this.sum['sumhistidine_g'] = 0;
-    this.sum['sumhydroxyproline_g'] = 0;
-    this.sum['sumisoleucine_g'] = 0;
-    this.sum['sumleucine_g'] = 0;
-    this.sum['sumlysine_g'] = 0;
-    this.sum['summethionine_g'] = 0;
-    this.sum['sumphenylalanine_g'] = 0;
-    this.sum['sumproline_g'] = 0;
-    this.sum['sumserine_g'] = 0;
-    this.sum['sumthreonine_g'] = 0;
-    this.sum['sumtryptophan_g'] = 0;
-    this.sum['sumtyrosine_g'] = 0;
-    this.sum['sumvaline_g'] = 0;
-    this.sum['sumcarbohydrate_g'] = 0;
-    this.sum['sumfiber_g'] = 0;
-    this.sum['sumsugars_g'] = 0;
-    this.sum['sumfructose_g'] = 0;
-    this.sum['sumgalactose_g'] = 0;
-    this.sum['sumglucose_g'] = 0;
-    this.sum['sumlactose_g'] = 0;
-    this.sum['summaltose_g'] = 0;
-    this.sum['sumsucrose_g'] = 0;
-    this.sum['sumfat_g'] = 0;
-    this.sum['sumsaturated_fatty_acids_g'] = 0;
-    this.sum['summonounsaturated_fatty_acids_g'] = 0;
-    this.sum['sumpolyunsaturated_fatty_acids_g'] = 0;
-    this.sum['sumfatty_acids_total_trans_g'] = 0;
-    this.sum['sumalcohol_g'] = 0;
-    this.sum['sumash_g'] = 0;
-    this.sum['sumcaffeine_mg'] = 0;
-    this.sum['sumtheobromine_mg'] = 0;
-    this.sum['sumwater_g'] = 0;
+      this.sum['quantity'] = 0;
+
+      this.sum['calories'] = 0;
+      this.sum['carbohydrate_g'] = 0;
+      this.sum['fiber_g'] = 0;
+      this.sum['protein_g'] = 0;
+      this.sum['total_fat_g'] = 0;
+      this.sum['saturated_fat_g'] = 0;
+      this.sum['fatty_acids_total_trans_g'] = 0;
+      this.sum['cholesterol_mg'] = 0;
+      this.sum['sugars_g'] = 0;
+      this.sum['water_g'] = 0;
+
+      this.sum['vitamin_a_rae_mcg'] = 0;
+      this.sum['thiamin_mg'] = 0;
+      this.sum['riboflavin_mg'] = 0;
+      this.sum['niacin_mg'] = 0;
+      this.sum['pantothenic_acid_mg'] = 0;
+      this.sum['vitamin_b6_mg'] = 0;
+      this.sum['folate_mcg'] = 0;
+      this.sum['vitamin_b12_mcg'] = 0;
+      this.sum['choline_mg'] = 0;
+      this.sum['vitamin_c_mg'] = 0;
+      this.sum['vitamin_d_IU'] = 0;
+      this.sum['vitamin_e_mg'] = 0;
+      this.sum['vitamin_k_mcg'] = 0;
+
+      this.sum['calcium_mg'] = 0;
+      this.sum['copper_mg'] = 0;
+      this.sum['irom_mg'] = 0;
+      this.sum['magnesium_mg'] = 0;
+      this.sum['manganese_mg'] = 0;
+      this.sum['phosphorous_mg'] = 0;
+      this.sum['potassium_mg'] = 0;
+      this.sum['selenium_mcg'] = 0;
+      this.sum['sodium_mg'] = 0;
+      this.sum['zink_mg'] = 0;
   }
 }

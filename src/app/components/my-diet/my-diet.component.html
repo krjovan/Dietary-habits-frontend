@@ -21,88 +21,49 @@
 <!--Fixed mobile button-->
 <div routerLink="/search-add" class="mobile-btn">+</div>
 
-
-
 <div *ngIf="isLoaded" id="divForTable" class="tableFixHead">
   <table style="width:80vw;" id="user-nutritions">
   <thead>
     <tr class="w3-blue">
       <th class="w3-center"><div style="width: 200px;">Food</div></th>
       <th class="w3-center">Quantity (g)</th>
-	  <th class="w3-center">Action</th>
+      <th class="w3-center">Action</th>
+
       <th class="w3-center">Calories</th>
+      <th class="w3-center">Carbohydrate (g)</th>
+      <th class="w3-center">Fiber (g)</th>
+      <th class="w3-center">Protein (g)</th>
       <th class="w3-center">Total fat (g)</th>
       <th class="w3-center">Saturated fat (g)</th>
-	  <th class="w3-center">Carbohydrate (g)</th>
-	  <th class="w3-center">Sugars (g)</th>
-	  <th class="w3-center">Fiber (g)</th>
-	  <th class="w3-center">Protein (g)</th>
-      <th class="w3-center">Sodium (mg)</th>
-	  <th class="w3-center">Water (g)</th>
-	  <th class="w3-center">Cholesterol (mg)</th>
-      <th class="w3-center">Choline (mg)</th>
-      <th class="w3-center">Folate - B9 (mcg)</th>
-      <th class="w3-center">Folic acid (mcg)</th>
+      <th class="w3-center">Fatty acids total trans (g)</th>
+      <th class="w3-center">Cholesterol (mg)</th>
+      <th class="w3-center">Sugars (g)</th>
+      <th class="w3-center">Water (g)</th>
+
+      <th class="w3-center">Vitamin A RAE (mcg)</th>
+      <th class="w3-center">Thiamin - B1 (mg)</th>
+      <th class="w3-center">Riboflavin - B2 (mg)</th>
       <th class="w3-center">Niacin - B3 (mg)</th>
       <th class="w3-center">Pantothenic acid - B5 (mg)</th>
-      <th class="w3-center">Riboflavin - B2 (mg)</th>
-      <th class="w3-center">Thiamin - B1 (mg)</th>
-      <th class="w3-center">Vitamin A (IU)</th>
-      <th class="w3-center">Vitamin A RAE (mcg)</th>
-      <th class="w3-center">Carotene alpha (mcg)</th>
-      <th class="w3-center">Carotene beta (mcg)</th>
-      <th class="w3-center">Cryptoxanthin beta (mcg)</th>
-      <th class="w3-center">Lutein zeaxanthin (mcg)</th>
-      <th class="w3-center">Vitamin B12 (mcg)</th>
       <th class="w3-center">Vitamin B6 (mg)</th>
+      <th class="w3-center">Folate - B9 (mcg)</th>
+      <th class="w3-center">Vitamin B12 (mcg)</th>
+      <th class="w3-center">Choline (mg)</th>
       <th class="w3-center">Vitamin C (mg)</th>
       <th class="w3-center">Vitamin D (IU)</th>
       <th class="w3-center">Vitamin E (mg)</th>
-      <th class="w3-center">Tocopherol alpha (mg)</th>
       <th class="w3-center">Vitamin K (mcg)</th>
+
       <th class="w3-center">Calcium (mg)</th>
       <th class="w3-center">Copper (mg)</th>
-      <th class="w3-center">Irom (mg)</th>
+      <th class="w3-center">Iron (mg)</th>
       <th class="w3-center">Magnesium (mg)</th>
       <th class="w3-center">Manganese (mg)</th>
       <th class="w3-center">Phosphorous (mg)</th>
       <th class="w3-center">Potassium (mg)</th>
       <th class="w3-center">Selenium (mcg)</th>
+      <th class="w3-center">Sodium (mg)</th>
       <th class="w3-center">Zink (mg)</th>
-      <th class="w3-center">Alanine (g)</th>
-      <th class="w3-center">Arginine (g)</th>
-      <th class="w3-center">Aspartic acid (g)</th>
-      <th class="w3-center">Cystine (g)</th>
-      <th class="w3-center">Glutamic acid (g)</th>
-      <th class="w3-center">Glycine (g)</th>
-      <th class="w3-center">Histidine (g)</th>
-      <th class="w3-center">Hydroxyproline (g)</th>
-      <th class="w3-center">Isoleucine (g)</th>
-      <th class="w3-center">Leucine (g)</th>
-      <th class="w3-center">Lysine (g)</th>
-      <th class="w3-center">Methionine (g)</th>
-      <th class="w3-center">Phenylalanine (g)</th>
-      <th class="w3-center">Proline (g)</th>
-      <th class="w3-center">Serine (g)</th>
-      <th class="w3-center">Threonine (g)</th>
-      <th class="w3-center">Tryptophan (g)</th>
-      <th class="w3-center">Tyrosine (g)</th>
-      <th class="w3-center">Valine (g)</th>
-      <th class="w3-center">Fructose (g)</th>
-      <th class="w3-center">Galactose (g)</th>
-      <th class="w3-center">Glucose (g)</th>
-      <th class="w3-center">Lactose (g)</th>
-      <th class="w3-center">Maltose (g)</th>
-      <th class="w3-center">Sucrose (g)</th>
-      <th class="w3-center">Fat (g)</th>
-      <th class="w3-center">Saturated fatty acids (g)</th>
-      <th class="w3-center">Monounsaturated fatty acids (g)</th>
-      <th class="w3-center">Polyunsaturated fatty acids (g)</th>
-      <th class="w3-center">Fatty acids total trans (g)</th>
-      <th class="w3-center">Alcohol (g)</th>
-      <th class="w3-center">Ash (g)</th>
-      <th class="w3-center">Caffeine (mg)</th>
-      <th class="w3-center">Theobromine (mg)</th>
     </tr>
 	</thead>
     <tr *ngFor="let nutrition of nutritions">
@@ -117,36 +78,32 @@
           <button style="font-family : inherit; width: 100px; height: 40px;" (click)="deleteUserNutrition(nutrition._id)" class="w3-red"><i class="fa fa-trash"> Delete</i></button>
         </div>
       </td>
+
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.calories}} <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.calories/dri.calories_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.carbohydrate_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.carbohydrate_g/dri.carbohydrate_g_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fiber_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fiber_g/dri.fiber_g_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.protein_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.protein_g/dri.protein_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.total_fat_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.total_fat_g/dri.total_fat_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.saturated_fat_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.saturated_fat_g/dri.saturated_fat_g_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.carbohydrate_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.carbohydrate_g/dri.carbohydrate_g_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sugars_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sugars_g/dri.sugars_g_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fiber_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fiber_g/dri.fiber_g_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.protein_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.protein_g/dri.protein_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sodium_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.water_g/dri.water_g_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fatty_acids_total_trans_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fatty_acids_total_trans_g/dri.fatty_acids_total_trans_g_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.cholesterol_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.cholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %) </span></td>
-	  <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.choline_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.choline_mg/dri.choline_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.folate_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.folate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.folic_acid_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.folic_acid_mcg/dri.folic_acid_mcg_min*100).toFixed(2)}} %) </span></td>
+	    <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sugars_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sugars_g/dri.sugars_g_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.water_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.water_g/dri.water_g_min*100).toFixed(2)}} %) </span></td>
+
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_a_rae_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_a_rae_mcg/dri.vitamin_a_rae_mcg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.thiamin_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.thiamin_mg/dri.thiamin_mg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.riboflavin_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.riboflavin_mg/dri.riboflavin_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.niacin_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.niacin_mg/dri.niacin_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.pantothenic_acid_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.pantothenic_acid_mg/dri.pantothenic_acid_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.riboflavin_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.riboflavin_mg/dri.riboflavin_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.thiamin_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.thiamin_mg/dri.thiamin_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_a_IU}} IU <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_a_IU/dri.vitamin_a_IU_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_a_rae_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_a_rae_mcg/dri.vitamin_a_rae_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.carotene_alpha_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.carotene_alpha_mcg/dri.carotene_alpha_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.carotene_beta_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.carotene_beta_mcg/dri.carotene_beta_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.cryptoxanthin_beta_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.cryptoxanthin_beta_mcg/dri.cryptoxanthin_beta_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.lutein_zeaxanthin_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.lutein_zeaxanthin_mcg/dri.lutein_zeaxanthin_mcg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_b12_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_b12_mcg/dri.vitamin_b12_mcg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_b6_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_b6_mg/dri.vitamin_b6_mg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.folate_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.folate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_b12_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_b12_mcg/dri.vitamin_b12_mcg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.choline_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.choline_mg/dri.choline_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_c_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_c_mg/dri.vitamin_c_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_d_IU}} IU <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_d_IU/dri.vitamin_d_IU_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_e_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_e_mg/dri.vitamin_e_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.tocopherol_alpha_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.tocopherol_alpha_mg/dri.tocopherol_alpha_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.vitamin_k_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.vitamin_k_mcg/dri.vitamin_k_mcg_min*100).toFixed(2)}} %) </span></td>
+
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.calcium_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.calcium_mg/dri.calcium_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.copper_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.copper_mg/dri.copper_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.irom_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.irom_mg/dri.irom_mg_min*100).toFixed(2)}} %) </span></td>
@@ -155,120 +112,50 @@
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.phosphorous_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.phosphorous_mg/dri.phosphorous_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.potassium_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.potassium_mg/dri.potassium_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.selenium_mcg}} mcg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.selenium_mcg/dri.selenium_mcg_min*100).toFixed(2)}} %) </span></td>
+      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sodium_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %) </span></td>
       <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.zink_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.zink_mg/dri.zink_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.alanine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.alanine_g/dri.alanine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.arginine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.arginine_g/dri.arginine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.aspartic_acid_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.aspartic_acid_g/dri.aspartic_acid_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.cystine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.cystine_g/dri.cystine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.glutamic_acid_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.glutamic_acid_g/dri.glutamic_acid_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.glycine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.glycine_g/dri.glycine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.histidine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.histidine_g/dri.histidine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.hydroxyproline_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.hydroxyproline_g/dri.hydroxyproline_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.isoleucine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.isoleucine_g/dri.isoleucine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.leucine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.leucine_g/dri.leucine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.lysine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.lysine_g/dri.lysine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.methionine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.methionine_g/dri.methionine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.phenylalanine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.phenylalanine_g/dri.phenylalanine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.proline_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.proline_g/dri.proline_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.serine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.serine_g/dri.serine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.threonine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.threonine_g/dri.threonine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.tryptophan_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.tryptophan_g/dri.tryptophan_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.tyrosine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.tyrosine_g/dri.tyrosine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.valine_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.valine_g/dri.valine_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fructose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fructose_g/dri.fructose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.galactose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.galactose_g/dri.galactose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.glucose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.glucose_g/dri.glucose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.lactose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.lactose_g/dri.lactose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.maltose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.maltose_g/dri.maltose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.sucrose_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.sucrose_g/dri.sucrose_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fat_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fat_g/dri.fat_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.saturated_fatty_acids_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.saturated_fatty_acids_g/dri.saturated_fatty_acids_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.monounsaturated_fatty_acids_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.monounsaturated_fatty_acids_g/dri.monounsaturated_fatty_acids_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.polyunsaturated_fatty_acids_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.polyunsaturated_fatty_acids_g/dri.polyunsaturated_fatty_acids_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.fatty_acids_total_trans_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.fatty_acids_total_trans_g/dri.fatty_acids_total_trans_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.alcohol_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.alcohol_g/dri.alcohol_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.ash_g}} g <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.ash_g/dri.ash_g_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.caffeine_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.caffeine_mg/dri.caffeine_mg_min*100).toFixed(2)}} %) </span></td>
-      <td style="white-space: nowrap;" class="w3-center">{{nutrition.quantity/100*nutrition.nutrition.theobromine_mg}} mg <span class="w3-text-green">({{(nutrition.quantity/100*nutrition.nutrition.theobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %) </span></td>
     </tr>
 	<tfoot>
 	<tr style="background-color: #c2c1be;">
       <th class="w3-center"><div style="width: 200px;">Total</div></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumquantity}} g</th>
-	  <th style="white-space: nowrap;" class="w3-center"> - </th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcalories}} <span class="w3-text-green">({{(sum.sumcalories/dri.calories_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumtotal_fat_g}} g <span class="w3-text-green">({{(sum.sumtotal_fat_g/dri.total_fat_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumsaturated_fat_g}} g <span class="w3-text-green">({{(sum.sumsaturated_fat_g/dri.saturated_fat_g_min*100).toFixed(2)}} %)</span></th>
-	    <th style="white-space: nowrap;" class="w3-center">{{sum.sumcarbohydrate_g}} g <span class="w3-text-green">({{(sum.sumcarbohydrate_g/dri.carbohydrate_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumsugars_g}} g <span class="w3-text-green">({{(sum.sumsugars_g/dri.sugars_g_min*100).toFixed(2)}} %)</span></th>
-	    <th style="white-space: nowrap;" class="w3-center">{{sum.sumfiber_g}} g <span class="w3-text-green">({{(sum.sumfiber_g/dri.fiber_g_min*100).toFixed(2)}} %)</span></th>
-	    <th style="white-space: nowrap;" class="w3-center">{{sum.sumprotein_g}} g <span class="w3-text-green">({{(sum.sumprotein_g/dri.protein_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumsodium_mg}} mg <span class="w3-text-green">({{(sum.sumsodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumwater_g}} g <span class="w3-text-green">({{(sum.sumwater_g/dri.water_g_min*100).toFixed(2)}} %)</span></th>
-	    <th style="white-space: nowrap;" class="w3-center">{{sum.sumcholesterol_mg}} mg <span class="w3-text-green">({{(sum.sumcholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %)</span></th>
-	    <th style="white-space: nowrap;" class="w3-center">{{sum.sumcholine_mg}} mg <span class="w3-text-green">({{(sum.sumcholine_mg/dri.choline_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumfolate_mcg}} mcg <span class="w3-text-green">({{(sum.sumfolate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumfolic_acid_mcg}} mcg <span class="w3-text-green">({{(sum.sumfolic_acid_mcg/dri.folic_acid_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumniacin_mg}} mg <span class="w3-text-green">({{(sum.sumniacin_mg/dri.niacin_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumpantothenic_acid_mg}} mg <span class="w3-text-green">({{(sum.sumpantothenic_acid_mg/dri.pantothenic_acid_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumriboflavin_mg}} mg <span class="w3-text-green">({{(sum.sumriboflavin_mg/dri.riboflavin_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumthiamin_mg}} mg <span class="w3-text-green">({{(sum.sumthiamin_mg/dri.thiamin_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_a_IU}} IU <span class="w3-text-green">({{(sum.sumvitamin_a_IU/dri.vitamin_a_IU_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_a_rae_mcg}} mcg <span class="w3-text-green">({{(sum.sumvitamin_a_rae_mcg/dri.vitamin_a_rae_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcarotene_alpha_mcg}} mcg <span class="w3-text-green">({{(sum.sumcarotene_alpha_mcg/dri.carotene_alpha_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcarotene_beta_mcg}} mcg <span class="w3-text-green">({{(sum.sumcarotene_beta_mcg/dri.carotene_beta_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcryptoxanthin_beta_mcg}} mcg <span class="w3-text-green">({{(sum.sumcryptoxanthin_beta_mcg/dri.cryptoxanthin_beta_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumlutein_zeaxanthin_mcg}} mcg <span class="w3-text-green">({{(sum.sumlutein_zeaxanthin_mcg/dri.lutein_zeaxanthin_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_b12_mcg}} mcg <span class="w3-text-green">({{(sum.sumvitamin_b12_mcg/dri.vitamin_b12_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_b6_mg}} mg <span class="w3-text-green">({{(sum.sumvitamin_b6_mg/dri.vitamin_b6_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_c_mg}} mg <span class="w3-text-green">({{(sum.sumvitamin_c_mg/dri.vitamin_c_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_d_IU}} IU <span class="w3-text-green">({{(sum.sumvitamin_d_IU/dri.vitamin_d_IU_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_e_mg}} mg <span class="w3-text-green">({{(sum.sumvitamin_e_mg/dri.vitamin_e_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumtocopherol_alpha_mg}} mg <span class="w3-text-green">({{(sum.sumtocopherol_alpha_mg/dri.tocopherol_alpha_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvitamin_k_mcg}} mcg <span class="w3-text-green">({{(sum.sumvitamin_k_mcg/dri.vitamin_k_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcalcium_mg}} mg <span class="w3-text-green">({{(sum.sumcalcium_mg/dri.calcium_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcopper_mg}} mg <span class="w3-text-green">({{(sum.sumcopper_mg/dri.copper_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumirom_mg}} mg <span class="w3-text-green">({{(sum.sumirom_mg/dri.irom_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.summagnesium_mg}} mg <span class="w3-text-green">({{(sum.summagnesium_mg/dri.magnesium_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.summanganese_mg}} mg <span class="w3-text-green">({{(sum.summanganese_mg/dri.manganese_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumphosphorous_mg}} mg <span class="w3-text-green">({{(sum.sumphosphorous_mg/dri.phosphorous_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumpotassium_mg}} mg <span class="w3-text-green">({{(sum.sumpotassium_mg/dri.potassium_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumselenium_mcg}} mcg <span class="w3-text-green">({{(sum.sumselenium_mcg/dri.selenium_mcg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumzink_mg}} mg <span class="w3-text-green">({{(sum.sumzink_mg/dri.zink_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumalanine_g}} g <span class="w3-text-green">({{(sum.sumalanine_g/dri.alanine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumarginine_g}} g <span class="w3-text-green">({{(sum.sumarginine_g/dri.arginine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumaspartic_acid_g}} g <span class="w3-text-green">({{(sum.sumaspartic_acid_g/dri.aspartic_acid_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcystine_g}} g <span class="w3-text-green">({{(sum.sumcystine_g/dri.cystine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumglutamic_acid_g}} g <span class="w3-text-green">({{(sum.sumglutamic_acid_g/dri.glutamic_acid_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumglycine_g}} g <span class="w3-text-green">({{(sum.sumglycine_g/dri.glycine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumhistidine_g}} g <span class="w3-text-green">({{(sum.sumhistidine_g/dri.histidine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumhydroxyproline_g}} g <span class="w3-text-green">({{(sum.sumhydroxyproline_g/dri.hydroxyproline_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumisoleucine_g}} g <span class="w3-text-green">({{(sum.sumisoleucine_g/dri.isoleucine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumleucine_g}} g <span class="w3-text-green">({{(sum.sumleucine_g/dri.leucine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumlysine_g}} g <span class="w3-text-green">({{(sum.sumlysine_g/dri.lysine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.summethionine_g}} g <span class="w3-text-green">({{(sum.summethionine_g/dri.methionine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumphenylalanine_g}} g <span class="w3-text-green">({{(sum.sumphenylalanine_g/dri.phenylalanine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumproline_g}} g <span class="w3-text-green">({{(sum.sumproline_g/dri.proline_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumserine_g}} g <span class="w3-text-green">({{(sum.sumserine_g/dri.serine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumthreonine_g}} g <span class="w3-text-green">({{(sum.sumthreonine_g/dri.threonine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumtryptophan_g}} g <span class="w3-text-green">({{(sum.sumtryptophan_g/dri.tryptophan_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumtyrosine_g}} g <span class="w3-text-green">({{(sum.sumtyrosine_g/dri.tyrosine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumvaline_g}} g <span class="w3-text-green">({{(sum.sumvaline_g/dri.valine_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumfructose_g}} g <span class="w3-text-green">({{(sum.sumfructose_g/dri.fructose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumgalactose_g}} g <span class="w3-text-green">({{(sum.sumgalactose_g/dri.galactose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumglucose_g}} g <span class="w3-text-green">({{(sum.sumglucose_g/dri.glucose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumlactose_g}} g <span class="w3-text-green">({{(sum.sumlactose_g/dri.lactose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.summaltose_g}} g <span class="w3-text-green">({{(sum.summaltose_g/dri.maltose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumsucrose_g}} g <span class="w3-text-green">({{(sum.sumsucrose_g/dri.sucrose_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumfat_g}} g <span class="w3-text-green">({{(sum.sumfat_g/dri.fat_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumsaturated_fatty_acids_g}} g <span class="w3-text-green">({{(sum.sumsaturated_fatty_acids_g/dri.saturated_fatty_acids_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.summonounsaturated_fatty_acids_g}} g <span class="w3-text-green">({{(sum.summonounsaturated_fatty_acids_g/dri.monounsaturated_fatty_acids_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumpolyunsaturated_fatty_acids_g}} g <span class="w3-text-green">({{(sum.sumpolyunsaturated_fatty_acids_g/dri.polyunsaturated_fatty_acids_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumfatty_acids_total_trans_g}} g <span class="w3-text-green">({{(sum.sumfatty_acids_total_trans_g/dri.fatty_acids_total_trans_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumalcohol_g}} g <span class="w3-text-green">({{(sum.sumalcohol_g/dri.alcohol_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumash_g}} g <span class="w3-text-green">({{(sum.sumash_g/dri.ash_g_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumcaffeine_mg}} mg <span class="w3-text-green">({{(sum.sumcaffeine_mg/dri.caffeine_mg_min*100).toFixed(2)}} %)</span></th>
-      <th style="white-space: nowrap;" class="w3-center">{{sum.sumtheobromine_mg}} mg <span class="w3-text-green">({{(sum.sumtheobromine_mg/dri.theobromine_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.quantity}} g</th>
+      <th style="white-space: nowrap;" class="w3-center"> - </th>
+
+      <th style="white-space: nowrap;" class="w3-center">{{sum.calories}} <span class="w3-text-green">({{(sum.calories/dri.calories_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.carbohydrate_g}} g <span class="w3-text-green">({{(sum.carbohydrate_g/dri.carbohydrate_g_min*100).toFixed(2)}} %)</span></th>
+	    <th style="white-space: nowrap;" class="w3-center">{{sum.fiber_g}} g <span class="w3-text-green">({{(sum.fiber_g/dri.fiber_g_min*100).toFixed(2)}} %)</span></th>
+	    <th style="white-space: nowrap;" class="w3-center">{{sum.protein_g}} g <span class="w3-text-green">({{(sum.protein_g/dri.protein_g_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.total_fat_g}} g <span class="w3-text-green">({{(sum.total_fat_g/dri.total_fat_g_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.saturated_fat_g}} g <span class="w3-text-green">({{(sum.saturated_fat_g/dri.saturated_fat_g_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.fatty_acids_total_trans_g}} g <span class="w3-text-green">({{(sum.fatty_acids_total_trans_g/dri.fatty_acids_total_trans_g_min*100).toFixed(2)}} %)</span></th>
+	    <th style="white-space: nowrap;" class="w3-center">{{sum.cholesterol_mg}} mg <span class="w3-text-green">({{(sum.cholesterol_mg/dri.cholesterol_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.sugars_g}} g <span class="w3-text-green">({{(sum.sugars_g/dri.sugars_g_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.water_g}} g <span class="w3-text-green">({{(sum.water_g/dri.water_g_min*100).toFixed(2)}} %)</span></th>
+
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_a_rae_mcg}} mcg <span class="w3-text-green">({{(sum.vitamin_a_rae_mcg/dri.vitamin_a_rae_mcg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.thiamin_mg}} mg <span class="w3-text-green">({{(sum.thiamin_mg/dri.thiamin_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.riboflavin_mg}} mg <span class="w3-text-green">({{(sum.riboflavin_mg/dri.riboflavin_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.niacin_mg}} mg <span class="w3-text-green">({{(sum.niacin_mg/dri.niacin_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.pantothenic_acid_mg}} mg <span class="w3-text-green">({{(sum.pantothenic_acid_mg/dri.pantothenic_acid_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_b6_mg}} mg <span class="w3-text-green">({{(sum.vitamin_b6_mg/dri.vitamin_b6_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.folate_mcg}} mcg <span class="w3-text-green">({{(sum.folate_mcg/dri.folate_mcg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_b12_mcg}} mcg <span class="w3-text-green">({{(sum.vitamin_b12_mcg/dri.vitamin_b12_mcg_min*100).toFixed(2)}} %)</span></th>
+	    <th style="white-space: nowrap;" class="w3-center">{{sum.choline_mg}} mg <span class="w3-text-green">({{(sum.choline_mg/dri.choline_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_c_mg}} mg <span class="w3-text-green">({{(sum.vitamin_c_mg/dri.vitamin_c_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_d_IU}} IU <span class="w3-text-green">({{(sum.vitamin_d_IU/dri.vitamin_d_IU_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_e_mg}} mg <span class="w3-text-green">({{(sum.vitamin_e_mg/dri.vitamin_e_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.vitamin_k_mcg}} mcg <span class="w3-text-green">({{(sum.vitamin_k_mcg/dri.vitamin_k_mcg_min*100).toFixed(2)}} %)</span></th>
+
+      <th style="white-space: nowrap;" class="w3-center">{{sum.calcium_mg}} mg <span class="w3-text-green">({{(sum.calcium_mg/dri.calcium_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.copper_mg}} mg <span class="w3-text-green">({{(sum.copper_mg/dri.copper_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.irom_mg}} mg <span class="w3-text-green">({{(sum.irom_mg/dri.irom_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.magnesium_mg}} mg <span class="w3-text-green">({{(sum.magnesium_mg/dri.magnesium_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.manganese_mg}} mg <span class="w3-text-green">({{(sum.manganese_mg/dri.manganese_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.phosphorous_mg}} mg <span class="w3-text-green">({{(sum.phosphorous_mg/dri.phosphorous_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.potassium_mg}} mg <span class="w3-text-green">({{(sum.potassium_mg/dri.potassium_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.selenium_mcg}} mcg <span class="w3-text-green">({{(sum.selenium_mcg/dri.selenium_mcg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.sodium_mg}} mg <span class="w3-text-green">({{(sum.sodium_mg/dri.sodium_mg_min*100).toFixed(2)}} %)</span></th>
+      <th style="white-space: nowrap;" class="w3-center">{{sum.zink_mg}} mg <span class="w3-text-green">({{(sum.zink_mg/dri.zink_mg_min*100).toFixed(2)}} %)</span></th>
     </tr>
 	</tfoot>
   </table>
