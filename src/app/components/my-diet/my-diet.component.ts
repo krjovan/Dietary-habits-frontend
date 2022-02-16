@@ -30,6 +30,8 @@ export class MyDietComponent implements OnInit {
 
   onDateChange(date) {
     this.isLoaded = false;
+    this.sumQuantity = 0;
+    this.sumNutritions = new SummedUpNutritions();
     this.dateOfConsumption = new Date(date);
     var body = {
       id: this.auth.getUserDetails()._id,
@@ -46,24 +48,17 @@ export class MyDietComponent implements OnInit {
   }
 
   calculateSum(nutritions) {
-    this.setAllToZero();
     let sumNutritionKeys = Object.keys(this.sumNutritions);
     for (let i = 0; i < nutritions.length; i++) {
       this.sumQuantity += nutritions[i].quantity;
       //divided by 100 to get the ratio for quantity from grams, e.g. 50g = 0.5, 100g = 1, 1000g = 10...
+      //because all database entries in the 'Nutrition' collection are for 100g
       let nutritionQuantityRatio = nutritions[i].quantity / 100;
       let nutrition = nutritions[i].nutrition;
       for (let j = 0; j < sumNutritionKeys.length; j++) {
         let key = sumNutritionKeys[j];
         this.sumNutritions[key] += nutrition[key] * nutritionQuantityRatio;
       }
-    }
-  }
-
-  setAllToZero() {
-    this.sumQuantity = 0;
-    for (let i = 0; i < Object.keys(this.sumNutritions).length; i++) {
-      this.sumNutritions[Object.keys(this.sumNutritions)[i]] = 0;
     }
   }
 
@@ -202,7 +197,6 @@ export class MyDietComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sumNutritions = new SummedUpNutritions();
     this.driService.getUserActiveDris()
       .subscribe(dris => {
         this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
