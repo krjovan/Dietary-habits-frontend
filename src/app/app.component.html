@@ -1,20 +1,39 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <div class="topnav" id="myTopnav">
-  <a routerLink="/home"><img src="../favicon.ico" width="25" height="25"> Dietary Habits</a>
-<a *ngIf="auth.isAdmin()" (click)="myFunction()" style="cursor: pointer;" routerLink="/users"><i class="fa fa-users"></i> Users</a>
-<a *ngIf="auth.isAdmin()" (click)="myFunction()" style="cursor: pointer;" routerLink="/nutrition"><i class="fa fa-cutlery"></i> Nutritions</a>
-<a *ngIf="auth.isLoggedIn()" (click)="myFunction()" style="cursor: pointer;" routerLink="/my-diet"><i class="fa fa-cutlery"></i> My diet</a>
-<a *ngIf="!auth.isLoggedIn()" (click)="myFunction()" class="w3-right" id="navSignIn" routerLink="/sign-in"><i class="fa fa-sign-in"></i> Sign in</a>
+  <a routerLink="/home" class="active"><img src="../favicon.ico" width="20" height="20"> DH</a>
+  <a *ngIf="!auth.isLoggedIn()" (click)="collapse()" id="sign-in" routerLink="/sign-in"><i class="fa fa-sign-in"></i> Sign in</a>
+  <a *ngIf="auth.isLoggedIn()" href="#contact">Contact</a>
+  <div *ngIf="auth.isLoggedIn()" class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <a *ngIf="auth.isLoggedIn()" href="#about">About</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" (click)="myFunction()">&#9776;</a>
+</div>
+
+<!--<div class="topnav" id="myTopnav">
+  <a routerLink="/home"><img src="../favicon.ico" width="25" height="25"> DH</a>
+  <a *ngIf="auth.isAdmin()" style="cursor: pointer;" routerLink="/users"><i class="fa fa-users"></i> Users</a>
+  <a *ngIf="auth.isAdmin()" style="cursor: pointer;" routerLink="/nutrition"><i class="fa fa-cutlery"></i> Nutritions</a>
+  <a *ngIf="auth.isLoggedIn()" style="cursor: pointer;" routerLink="/my-diet"><i class="fa fa-cutlery"></i> My diet</a>
+  <a *ngIf="!auth.isLoggedIn()" class="w3-right" id="navSignIn" routerLink="/sign-in"><i class="fa fa-sign-in"></i> Sign in</a>
 
   <div class="dropdown w3-right" id="userDropdown" *ngIf="auth.isLoggedIn()">
     <button class="dropbtn"><i class="fa fa-user"></i> {{ auth.getUserDetails()?.name}}
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-	  <a style="cursor: pointer;" (click)="myFunction()" routerLink="/my-dri"><i class="fa fa-cutlery"></i> My DRI</a>
-      <a style="cursor: pointer;" (click)="myFunction()" routerLink="/profile"><i class="fa fa-user"></i> My profile</a>
+	  <a style="cursor: pointer;" routerLink="/my-dri"><i class="fa fa-cutlery"></i> My DRI</a>
+      <a style="cursor: pointer;" routerLink="/profile"><i class="fa fa-user"></i> My profile</a>
       <a style="cursor: pointer;" (click)="auth.logout()"><i class="fa fa-sign-out"></i> Logout</a>
     </div>
   </div>
@@ -24,22 +43,26 @@
   </a>
 </div>
 
+-->
+
+
+
 <router-outlet></router-outlet>
 
 <footer class="w3-container w3-padding-32 w3-dark-grey w3-center">
   <div class="w3-padding-16"><span class="w3-xlarge w3-border-blue w3-bottombar">Contact</span></div>
-    <p><i class="fa fa-map-marker w3-text-blue w3-xlarge"></i>  John Kennedy 36, New Belgrade, Serbia</p>
-    <p><i class="fa fa-clock-o w3-text-blue w3-xlarge"></i>  Mon-Fri : 09-17h</p>
-    <p><i class="fa fa-phone w3-text-blue w3-xlarge"></i>  +38165515524</p>
-    <p><i class="fa fa-envelope-o w3-text-blue w3-xlarge"></i>  contact@dietaryhabits.com</p>
-<a class="w3-button w3-black w3-margin" (click)="toTop()"><i class="fa fa-arrow-up w3-margin-right"></i>To top</a>
+    <p class="responsive-text"><i class="responsive-text fa fa-map-marker w3-text-blue"></i>  John Kennedy 36, New Belgrade, Serbia</p>
+    <p class="responsive-text"><i class="responsive-text fa fa-clock-o w3-text-blue"></i>  Mon-Fri : 09-17h</p>
+    <p class="responsive-text"><i class="responsive-text fa fa-phone w3-text-blue"></i>  +38165515524</p>
+    <p class="responsive-text"><i class="responsive-text fa fa-envelope-o w3-text-blue"></i>  contact@dhab.com</p>
+<a class="responsive-text w3-button w3-black" (click)="toTop()"><i class="fa fa-arrow-up w3-margin-right"></i>To top</a>
 <div class="w3-xlarge w3-section">
-<i class="fa fa-facebook-official w3-hover-opacity" style="padding: 5pt;"></i>
-<i class="fa fa-instagram w3-hover-opacity" style="padding: 5pt;"></i>
-<i class="fa fa-snapchat w3-hover-opacity" style="padding: 5pt;"></i>
-<i class="fa fa-pinterest-p w3-hover-opacity" style="padding: 5pt;"></i>
-<i class="fa fa-twitter w3-hover-opacity" style="padding: 5pt;"></i>
-<i class="fa fa-linkedin w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-facebook-official w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-instagram w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-snapchat w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-pinterest-p w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-twitter w3-hover-opacity" style="padding: 5pt;"></i>
+<i class="responsive-text fa fa-linkedin w3-hover-opacity" style="padding: 5pt;"></i>
 </div>
 <p>Powered by <a class="w3-hover-text-green">someone</a></p>
 </footer>

@@ -12,27 +12,17 @@ export class AppComponent {
   constructor(public auth: AuthenticationService) {}
 
   myFunction() {
-    const x = document.getElementById('myTopnav');
-    const navSignIn = document.getElementById('navSignIn');
-    const userDropdown = document.getElementById('userDropdown');
-
-    if (x.className === 'topnav') {
-        x.className += ' responsive';
-        if (navSignIn !== null) {
-          navSignIn.className = '';
-        }
-        if (userDropdown !== null) {
-          userDropdown.className = 'dropdown';
-        }
+    var navigation = document.getElementById("myTopnav");
+    if (navigation.className === "topnav") {
+      navigation.className += " responsive";
     } else {
-        x.className = 'topnav';
-        if (navSignIn !== null) {
-          navSignIn.className = 'w3-right';
-        }
-        if (userDropdown !== null) {
-          userDropdown.className = 'dropdown w3-right';
-        }
+      navigation.className = "topnav";
     }
+  }
+
+  collapse() {
+    var navigation = document.getElementById("myTopnav");
+    navigation.className = "topnav";
   }
 
   toTop() {
