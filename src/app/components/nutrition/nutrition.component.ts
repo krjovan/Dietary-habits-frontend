@@ -15,17 +15,20 @@ export class NutritionComponent implements OnInit {
   nutrition: Nutrition = new Nutrition();
   search = '';
   currentPage = 0;
-  currnetLimit = 8;
+  currnetLimit = 4;
   numberOfPages = 0;
+  isLoaded: Boolean = false;
 
   constructor(private nutritionService: NutritionService, private toastr: ToastrService) { }
 
   getNutritions() {
+    this.isLoaded = false;
     this.nutrition = new Nutrition();
     if (this.search === '') {
       this.nutritionService.getNutritionsWithPagination(this.currentPage, this.currnetLimit)
       .subscribe(nutritions => {
         this.nutritions = nutritions;
+        this.isLoaded = true;
       });
     this.nutritionService.getNutritionsCount()
       .subscribe(res => {
@@ -35,6 +38,7 @@ export class NutritionComponent implements OnInit {
       this.nutritionService.getNutritions(this.search)
       .subscribe(nutritions => {
         this.nutritions = nutritions;
+        this.isLoaded = true;
         this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
       });
     }

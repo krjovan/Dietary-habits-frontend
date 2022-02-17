@@ -139,30 +139,47 @@
 </div>
 
 <div class="search-container w3-center w3-padding">
-  <input [(ngModel)]="search" type="text" placeholder="Search by name" name="search">
-  <button (click)="getNutritions()" style="margin-right: 15pt;" class="w3-button">
-    <i class="fa fa-search"></i>
-  </button>
-  <button class="w3-button w3-green" onclick="document.getElementById('id01').style.display='block'">
-    <i class="fa fa-cutlery fa-fw"></i>
-    <i class="fa fa-plus"></i>
-  </button>
+  <form style="max-width: 200px; margin: auto;" #formControlSearch="ngForm">
+    <input style="max-width: 150px; margin: 0; float: left;" class="w3-input" required minlength="2" [(ngModel)]="search" type="text" placeholder="Search by name" name="search">
+    <button style="margin: 0;" [disabled]="!formControlSearch.valid" (click)="getNutritions()" class="w3-button">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
 </div>
 
-<div>
-  <div class="row">
-    <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
-      <h3 style="text-align: center">{{nutrition.name}}</h3>
-      <div class="w3-center w3-padding">
-        <button style="margin-right: 5pt" class="w3-button w3-black" (click)="selectNutrition(2, nutrition)">
-          <i class="fa fa-edit"></i>
-        </button>
-        <button class="w3-button w3-red" (click)="selectNutrition(3, nutrition)">
-          <i class="fa fa-trash-o"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+<div *ngIf="!isLoaded" class="loader"></div>
+
+
+<div *ngIf="isLoaded" class="w3-padding" style="overflow: auto;">
+  <table class="divForTable" style="width:80vw;">
+    <thead>
+      <tr class="w3-blue">
+        <th class="w3-center">Name</th>
+        <th class="w3-center">Action
+          <button class="w3-btn w3-green" onclick="document.getElementById('id01').style.display='block'">
+            <i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+        </th>
+      </tr>
+    </thead>
+    <tr *ngFor="let nutrition of nutritions">
+      <td class="w3-center">
+        <div>{{nutrition.name}}</div>
+      </td>
+      <td class="w3-center">
+        <div class="w3-center">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(2, nutrition)" class="w3-blue">
+            <i class="fa fa-edit"> Update</i>
+          </button>
+        </div>
+        <div style="padding-top: 4px;"></div>
+        <div class="w3-center">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(3, nutrition)" class="w3-red">
+            <i class="fa fa-trash"> Delete</i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="search===''" class="w3-center w3-padding">
