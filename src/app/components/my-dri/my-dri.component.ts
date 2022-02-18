@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DriService } from '../../services/dri.service';
 import { ToastrService } from 'ngx-toastr';
+import { Dri } from '../../models/dri';
 
 @Component({
   selector: 'app-my-dri',
@@ -9,14 +10,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MyDriComponent implements OnInit {
 
-  dri: any = <any>{};
-  dris: any [] = [];
+  dri: Dri = <Dri>{};
+  dris: Dri [] = [];
   isLoaded: Boolean = false;
 
-  constructor(private driService: DriService,
-			  private toastr: ToastrService) { }
+  constructor( private driService: DriService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.isLoaded = false;
 	  this.driService.getUserDris()
       .subscribe(dris => {
 		    this.dris = dris;
@@ -25,27 +26,18 @@ export class MyDriComponent implements OnInit {
   }
 
   openAddForm() {
-    this.dri = JSON.parse(JSON.stringify(this.dris[0]));
-    delete this.dri['active'];
-    delete this.dri['name'];
-    delete this.dri['user_id'];
-    delete this.dri['__v'];
-    delete this.dri['_id'];
-    Object.keys(this.dri).forEach((i) => this.dri[i] = null);
+    this.dri = new Dri();
     document.getElementById('id01').style.display = 'block';
   }
 
   add() {
-    if (this.isInputValid()) {
-      this.isLoaded = false;
-      document.getElementById('id01').style.display = 'none';
-      this.driService.addDri(this.dri).subscribe(() => {
-        this.toastr.success('You successfully added a DRI!', 'Success');
-        this.ngOnInit();
-      }, (err) => {
-        this.toastr.error(err.error.message, 'Error');
-      });
-    }
+    document.getElementById('id01').style.display = 'none';
+    this.driService.addDri(this.dri).subscribe(() => {
+      this.toastr.success('You successfully added a DRI!', 'Success');
+      this.ngOnInit();
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
+    });
   }
 
   openUpdateForm(dri) {
@@ -54,17 +46,15 @@ export class MyDriComponent implements OnInit {
   }
 
   update() {
-    if (this.isInputValid()) {
-      this.isLoaded = false;
-      document.getElementById('id02').style.display = 'none';
-      this.driService.updateDri(this.dri)
-      .subscribe(data => {
-        this.toastr.success('You successfully updated your DRI!', 'Success');
-        this.ngOnInit();
-      }, (err) => {
-        this.toastr.error(err.error.message, 'Error');
-      });
-    }
+    document.getElementById('id02').style.display = 'none';
+    this.driService.updateDri(this.dri)
+    .subscribe(data => {
+      this.toastr.success('You successfully updated your DRI!', 'Success');
+      this.ngOnInit();
+    }, (err) => {
+      this.toastr.error(err.error.message, 'Error');
+      this.ngOnInit();
+    });
   }
 
   openDeleteForm(dri) {
@@ -99,31 +89,5 @@ export class MyDriComponent implements OnInit {
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
-  }
-
-  isInputValid(): boolean {
-    const ordered = Object.keys(this.dri).sort().reduce(
-      (obj, key) => {
-        obj[key] = this.dri[key];
-        return obj;
-      },
-      {}
-    );
-    delete ordered['active'];
-    delete ordered['name'];
-    delete ordered['user_id'];
-    delete ordered['__v'];
-    delete ordered['_id'];
-    for (let i = 0; i < Object.values(ordered).length; i+=2) {
-      if (Object.values(ordered)[i] === null || Object.values(ordered)[i+1] === null) {
-        continue;
-      } else {
-        if (Object.values(ordered)[i] < Object.values(ordered)[i+1]) {
-          this.toastr.error('Max value for ' + Object.keys(ordered)[i] + ' must be less than min.', 'Error');
-          return false;
-        }
-      }
-    }
-    return true;
   }
 }
