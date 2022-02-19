@@ -192,14 +192,15 @@ export class MyDietComponent implements OnInit {
       zoomEnabled: true,
       zoomType: "y",
       title: {
-        text: "Macronutrients "
+        text: "Macronutrients"
       },
       axisX: {
         interval: 1
       },
       axisY: {
         viewportMinimum: 0,
-        viewportMaximum: 120
+        viewportMaximum: 150,
+        valueFormatString:  "#' %'"
       },
       toolTip: {
         shared: true
@@ -208,52 +209,38 @@ export class MyDietComponent implements OnInit {
         type: "bar",
         toolTipContent: "<span style=\"color:#0099cc\">{label}</span>: {y} (g)",
         dataPoints: [
-          { label: "water_g", y: this.checkForFinite(this.sumNutritions.water_g / this.dri.water_g * 100 )},
-          { label: "sugars_g", y: this.checkForFinite(this.sumNutritions.sugars_g / this.dri.sugars_g * 100 )},
-          { label: "cholesterol_mg", y: this.checkForFinite(this.sumNutritions.cholesterol_mg / this.dri.cholesterol_mg * 100 )},
-          { label: "fatty_acids_total_trans_g", y: this.checkForFinite(this.sumNutritions.fatty_acids_total_trans_g / this.dri.fatty_acids_total_trans_g * 100 )},
-          { label: "saturated_fat_g", y: this.checkForFinite(this.sumNutritions.saturated_fat_g / this.dri.saturated_fat_g * 100 )},
-          { label: "total_fat_g", y: this.checkForFinite(this.sumNutritions.total_fat_g / this.dri.total_fat_g * 100 )},
-          { label: "protein_g", y: this.checkForFinite(this.sumNutritions.protein_g / this.dri.protein_g * 100 )},
-          { label: "fiber_g", y: this.checkForFinite(this.sumNutritions.fiber_g / this.dri.fiber_g * 100 )},
-          { label: "carbohydrate_g", y: this.checkForFinite(this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100 )},
-          { label: "calories", y: this.checkForFinite(this.sumNutritions.calories / this.dri.calories * 100 )}
+          { label: "Water", y: this.sumNutritions.water_g / this.dri.water_g * 100 },
+          { label: "Sugar", y: this.sumNutritions.sugars_g / this.dri.sugars_g * 100 },
+          { label: "Cholesterol", y: this.sumNutritions.cholesterol_mg / this.dri.cholesterol_mg * 100 },
+          { label: "Total trans fat", y: this.sumNutritions.fatty_acids_total_trans_g / this.dri.fatty_acids_total_trans_g * 100 },
+          { label: "Saturated fat", y: this.sumNutritions.saturated_fat_g / this.dri.saturated_fat_g * 100 },
+          { label: "Total fat", y: this.sumNutritions.total_fat_g / this.dri.total_fat_g * 100 },
+          { label: "Proteins", y: this.sumNutritions.protein_g / this.dri.protein_g * 100 },
+          { label: "Fiber", y: this.sumNutritions.fiber_g / this.dri.fiber_g * 100 },
+          { label: "Carbohydrates", y: this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100 },
+          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100 }
         ]
       },
       {
         type: "error",
-        name: "Variability Range",
+        name: "Healthy range",
         toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
         dataPoints: [
-          { y: [this.checkForZero(this.dri.water_g), this.checkForFinite(this.dri.water_g_max / this.dri.water_g * 100)], label: "water_g" },
-          { y: [this.checkForZero(this.dri.sugars_g), this.checkForFinite(this.dri.sugars_g_max / this.dri.sugars_g * 100)], label: "sugars_g" },
-          { y: [this.checkForZero(this.dri.cholesterol_mg), this.checkForFinite(this.dri.cholesterol_mg_max / this.dri.cholesterol_mg * 100)], label: "cholesterol_mg" },
-          { y: [this.checkForZero(this.dri.fatty_acids_total_trans_g), this.checkForFinite(this.dri.fatty_acids_total_trans_g_max / this.dri.fatty_acids_total_trans_g * 100)], label: "fatty_acids_total_trans_g" },
-          { y: [this.checkForZero(this.dri.saturated_fat_g), this.checkForFinite(this.dri.saturated_fat_g_max / this.dri.saturated_fat_g * 100)], label: "saturated_fat_g" },
-          { y: [this.checkForZero(this.dri.total_fat_g), this.checkForFinite(this.dri.total_fat_g_max / this.dri.total_fat_g * 100)], label: "total_fat_g" },
-          { y: [this.checkForZero(this.dri.protein_g), this.checkForFinite(this.dri.protein_g_max / this.dri.protein_g * 100)], label: "protein_g" },
-          { y: [this.checkForZero(this.dri.fiber_g), this.checkForFinite(this.dri.fiber_g_max / this.dri.fiber_g * 100)], label: "fiber_g" },
-          { y: [this.checkForZero(this.dri.carbohydrate_g), this.checkForFinite(this.dri.carbohydrate_g_max / this.dri.carbohydrate_g * 100)], label: "carbohydrate_g" },
-          { y: [this.checkForZero(this.dri.calories), this.checkForFinite(this.dri.calories_max / this.dri.calories * 100)], label: "calories" }
+          { y: [100, this.dri.water_g_max / this.dri.water_g * 100], label: "Water" },
+          { y: [100, this.dri.sugars_g_max / this.dri.sugars_g * 100], label: "Sugar" },
+          { y: [100, this.dri.cholesterol_mg_max / this.dri.cholesterol_mg * 100], label: "Cholesterol" },
+          { y: [100, this.dri.fatty_acids_total_trans_g_max / this.dri.fatty_acids_total_trans_g * 100], label: "Total trans fat" },
+          { y: [100, this.dri.saturated_fat_g_max / this.dri.saturated_fat_g * 100], label: "Saturated fat" },
+          { y: [100, this.dri.total_fat_g_max / this.dri.total_fat_g * 100], label: "Total fat" },
+          { y: [100, this.dri.protein_g_max / this.dri.protein_g * 100], label: "Proteins" },
+          { y: [100, this.dri.fiber_g_max / this.dri.fiber_g * 100], label: "Fiber" },
+          { y: [100, this.dri.carbohydrate_g_max / this.dri.carbohydrate_g * 100], label: "Carbohydrates" },
+          { y: [100, this.dri.calories_max / this.dri.calories * 100], label: "Calories" }
         ]
       }
       ]
     });
     macronutrients.render();
-  }
-
-  checkForZero(number: number): number {
-    if (number === 0) {
-      return 0;
-    }
-    return 100;
-  }
-
-  checkForFinite(number: number): number {
-    if (isFinite(number)) {
-      return number;
-    }
-    return 0;
   }
 
   ngOnInit(): void {
