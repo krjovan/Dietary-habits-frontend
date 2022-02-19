@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import * as CanvasJS from '../../../assets/canvasjs.min.js';
 import { SummedUpNutritions } from '../../models/summed-up-nutritions';
+import { Dri } from '../../models/dri';
 
 @Component({
   selector: 'app-my-diet',
@@ -13,8 +14,7 @@ import { SummedUpNutritions } from '../../models/summed-up-nutritions';
 })
 export class MyDietComponent implements OnInit {
 
-  dri: any = <any>{};
-  notNullDri: any = <any>{};
+  dri: Dri = <Dri>{};
   isLoaded: Boolean = false;
   dateOfConsumption = new Date();
   nutritions: any[] = [];
@@ -111,15 +111,6 @@ export class MyDietComponent implements OnInit {
 
     chart.render();
 
-    console.log(this.notNullDri);
-    var arrayForVitamins = [];
-
-    for (let i = 0; i < Object.values(this.notNullDri).length; i += 2) {
-      if (Object.keys(this.notNullDri)[i]) {
-        arrayForVitamins.push();
-      }
-    }
-
     var chart2 = new CanvasJS.Chart("chartContainer2", {
       animationEnabled: true,
       theme: "light2",
@@ -147,7 +138,7 @@ export class MyDietComponent implements OnInit {
           color: "red",
           toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]} (g)",
           dataPoints: [
-            { y: [this.dri.water_g_min, this.dri.water_g_max], label: "Today" }
+            { y: [this.dri.water_g, this.dri.water_g_max], label: "Today" }
           ]
         }
       ]
@@ -176,9 +167,9 @@ export class MyDietComponent implements OnInit {
         type: "bar",
         toolTipContent: "<b>{label}</b>",
         dataPoints: [
-          { label: "Vitamin C", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg_min * 100 },
-          { label: "Vitamin B3", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg_min * 100 },
-          { label: "Vitamin B2", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg_min * 100 }
+          { label: "Vitamin C", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg * 100 },
+          { label: "Vitamin B3", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg * 100 },
+          { label: "Vitamin B2", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg * 100 }
         ]
       },
       {
@@ -186,14 +177,83 @@ export class MyDietComponent implements OnInit {
         name: "Variability Range",
         toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
         dataPoints: [
-          { y: [100, this.dri.vitamin_c_mg_max / this.dri.vitamin_c_mg_min * 100], label: "Vitamin C" },
-          { y: [100, this.dri.niacin_mg_max / this.dri.niacin_mg_min * 100], label: "Vitamin B3" },
-          { y: [100, this.dri.riboflavin_mg_max / this.dri.riboflavin_mg_min * 100], label: "Vitamin B2" }
+          { y: [100, this.dri.vitamin_c_mg_max / this.dri.vitamin_c_mg * 100], label: "Vitamin C" },
+          { y: [100, this.dri.niacin_mg_max / this.dri.niacin_mg * 100], label: "Vitamin B3" },
+          { y: [100, this.dri.riboflavin_mg_max / this.dri.riboflavin_mg * 100], label: "Vitamin B2" }
         ]
       }
       ]
     });
     chart1.render();
+
+
+    var macronutrients = new CanvasJS.Chart("macronutrients", {
+      animationEnabled: true,
+      zoomEnabled: true,
+      zoomType: "y",
+      title: {
+        text: "Macronutrients "
+      },
+      axisX: {
+        interval: 1
+      },
+      axisY: {
+        viewportMinimum: 0,
+        viewportMaximum: 120
+      },
+      toolTip: {
+        shared: true
+      },
+      data: [{
+        type: "bar",
+        toolTipContent: "<span style=\"color:#0099cc\">{label}</span>: {y} (g)",
+        dataPoints: [
+          { label: "water_g", y: this.checkForFinite(this.sumNutritions.water_g / this.dri.water_g * 100 )},
+          { label: "sugars_g", y: this.checkForFinite(this.sumNutritions.sugars_g / this.dri.sugars_g * 100 )},
+          { label: "cholesterol_mg", y: this.checkForFinite(this.sumNutritions.cholesterol_mg / this.dri.cholesterol_mg * 100 )},
+          { label: "fatty_acids_total_trans_g", y: this.checkForFinite(this.sumNutritions.fatty_acids_total_trans_g / this.dri.fatty_acids_total_trans_g * 100 )},
+          { label: "saturated_fat_g", y: this.checkForFinite(this.sumNutritions.saturated_fat_g / this.dri.saturated_fat_g * 100 )},
+          { label: "total_fat_g", y: this.checkForFinite(this.sumNutritions.total_fat_g / this.dri.total_fat_g * 100 )},
+          { label: "protein_g", y: this.checkForFinite(this.sumNutritions.protein_g / this.dri.protein_g * 100 )},
+          { label: "fiber_g", y: this.checkForFinite(this.sumNutritions.fiber_g / this.dri.fiber_g * 100 )},
+          { label: "carbohydrate_g", y: this.checkForFinite(this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100 )},
+          { label: "calories", y: this.checkForFinite(this.sumNutritions.calories / this.dri.calories * 100 )}
+        ]
+      },
+      {
+        type: "error",
+        name: "Variability Range",
+        toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
+        dataPoints: [
+          { y: [this.checkForZero(this.dri.water_g), this.checkForFinite(this.dri.water_g_max / this.dri.water_g * 100)], label: "water_g" },
+          { y: [this.checkForZero(this.dri.sugars_g), this.checkForFinite(this.dri.sugars_g_max / this.dri.sugars_g * 100)], label: "sugars_g" },
+          { y: [this.checkForZero(this.dri.cholesterol_mg), this.checkForFinite(this.dri.cholesterol_mg_max / this.dri.cholesterol_mg * 100)], label: "cholesterol_mg" },
+          { y: [this.checkForZero(this.dri.fatty_acids_total_trans_g), this.checkForFinite(this.dri.fatty_acids_total_trans_g_max / this.dri.fatty_acids_total_trans_g * 100)], label: "fatty_acids_total_trans_g" },
+          { y: [this.checkForZero(this.dri.saturated_fat_g), this.checkForFinite(this.dri.saturated_fat_g_max / this.dri.saturated_fat_g * 100)], label: "saturated_fat_g" },
+          { y: [this.checkForZero(this.dri.total_fat_g), this.checkForFinite(this.dri.total_fat_g_max / this.dri.total_fat_g * 100)], label: "total_fat_g" },
+          { y: [this.checkForZero(this.dri.protein_g), this.checkForFinite(this.dri.protein_g_max / this.dri.protein_g * 100)], label: "protein_g" },
+          { y: [this.checkForZero(this.dri.fiber_g), this.checkForFinite(this.dri.fiber_g_max / this.dri.fiber_g * 100)], label: "fiber_g" },
+          { y: [this.checkForZero(this.dri.carbohydrate_g), this.checkForFinite(this.dri.carbohydrate_g_max / this.dri.carbohydrate_g * 100)], label: "carbohydrate_g" },
+          { y: [this.checkForZero(this.dri.calories), this.checkForFinite(this.dri.calories_max / this.dri.calories * 100)], label: "calories" }
+        ]
+      }
+      ]
+    });
+    macronutrients.render();
+  }
+
+  checkForZero(number: number): number {
+    if (number === 0) {
+      return 0;
+    }
+    return 100;
+  }
+
+  checkForFinite(number: number): number {
+    if (isFinite(number)) {
+      return number;
+    }
+    return 0;
   }
 
   ngOnInit(): void {
@@ -201,27 +261,6 @@ export class MyDietComponent implements OnInit {
       .subscribe(dris => {
         this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
         Object.assign(this.dri, dris[0]);
-        this.notNullDri = {};
-        const ordered = Object.keys(this.dri).sort().reduce(
-          (obj, key) => {
-            obj[key] = this.dri[key];
-            return obj;
-          },
-          {}
-        );
-        delete ordered['active'];
-        delete ordered['name'];
-        delete ordered['user_id'];
-        delete ordered['__v'];
-        delete ordered['_id'];
-        for (let i = 0; i < Object.values(ordered).length; i += 2) {
-          if (Object.values(ordered)[i] === null || Object.values(ordered)[i + 1] === null) {
-            continue;
-          } else {
-            this.notNullDri[Object.keys(ordered)[i]] = Object.values(ordered)[i];
-            this.notNullDri[Object.keys(ordered)[i+1]] = Object.values(ordered)[i+1];
-          }
-        }
         this.updateCharts();
       });
   }
