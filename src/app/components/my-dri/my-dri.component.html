@@ -23,20 +23,20 @@
         </div>
 
         <ng-template #not_active>
-          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="setAsActive(dri)" class="w3-blue">
+          <button (click)="setAsActive(dri)" class="w3-btn w3-blue">
             <i class="fa fa-edit"> Set as current</i>
           </button>
         </ng-template>
       </td>
       <td class="w3-center">
         <div class="w3-center">
-          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="openUpdateForm(dri)" class="w3-blue">
+          <button style="width: 100px; height: 38px;" (click)="openUpdateForm(dri)" class="w3-btn w3-blue">
             <i class="fa fa-edit"> Update</i>
           </button>
         </div>
         <div style="padding-top: 4px;"></div>
         <div *ngIf="!dri.active" class="w3-center">
-          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="openDeleteForm(dri)" class="w3-red">
+          <button style="width: 100px; height: 38px;" (click)="openDeleteForm(dri)" class="w3-btn w3-red">
             <i class="fa fa-trash"> Delete</i>
           </button>
         </div>

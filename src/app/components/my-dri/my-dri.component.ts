@@ -31,8 +31,8 @@ export class MyDriComponent implements OnInit {
   }
 
   add() {
-    document.getElementById('id01').style.display = 'none';
     this.driService.addDri(this.dri).subscribe(() => {
+      document.getElementById('id01').style.display = 'none';
       this.toastr.success('You successfully added a DRI!', 'Success');
       this.ngOnInit();
     }, (err) => {
@@ -46,9 +46,9 @@ export class MyDriComponent implements OnInit {
   }
 
   update() {
-    document.getElementById('id02').style.display = 'none';
     this.driService.updateDri(this.dri)
     .subscribe(data => {
+      document.getElementById('id02').style.display = 'none';
       this.toastr.success('You successfully updated your DRI!', 'Success');
       this.ngOnInit();
     }, (err) => {
