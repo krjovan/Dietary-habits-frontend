@@ -105,28 +105,6 @@ export class MyDietComponent implements OnInit {
   }
 
   updateCharts() {
-    /*let chart = new CanvasJS.Chart("chartContainer", {
-      theme: "light2",
-      animationEnabled: true,
-      exportEnabled: true,
-      title: {
-        text: "Macronuntritions"
-      },
-      data: [{
-        type: "pie",
-        showInLegend: true,
-        toolTipContent: "<b>{name}</b>: {y} g (#percent%)",
-        indexLabel: "{name} - #percent%",
-        dataPoints: [
-          { y: this.sumNutritions.protein_g, name: "Protein" },
-          { y: this.sumNutritions.carbohydrate_g, name: "Carbohydrate" },
-          { y: this.sumNutritions.total_fat_g, name: "Fat" }
-        ]
-      }]
-    });
-
-    chart.render();*/
-
     var macronutrients = new CanvasJS.Chart("macronutrients", {
       animationEnabled: true,
       zoomEnabled: true,
@@ -205,19 +183,19 @@ export class MyDietComponent implements OnInit {
         type: "bar",
         toolTipContent: "<b>{label}</b>",
         dataPoints: [
-          { label: "vitamin_k_mcg", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"] },
-          { label: "vitamin_e_mg", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"] },
-          { label: "vitamin_d_IU", y: this.sumNutritions.vitamin_d_IU / this.dri.vitamin_d_IU * 100, color:this.colors["vitamin_d_IU"] },
-          { label: "vitamin_c_mg", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg * 100, color:this.colors["vitamin_c_mg"] },
-          { label: "choline_mg", y: this.sumNutritions.choline_mg / this.dri.choline_mg * 100, color:this.colors["choline_mg"] },
-          { label: "vitamin_b12_mcg", y: this.sumNutritions.vitamin_b12_mcg / this.dri.vitamin_b12_mcg * 100, color:this.colors["vitamin_b12_mcg"] },
-          { label: "folate_mcg", y: this.sumNutritions.folate_mcg / this.dri.folate_mcg * 100, color:this.colors["folate_mcg"] },
-          { label: "vitamin_b6_mg", y: this.sumNutritions.vitamin_b6_mg / this.dri.vitamin_b6_mg * 100, color:this.colors["vitamin_b6_mg"] },
-          { label: "pantothenic_acid_mg", y: this.sumNutritions.pantothenic_acid_mg / this.dri.pantothenic_acid_mg * 100, color:this.colors["pantothenic_acid_mg"] },
-          { label: "niacin_mg", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg * 100, color:this.colors["niacin_mg"] },
-          { label: "riboflavin_mg", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg * 100, color:this.colors["riboflavin_mg"] },
-          { label: "thiamin_mg", y: this.sumNutritions.thiamin_mg / this.dri.thiamin_mg * 100, color:this.colors["thiamin_mg"] },
-          { label: "vitamin_a_rae_mcg", y: this.sumNutritions.vitamin_a_rae_mcg / this.dri.vitamin_a_rae_mcg * 100, color:this.colors["vitamin_a_rae_mcg"] }
+          { label: "Vitamin K", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"] },
+          { label: "Vitamin E", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"] },
+          { label: "Vitamin D", y: this.sumNutritions.vitamin_d_IU / this.dri.vitamin_d_IU * 100, color:this.colors["vitamin_d_IU"] },
+          { label: "Vitamin C", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg * 100, color:this.colors["vitamin_c_mg"] },
+          { label: "Choline", y: this.sumNutritions.choline_mg / this.dri.choline_mg * 100, color:this.colors["choline_mg"] },
+          { label: "Vitamin B12", y: this.sumNutritions.vitamin_b12_mcg / this.dri.vitamin_b12_mcg * 100, color:this.colors["vitamin_b12_mcg"] },
+          { label: "Folate - B9", y: this.sumNutritions.folate_mcg / this.dri.folate_mcg * 100, color:this.colors["folate_mcg"] },
+          { label: "Vitamin B6", y: this.sumNutritions.vitamin_b6_mg / this.dri.vitamin_b6_mg * 100, color:this.colors["vitamin_b6_mg"] },
+          { label: "Pantothenic acid - B5", y: this.sumNutritions.pantothenic_acid_mg / this.dri.pantothenic_acid_mg * 100, color:this.colors["pantothenic_acid_mg"] },
+          { label: "Niacin - B3", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg * 100, color:this.colors["niacin_mg"] },
+          { label: "Riboflavin - B2", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg * 100, color:this.colors["riboflavin_mg"] },
+          { label: "Thiamin - B1", y: this.sumNutritions.thiamin_mg / this.dri.thiamin_mg * 100, color:this.colors["thiamin_mg"] },
+          { label: "Vitamin A", y: this.sumNutritions.vitamin_a_rae_mcg / this.dri.vitamin_a_rae_mcg * 100, color:this.colors["vitamin_a_rae_mcg"] }
         ]
       },
       {
@@ -226,19 +204,19 @@ export class MyDietComponent implements OnInit {
         color: "black",
         toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
         dataPoints: [
-          { y: [100, this.dri.vitamin_k_mcg_max / this.dri.vitamin_k_mcg * 100], label: "vitamin_k_mcg" },
-          { y: [100, this.dri.vitamin_e_mg_max / this.dri.vitamin_e_mg * 100], label: "vitamin_e_mg" },
-          { y: [100, this.dri.vitamin_d_IU_max / this.dri.vitamin_d_IU * 100], label: "vitamin_d_IU" },
-          { y: [100, this.dri.vitamin_c_mg_max / this.dri.vitamin_c_mg * 100], label: "vitamin_c_mg" },
-          { y: [100, this.dri.choline_mg_max / this.dri.choline_mg * 100], label: "choline_mg" },
-          { y: [100, this.dri.vitamin_b12_mcg_max / this.dri.vitamin_b12_mcg * 100], label: "vitamin_b12_mcg" },
-          { y: [100, this.dri.folate_mcg_max / this.dri.folate_mcg * 100], label: "folate_mcg" },
-          { y: [100, this.dri.vitamin_b6_mg_max / this.dri.vitamin_b6_mg * 100], label: "vitamin_b6_mg" },
-          { y: [100, this.dri.pantothenic_acid_mg_max / this.dri.pantothenic_acid_mg * 100], label: "pantothenic_acid_mg" },
-          { y: [100, this.dri.niacin_mg_max / this.dri.niacin_mg * 100], label: "niacin_mg" },
-          { y: [100, this.dri.riboflavin_mg_max / this.dri.riboflavin_mg * 100], label: "riboflavin_mg" },
-          { y: [100, this.dri.thiamin_mg_max / this.dri.thiamin_mg * 100], label: "thiamin_mg" },
-          { y: [100, this.dri.vitamin_a_rae_mcg_max / this.dri.vitamin_a_rae_mcg * 100], label: "vitamin_a_rae_mcg" }
+          { y: [100, this.dri.vitamin_k_mcg_max / this.dri.vitamin_k_mcg * 100], label: "Vitamin K" },
+          { y: [100, this.dri.vitamin_e_mg_max / this.dri.vitamin_e_mg * 100], label: "Vitamin E" },
+          { y: [100, this.dri.vitamin_d_IU_max / this.dri.vitamin_d_IU * 100], label: "Vitamin D" },
+          { y: [100, this.dri.vitamin_c_mg_max / this.dri.vitamin_c_mg * 100], label: "Vitamin C" },
+          { y: [100, this.dri.choline_mg_max / this.dri.choline_mg * 100], label: "Choline" },
+          { y: [100, this.dri.vitamin_b12_mcg_max / this.dri.vitamin_b12_mcg * 100], label: "Vitamin B12" },
+          { y: [100, this.dri.folate_mcg_max / this.dri.folate_mcg * 100], label: "Folate - B9" },
+          { y: [100, this.dri.vitamin_b6_mg_max / this.dri.vitamin_b6_mg * 100], label: "Vitamin B6" },
+          { y: [100, this.dri.pantothenic_acid_mg_max / this.dri.pantothenic_acid_mg * 100], label: "Pantothenic acid - B5" },
+          { y: [100, this.dri.niacin_mg_max / this.dri.niacin_mg * 100], label: "Niacin - B3" },
+          { y: [100, this.dri.riboflavin_mg_max / this.dri.riboflavin_mg * 100], label: "Riboflavin - B2" },
+          { y: [100, this.dri.thiamin_mg_max / this.dri.thiamin_mg * 100], label: "Thiamin - B1" },
+          { y: [100, this.dri.vitamin_a_rae_mcg_max / this.dri.vitamin_a_rae_mcg * 100], label: "Vitamin A" }
         ]
       }
       ]
@@ -265,36 +243,38 @@ export class MyDietComponent implements OnInit {
       },
       data: [{
         type: "bar",
-        toolTipContent: "<span style=\"color:#0099cc\">{label}</span>: {y} (g)",
+        yValueFormatString:"#.00",
+        toolTipContent: "<span style='\"'color: {color};'\"'>{label}:</span> {y} %",
         dataPoints: [
-          { label: "zink_mg", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"] },
-          { label: "sodium_mg", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"] },
-          { label: "selenium_mcg", y: this.sumNutritions.selenium_mcg / this.dri.selenium_mcg * 100, color:this.colors["selenium_mcg"] },
-          { label: "potassium_mg", y: this.sumNutritions.potassium_mg / this.dri.potassium_mg * 100, color:this.colors["potassium_mg"] },
-          { label: "phosphorous_mg", y: this.sumNutritions.phosphorous_mg / this.dri.phosphorous_mg * 100, color:this.colors["phosphorous_mg"] },
-          { label: "manganese_mg", y: this.sumNutritions.manganese_mg / this.dri.manganese_mg * 100, color:this.colors["manganese_mg"] },
-          { label: "magnesium_mg", y: this.sumNutritions.magnesium_mg / this.dri.magnesium_mg * 100, color:this.colors["magnesium_mg"] },
-          { label: "irom_mg", y: this.sumNutritions.irom_mg / this.dri.irom_mg * 100, color:this.colors["irom_mg"] },
-          { label: "copper_mg", y: this.sumNutritions.copper_mg / this.dri.copper_mg * 100, color:this.colors["copper_mg"] },
-          { label: "calcium_mg", y: this.sumNutritions.calcium_mg / this.dri.calcium_mg * 100, color:this.colors["calcium_mg"] }
+          { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"] },
+          { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"] },
+          { label: "Selenium", y: this.sumNutritions.selenium_mcg / this.dri.selenium_mcg * 100, color:this.colors["selenium_mcg"] },
+          { label: "Potassium", y: this.sumNutritions.potassium_mg / this.dri.potassium_mg * 100, color:this.colors["potassium_mg"] },
+          { label: "Phosphorous", y: this.sumNutritions.phosphorous_mg / this.dri.phosphorous_mg * 100, color:this.colors["phosphorous_mg"] },
+          { label: "Manganese", y: this.sumNutritions.manganese_mg / this.dri.manganese_mg * 100, color:this.colors["manganese_mg"] },
+          { label: "Magnesium", y: this.sumNutritions.magnesium_mg / this.dri.magnesium_mg * 100, color:this.colors["magnesium_mg"] },
+          { label: "Iron", y: this.sumNutritions.irom_mg / this.dri.irom_mg * 100, color:this.colors["irom_mg"] },
+          { label: "Copper", y: this.sumNutritions.copper_mg / this.dri.copper_mg * 100, color:this.colors["copper_mg"] },
+          { label: "Calcium", y: this.sumNutritions.calcium_mg / this.dri.calcium_mg * 100, color:this.colors["calcium_mg"] }
         ]
       },
       {
         type: "error",
-        name: "Healthy range",
+        name: "Healthy",
         color: "black",
-        toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
+        yValueFormatString:"#.00",
+        toolTipContent: "<span style=\"color:#4CAF50\">{name}</span>: {y[0]} % - {y[1]} %",
         dataPoints: [
-          { y: [100, this.dri.zink_mg_max / this.dri.zink_mg * 100], label: "zink_mg" },
-          { y: [100, this.dri.sodium_mg_max / this.dri.sodium_mg * 100], label: "sodium_mg" },
-          { y: [100, this.dri.selenium_mcg_max / this.dri.selenium_mcg * 100], label: "selenium_mcg" },
-          { y: [100, this.dri.potassium_mg_max / this.dri.potassium_mg * 100], label: "potassium_mg" },
-          { y: [100, this.dri.phosphorous_mg_max / this.dri.phosphorous_mg * 100], label: "phosphorous_mg" },
-          { y: [100, this.dri.manganese_mg_max / this.dri.manganese_mg * 100], label: "manganese_mg" },
-          { y: [100, this.dri.magnesium_mg_max / this.dri.magnesium_mg * 100], label: "magnesium_mg" },
-          { y: [100, this.dri.irom_mg_max / this.dri.irom_mg * 100], label: "irom_mg" },
-          { y: [100, this.dri.copper_mg_max / this.dri.copper_mg * 100], label: "copper_mg" },
-          { y: [100, this.dri.calcium_mg_max / this.dri.calcium_mg * 100], label: "calcium_mg" }
+          { y: [100, this.dri.zink_mg_max / this.dri.zink_mg * 100], label: "Zink" },
+          { y: [100, this.dri.sodium_mg_max / this.dri.sodium_mg * 100], label: "Sodium" },
+          { y: [100, this.dri.selenium_mcg_max / this.dri.selenium_mcg * 100], label: "Selenium" },
+          { y: [100, this.dri.potassium_mg_max / this.dri.potassium_mg * 100], label: "Potassium" },
+          { y: [100, this.dri.phosphorous_mg_max / this.dri.phosphorous_mg * 100], label: "Phosphorous" },
+          { y: [100, this.dri.manganese_mg_max / this.dri.manganese_mg * 100], label: "Manganese" },
+          { y: [100, this.dri.magnesium_mg_max / this.dri.magnesium_mg * 100], label: "Magnesium" },
+          { y: [100, this.dri.irom_mg_max / this.dri.irom_mg * 100], label: "Iron" },
+          { y: [100, this.dri.copper_mg_max / this.dri.copper_mg * 100], label: "Copper" },
+          { y: [100, this.dri.calcium_mg_max / this.dri.calcium_mg * 100], label: "Calcium" }
         ]
       }
       ]
