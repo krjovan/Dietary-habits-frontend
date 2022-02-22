@@ -223,6 +223,23 @@ export class MyDietComponent implements OnInit {
     });
     vitamins.render();
 
+    var chartOptions = {
+      title: {
+        text: "Pie Chart"
+      },
+      data: [
+        {
+          type: "pie",
+          //yValueFormatString: "##0.00\"%\"",
+          indexLabelPlacement: "inside",
+          indexLabel: "#percent%",
+          showInLegend: true,
+          dataPoints: []
+        }
+      ]
+    };
+    var pieChart = {};
+
     var minerals = new CanvasJS.Chart("minerals", {
       animationEnabled: true,
       zoomEnabled: true,
@@ -239,23 +256,44 @@ export class MyDietComponent implements OnInit {
         valueFormatString:  "#' %'"
       },
       toolTip: {
-        shared: true
+        shared: true,
+        updated: function(e) {
+          typeof pieChart["destroy"] === "function" && pieChart['destroy']();
+          pieChart = new CanvasJS.Chart('pie-chart', chartOptions);
+          pieChart["options"].title.text = e.entries[0].dataPoint.label + " from food";
+          pieChart["options"].data[0].dataPoints = [];
+          console.log(this.nutritions);
+          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
+            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
+            const value = e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
+            if(value !== 0)
+              pieChart["options"].data[0].dataPoints.push({y: value, name: name});
+          }
+          pieChart['render']();
+        },
+        contentFormatter: function(e) {
+          console.log(e);
+          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart' style='width:200px; height:300px;'></div>";
+        },
+        hidden: function() {
+          typeof pieChart["destroy"] === "function" && pieChart['destroy']();
+        }
       },
       data: [{
         type: "bar",
         yValueFormatString:"#.00",
-        toolTipContent: "<span style='\"'color: {color};'\"'>{label}:</span> {y} %",
+        //toolTipContent: "<span style='\"'color: {color};'\"'>{label}:</span> {y} %",
         dataPoints: [
-          { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"] },
-          { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"] },
-          { label: "Selenium", y: this.sumNutritions.selenium_mcg / this.dri.selenium_mcg * 100, color:this.colors["selenium_mcg"] },
-          { label: "Potassium", y: this.sumNutritions.potassium_mg / this.dri.potassium_mg * 100, color:this.colors["potassium_mg"] },
-          { label: "Phosphorous", y: this.sumNutritions.phosphorous_mg / this.dri.phosphorous_mg * 100, color:this.colors["phosphorous_mg"] },
-          { label: "Manganese", y: this.sumNutritions.manganese_mg / this.dri.manganese_mg * 100, color:this.colors["manganese_mg"] },
-          { label: "Magnesium", y: this.sumNutritions.magnesium_mg / this.dri.magnesium_mg * 100, color:this.colors["magnesium_mg"] },
-          { label: "Iron", y: this.sumNutritions.irom_mg / this.dri.irom_mg * 100, color:this.colors["irom_mg"] },
-          { label: "Copper", y: this.sumNutritions.copper_mg / this.dri.copper_mg * 100, color:this.colors["copper_mg"] },
-          { label: "Calcium", y: this.sumNutritions.calcium_mg / this.dri.calcium_mg * 100, color:this.colors["calcium_mg"] }
+          { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"], key: "zink_mg", nutritions: this.nutritions},
+          { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"], key: "sodium_mg", nutritions: this.nutritions},
+          { label: "Selenium", y: this.sumNutritions.selenium_mcg / this.dri.selenium_mcg * 100, color:this.colors["selenium_mcg"], key: "selenium_mcg", nutritions: this.nutritions},
+          { label: "Potassium", y: this.sumNutritions.potassium_mg / this.dri.potassium_mg * 100, color:this.colors["potassium_mg"], key: "potassium_mg", nutritions: this.nutritions},
+          { label: "Phosphorous", y: this.sumNutritions.phosphorous_mg / this.dri.phosphorous_mg * 100, color:this.colors["phosphorous_mg"], key: "phosphorous_mg", nutritions: this.nutritions},
+          { label: "Manganese", y: this.sumNutritions.manganese_mg / this.dri.manganese_mg * 100, color:this.colors["manganese_mg"], key: "manganese_mg", nutritions: this.nutritions},
+          { label: "Magnesium", y: this.sumNutritions.magnesium_mg / this.dri.magnesium_mg * 100, color:this.colors["magnesium_mg"], key: "magnesium_mg", nutritions: this.nutritions},
+          { label: "Iron", y: this.sumNutritions.irom_mg / this.dri.irom_mg * 100, color:this.colors["irom_mg"], key: "irom_mg", nutritions: this.nutritions},
+          { label: "Copper", y: this.sumNutritions.copper_mg / this.dri.copper_mg * 100, color:this.colors["copper_mg"], key: "copper_mg", nutritions: this.nutritions},
+          { label: "Calcium", y: this.sumNutritions.calcium_mg / this.dri.calcium_mg * 100, color:this.colors["calcium_mg"], key: "calcium_mg", nutritions: this.nutritions}
         ]
       },
       {
@@ -263,7 +301,7 @@ export class MyDietComponent implements OnInit {
         name: "Healthy",
         color: "black",
         yValueFormatString:"#.00",
-        toolTipContent: "<span style=\"color:#4CAF50\">{name}</span>: {y[0]} % - {y[1]} %",
+        //toolTipContent: "<span style=\"color:#4CAF50\">{name}</span>: {y[0]} % - {y[1]} %",
         dataPoints: [
           { y: [100, this.dri.zink_mg_max / this.dri.zink_mg * 100], label: "Zink" },
           { y: [100, this.dri.sodium_mg_max / this.dri.sodium_mg * 100], label: "Sodium" },
