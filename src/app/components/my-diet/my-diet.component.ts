@@ -265,7 +265,7 @@ export class MyDietComponent implements OnInit {
           console.log(this.nutritions);
           for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
             const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
-            const value = e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
+            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
             if(value !== 0)
               pieChart["options"].data[0].dataPoints.push({y: value, name: name});
           }
