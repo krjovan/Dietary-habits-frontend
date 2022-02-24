@@ -105,6 +105,24 @@ export class MyDietComponent implements OnInit {
   }
 
   updateCharts() {
+    var chartOptions = {
+      title: {
+        text: "Pie Chart"
+      },
+      data: [
+        {
+          type: "pie",
+          indexLabelPlacement: "inside",
+          indexLabel: "#percent%",
+          showInLegend: true,
+          dataPoints: []
+        }
+      ]
+    };
+    var pieChartMacro = {};
+    var pieChartVit = {};
+    var pieChartMin = {};
+
     var macronutrients = new CanvasJS.Chart("macronutrients", {
       animationEnabled: true,
       zoomEnabled: true,
@@ -121,29 +139,46 @@ export class MyDietComponent implements OnInit {
         valueFormatString:  "#' %'"
       },
       toolTip: {
-        shared: true
+        shared: true,
+        updated: function(e) {
+          typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
+          pieChartMacro = new CanvasJS.Chart('pie-chart-macro', chartOptions);
+          pieChartMacro["options"].title.text = e.entries[0].dataPoint.label + " from food";
+          pieChartMacro["options"].data[0].dataPoints = [];
+          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
+            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
+            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
+            if(value !== 0)
+            pieChartMacro["options"].data[0].dataPoints.push({y: value, name: name});
+          }
+          pieChartMacro['render']();
+        },
+        contentFormatter: function(e) {
+          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-macro' style='width:200px; height:300px;'></div>";
+        },
+        hidden: function() {
+          typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
+        }
       },
       data: [{
         type: "bar",
-        toolTipContent: "<span style=\"color:#0099cc\">{label}</span>: {y} (g)",
         dataPoints: [
-          { label: "Water", y: this.sumNutritions.water_g / this.dri.water_g * 100, color:this.colors["water_g"] },
-          { label: "Sugar", y: this.sumNutritions.sugars_g / this.dri.sugars_g * 100, color:this.colors["sugars_g"] },
-          { label: "Cholesterol", y: this.sumNutritions.cholesterol_mg / this.dri.cholesterol_mg * 100, color:this.colors["cholesterol_mg"] },
-          { label: "Total trans fat", y: this.sumNutritions.fatty_acids_total_trans_g / this.dri.fatty_acids_total_trans_g * 100, color:this.colors["fatty_acids_total_trans_g"] },
-          { label: "Saturated fat", y: this.sumNutritions.saturated_fat_g / this.dri.saturated_fat_g * 100, color:this.colors["saturated_fat_g"] },
-          { label: "Total fat", y: this.sumNutritions.total_fat_g / this.dri.total_fat_g * 100, color:this.colors["total_fat_g"] },
-          { label: "Proteins", y: this.sumNutritions.protein_g / this.dri.protein_g * 100, color:this.colors["protein_g"] },
-          { label: "Fiber", y: this.sumNutritions.fiber_g / this.dri.fiber_g * 100, color:this.colors["fiber_g"] },
-          { label: "Carbohydrates", y: this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100, color:this.colors["carbohydrate_g"] },
-          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"] }
+          { label: "Water", y: this.sumNutritions.water_g / this.dri.water_g * 100, color:this.colors["water_g"], key: "water_g", nutritions: this.nutritions },
+          { label: "Sugar", y: this.sumNutritions.sugars_g / this.dri.sugars_g * 100, color:this.colors["sugars_g"], key: "sugars_g", nutritions: this.nutritions },
+          { label: "Cholesterol", y: this.sumNutritions.cholesterol_mg / this.dri.cholesterol_mg * 100, color:this.colors["cholesterol_mg"], key: "cholesterol_mg", nutritions: this.nutritions },
+          { label: "Total trans fat", y: this.sumNutritions.fatty_acids_total_trans_g / this.dri.fatty_acids_total_trans_g * 100, color:this.colors["fatty_acids_total_trans_g"], key: "fatty_acids_total_trans_g", nutritions: this.nutritions },
+          { label: "Saturated fat", y: this.sumNutritions.saturated_fat_g / this.dri.saturated_fat_g * 100, color:this.colors["saturated_fat_g"], key: "saturated_fat_g", nutritions: this.nutritions },
+          { label: "Total fat", y: this.sumNutritions.total_fat_g / this.dri.total_fat_g * 100, color:this.colors["total_fat_g"], key: "total_fat_g", nutritions: this.nutritions },
+          { label: "Proteins", y: this.sumNutritions.protein_g / this.dri.protein_g * 100, color:this.colors["protein_g"], key: "protein_g", nutritions: this.nutritions },
+          { label: "Fiber", y: this.sumNutritions.fiber_g / this.dri.fiber_g * 100, color:this.colors["fiber_g"], key: "fiber_g", nutritions: this.nutritions },
+          { label: "Carbohydrates", y: this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100, color:this.colors["carbohydrate_g"], key: "carbohydrate_g", nutritions: this.nutritions },
+          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"], key: "calories", nutritions: this.nutritions }
         ]
       },
       {
         type: "error",
         name: "Healthy range",
         color: "black",
-        toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
         dataPoints: [
           { y: [100, this.dri.water_g_max / this.dri.water_g * 100], label: "Water" },
           { y: [100, this.dri.sugars_g_max / this.dri.sugars_g * 100], label: "Sugar" },
@@ -177,32 +212,49 @@ export class MyDietComponent implements OnInit {
         valueFormatString:  "#' %'"
       },
       toolTip: {
-        shared: true
+        shared: true,
+        updated: function(e) {
+          typeof pieChartVit["destroy"] === "function" && pieChartVit['destroy']();
+          pieChartVit = new CanvasJS.Chart('pie-chart-vit', chartOptions);
+          pieChartVit["options"].title.text = e.entries[0].dataPoint.label + " from food";
+          pieChartVit["options"].data[0].dataPoints = [];
+          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
+            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
+            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
+            if(value !== 0)
+            pieChartVit["options"].data[0].dataPoints.push({y: value, name: name});
+          }
+          pieChartVit['render']();
+        },
+        contentFormatter: function(e) {
+          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-vit' style='width:200px; height:300px;'></div>";
+        },
+        hidden: function() {
+          typeof pieChartVit["destroy"] === "function" && pieChartVit['destroy']();
+        }
       },
       data: [{
         type: "bar",
-        toolTipContent: "<b>{label}</b>",
         dataPoints: [
-          { label: "Vitamin K", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"] },
-          { label: "Vitamin E", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"] },
-          { label: "Vitamin D", y: this.sumNutritions.vitamin_d_IU / this.dri.vitamin_d_IU * 100, color:this.colors["vitamin_d_IU"] },
-          { label: "Vitamin C", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg * 100, color:this.colors["vitamin_c_mg"] },
-          { label: "Choline", y: this.sumNutritions.choline_mg / this.dri.choline_mg * 100, color:this.colors["choline_mg"] },
-          { label: "Vitamin B12", y: this.sumNutritions.vitamin_b12_mcg / this.dri.vitamin_b12_mcg * 100, color:this.colors["vitamin_b12_mcg"] },
-          { label: "Folate - B9", y: this.sumNutritions.folate_mcg / this.dri.folate_mcg * 100, color:this.colors["folate_mcg"] },
-          { label: "Vitamin B6", y: this.sumNutritions.vitamin_b6_mg / this.dri.vitamin_b6_mg * 100, color:this.colors["vitamin_b6_mg"] },
-          { label: "Pantothenic acid - B5", y: this.sumNutritions.pantothenic_acid_mg / this.dri.pantothenic_acid_mg * 100, color:this.colors["pantothenic_acid_mg"] },
-          { label: "Niacin - B3", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg * 100, color:this.colors["niacin_mg"] },
-          { label: "Riboflavin - B2", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg * 100, color:this.colors["riboflavin_mg"] },
-          { label: "Thiamin - B1", y: this.sumNutritions.thiamin_mg / this.dri.thiamin_mg * 100, color:this.colors["thiamin_mg"] },
-          { label: "Vitamin A", y: this.sumNutritions.vitamin_a_rae_mcg / this.dri.vitamin_a_rae_mcg * 100, color:this.colors["vitamin_a_rae_mcg"] }
+          { label: "Vitamin K", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"], key: "vitamin_k_mcg", nutritions: this.nutritions },
+          { label: "Vitamin E", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"], key: "vitamin_e_mg", nutritions: this.nutritions },
+          { label: "Vitamin D", y: this.sumNutritions.vitamin_d_IU / this.dri.vitamin_d_IU * 100, color:this.colors["vitamin_d_IU"], key: "vitamin_d_IU", nutritions: this.nutritions },
+          { label: "Vitamin C", y: this.sumNutritions.vitamin_c_mg / this.dri.vitamin_c_mg * 100, color:this.colors["vitamin_c_mg"], key: "vitamin_c_mg", nutritions: this.nutritions },
+          { label: "Choline", y: this.sumNutritions.choline_mg / this.dri.choline_mg * 100, color:this.colors["choline_mg"], key: "choline_mg", nutritions: this.nutritions },
+          { label: "Vitamin B12", y: this.sumNutritions.vitamin_b12_mcg / this.dri.vitamin_b12_mcg * 100, color:this.colors["vitamin_b12_mcg"], key: "vitamin_b12_mcg", nutritions: this.nutritions },
+          { label: "Folate - B9", y: this.sumNutritions.folate_mcg / this.dri.folate_mcg * 100, color:this.colors["folate_mcg"], key: "folate_mcg", nutritions: this.nutritions },
+          { label: "Vitamin B6", y: this.sumNutritions.vitamin_b6_mg / this.dri.vitamin_b6_mg * 100, color:this.colors["vitamin_b6_mg"], key: "vitamin_b6_mg", nutritions: this.nutritions },
+          { label: "Pantothenic acid - B5", y: this.sumNutritions.pantothenic_acid_mg / this.dri.pantothenic_acid_mg * 100, color:this.colors["pantothenic_acid_mg"], key: "pantothenic_acid_mg", nutritions: this.nutritions },
+          { label: "Niacin - B3", y: this.sumNutritions.niacin_mg / this.dri.niacin_mg * 100, color:this.colors["niacin_mg"], key: "niacin_mg", nutritions: this.nutritions },
+          { label: "Riboflavin - B2", y: this.sumNutritions.riboflavin_mg / this.dri.riboflavin_mg * 100, color:this.colors["riboflavin_mg"], key: "riboflavin_mg", nutritions: this.nutritions },
+          { label: "Thiamin - B1", y: this.sumNutritions.thiamin_mg / this.dri.thiamin_mg * 100, color:this.colors["thiamin_mg"], key: "thiamin_mg", nutritions: this.nutritions },
+          { label: "Vitamin A", y: this.sumNutritions.vitamin_a_rae_mcg / this.dri.vitamin_a_rae_mcg * 100, color:this.colors["vitamin_a_rae_mcg"], key: "vitamin_a_rae_mcg", nutritions: this.nutritions }
         ]
       },
       {
         type: "error",
         name: "Healthy range",
         color: "black",
-        toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
         dataPoints: [
           { y: [100, this.dri.vitamin_k_mcg_max / this.dri.vitamin_k_mcg * 100], label: "Vitamin K" },
           { y: [100, this.dri.vitamin_e_mg_max / this.dri.vitamin_e_mg * 100], label: "Vitamin E" },
@@ -222,7 +274,7 @@ export class MyDietComponent implements OnInit {
       ]
     });
     vitamins.render();
-
+    /*
     var chartOptions = {
       title: {
         text: "Pie Chart"
@@ -230,7 +282,6 @@ export class MyDietComponent implements OnInit {
       data: [
         {
           type: "pie",
-          //yValueFormatString: "##0.00\"%\"",
           indexLabelPlacement: "inside",
           indexLabel: "#percent%",
           showInLegend: true,
@@ -238,7 +289,7 @@ export class MyDietComponent implements OnInit {
         }
       ]
     };
-    var pieChart = {};
+    var pieChart = {};*/
 
     var minerals = new CanvasJS.Chart("minerals", {
       animationEnabled: true,
@@ -258,31 +309,29 @@ export class MyDietComponent implements OnInit {
       toolTip: {
         shared: true,
         updated: function(e) {
-          typeof pieChart["destroy"] === "function" && pieChart['destroy']();
-          pieChart = new CanvasJS.Chart('pie-chart', chartOptions);
-          pieChart["options"].title.text = e.entries[0].dataPoint.label + " from food";
-          pieChart["options"].data[0].dataPoints = [];
-          console.log(this.nutritions);
+          typeof pieChartMin["destroy"] === "function" && pieChartMin['destroy']();
+          pieChartMin = new CanvasJS.Chart('pie-chart-min', chartOptions);
+          pieChartMin["options"].title.text = e.entries[0].dataPoint.label + " from food";
+          pieChartMin["options"].data[0].dataPoints = [];
           for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
             const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
             const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
             if(value !== 0)
-              pieChart["options"].data[0].dataPoints.push({y: value, name: name});
+            pieChartMin["options"].data[0].dataPoints.push({y: value, name: name});
           }
-          pieChart['render']();
+          pieChartMin['render']();
         },
         contentFormatter: function(e) {
-          console.log(e);
-          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart' style='width:200px; height:300px;'></div>";
+          return "<button id='hideToolTip' (click)='clickHandler()'>Hide ToolTip</button><span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-min' style='width:200px; height:300px;'></div>";
         },
         hidden: function() {
-          typeof pieChart["destroy"] === "function" && pieChart['destroy']();
+          typeof pieChartMin["destroy"] === "function" && pieChartMin['destroy']();
         }
       },
       data: [{
         type: "bar",
         yValueFormatString:"#.00",
-        //toolTipContent: "<span style='\"'color: {color};'\"'>{label}:</span> {y} %",
+        click: onClick,
         dataPoints: [
           { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"], key: "zink_mg", nutritions: this.nutritions},
           { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"], key: "sodium_mg", nutritions: this.nutritions},
@@ -301,7 +350,6 @@ export class MyDietComponent implements OnInit {
         name: "Healthy",
         color: "black",
         yValueFormatString:"#.00",
-        //toolTipContent: "<span style=\"color:#4CAF50\">{name}</span>: {y[0]} % - {y[1]} %",
         dataPoints: [
           { y: [100, this.dri.zink_mg_max / this.dri.zink_mg * 100], label: "Zink" },
           { y: [100, this.dri.sodium_mg_max / this.dri.sodium_mg * 100], label: "Sodium" },
@@ -318,6 +366,13 @@ export class MyDietComponent implements OnInit {
       ]
     });
     minerals.render();
+    function onClick(e) {
+      alert(  e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );
+    }
+  }
+
+  clickHandler() {
+    alert("toolTip Clicked!");
   }
 
   ngOnInit(): void {
