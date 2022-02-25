@@ -154,7 +154,7 @@ export class MyDietComponent implements OnInit {
           pieChartMacro['render']();
         },
         contentFormatter: function(e) {
-          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-macro' style='width:200px; height:300px;'></div>";
+          return "<div style='overflow-y: auto'><span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-macro' style='width:200px; height:300px;'></div></div>";
         },
         hidden: function() {
           typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
@@ -274,22 +274,6 @@ export class MyDietComponent implements OnInit {
       ]
     });
     vitamins.render();
-    /*
-    var chartOptions = {
-      title: {
-        text: "Pie Chart"
-      },
-      data: [
-        {
-          type: "pie",
-          indexLabelPlacement: "inside",
-          indexLabel: "#percent%",
-          showInLegend: true,
-          dataPoints: []
-        }
-      ]
-    };
-    var pieChart = {};*/
 
     var minerals = new CanvasJS.Chart("minerals", {
       animationEnabled: true,
@@ -322,7 +306,7 @@ export class MyDietComponent implements OnInit {
           pieChartMin['render']();
         },
         contentFormatter: function(e) {
-          return "<button id='hideToolTip' (click)='clickHandler()'>Hide ToolTip</button><span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-min' style='width:200px; height:300px;'></div>";
+          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-min' style='width:200px; height:300px;'></div>";
         },
         hidden: function() {
           typeof pieChartMin["destroy"] === "function" && pieChartMin['destroy']();
@@ -331,7 +315,6 @@ export class MyDietComponent implements OnInit {
       data: [{
         type: "bar",
         yValueFormatString:"#.00",
-        click: onClick,
         dataPoints: [
           { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"], key: "zink_mg", nutritions: this.nutritions},
           { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"], key: "sodium_mg", nutritions: this.nutritions},
@@ -366,13 +349,6 @@ export class MyDietComponent implements OnInit {
       ]
     });
     minerals.render();
-    function onClick(e) {
-      alert(  e.dataSeries.type + ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }" );
-    }
-  }
-
-  clickHandler() {
-    alert("toolTip Clicked!");
   }
 
   ngOnInit(): void {
