@@ -104,6 +104,39 @@ export class MyDietComponent implements OnInit {
     });
   }
 
+  onClick(e) {
+    console.log(e);
+
+    document.getElementById('id01').style.display = 'block';
+
+    var chartOptions = {
+      title: {
+        text: "Pie Chart"
+      },
+      animationEnabled: true,
+      data: [
+        {
+          type: "pie",
+          indexLabelPlacement: "inside",
+          indexLabel: "#percent%",
+          showInLegend: true,
+          dataPoints: []
+        }
+      ]
+    };
+    var pieChartMacro = {};
+    pieChartMacro = new CanvasJS.Chart('pie-chart', chartOptions);
+    pieChartMacro["options"].title.text = e.dataPoint.label + " from food";
+    pieChartMacro["options"].data[0].dataPoints = [];
+    for (let i = 0; i < e.dataPoint.nutritions.length; i++) {
+      const name = e.dataPoint.nutritions[i].nutrition["name"];
+      const value = e.dataPoint.nutritions[i].quantity * e.dataPoint.nutritions[i].nutrition[e.dataPoint.key];
+      if(value !== 0)
+      pieChartMacro["options"].data[0].dataPoints.push({y: value, name: name});
+    }
+    pieChartMacro['render']();
+  }
+
   updateCharts() {
     var chartOptions = {
       title: {
@@ -138,7 +171,10 @@ export class MyDietComponent implements OnInit {
         viewportMaximum: 150,
         valueFormatString:  "#' %'"
       },
-      toolTip: {
+      toolTip:{
+        enabled: false,
+      },
+      /*toolTip: {
         shared: true,
         updated: function(e) {
           typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
@@ -159,9 +195,10 @@ export class MyDietComponent implements OnInit {
         hidden: function() {
           typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
         }
-      },
+      },*/
       data: [{
         type: "bar",
+        click: this.onClick,
         dataPoints: [
           { label: "Water", y: this.sumNutritions.water_g / this.dri.water_g * 100, color:this.colors["water_g"], key: "water_g", nutritions: this.nutritions },
           { label: "Sugar", y: this.sumNutritions.sugars_g / this.dri.sugars_g * 100, color:this.colors["sugars_g"], key: "sugars_g", nutritions: this.nutritions },
