@@ -21,12 +21,13 @@ export class MyDietComponent implements OnInit {
   nutritions: any[] = [];
   sumQuantity: number = 0;
   sumNutritions: SummedUpNutritions;
+  name: string = "test";
 
   constructor(
     private userNutritionService: UserNutritionService,
     private auth: AuthenticationService,
     private driService: DriService,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) { }
 
   onDateChange(date) {
@@ -110,9 +111,6 @@ export class MyDietComponent implements OnInit {
     document.getElementById('id01').style.display = 'block';
 
     var chartOptions = {
-      title: {
-        text: "Pie Chart"
-      },
       animationEnabled: true,
       data: [
         {
@@ -126,7 +124,6 @@ export class MyDietComponent implements OnInit {
     };
     var pieChartMacro = {};
     pieChartMacro = new CanvasJS.Chart('pie-chart', chartOptions);
-    pieChartMacro["options"].title.text = e.dataPoint.label + " from food";
     pieChartMacro["options"].data[0].dataPoints = [];
     for (let i = 0; i < e.dataPoint.nutritions.length; i++) {
       const name = e.dataPoint.nutritions[i].nutrition["name"];
@@ -135,27 +132,14 @@ export class MyDietComponent implements OnInit {
       pieChartMacro["options"].data[0].dataPoints.push({y: value, name: name});
     }
     pieChartMacro['render']();
+
+    this.name = e.dataPoint.label.toString();
+    document.getElementById('myDiv').innerHTML = e.dataPoint.label.toString() + " from food";
+    document.getElementById('myContainer').style.backgroundColor = e.dataPoint.color;
+    console.log(this.name);
   }
 
   updateCharts() {
-    var chartOptions = {
-      title: {
-        text: "Pie Chart"
-      },
-      data: [
-        {
-          type: "pie",
-          indexLabelPlacement: "inside",
-          indexLabel: "#percent%",
-          showInLegend: true,
-          dataPoints: []
-        }
-      ]
-    };
-    var pieChartMacro = {};
-    var pieChartVit = {};
-    var pieChartMin = {};
-
     var macronutrients = new CanvasJS.Chart("macronutrients", {
       animationEnabled: true,
       zoomEnabled: true,
@@ -174,28 +158,6 @@ export class MyDietComponent implements OnInit {
       toolTip:{
         enabled: false,
       },
-      /*toolTip: {
-        shared: true,
-        updated: function(e) {
-          typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
-          pieChartMacro = new CanvasJS.Chart('pie-chart-macro', chartOptions);
-          pieChartMacro["options"].title.text = e.entries[0].dataPoint.label + " from food";
-          pieChartMacro["options"].data[0].dataPoints = [];
-          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
-            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
-            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
-            if(value !== 0)
-            pieChartMacro["options"].data[0].dataPoints.push({y: value, name: name});
-          }
-          pieChartMacro['render']();
-        },
-        contentFormatter: function(e) {
-          return "<div style='overflow-y: auto'><span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-macro' style='width:200px; height:300px;'></div></div>";
-        },
-        hidden: function() {
-          typeof pieChartMacro["destroy"] === "function" && pieChartMacro['destroy']();
-        }
-      },*/
       data: [{
         type: "bar",
         click: this.onClick,
@@ -249,29 +211,11 @@ export class MyDietComponent implements OnInit {
         valueFormatString:  "#' %'"
       },
       toolTip: {
-        shared: true,
-        updated: function(e) {
-          typeof pieChartVit["destroy"] === "function" && pieChartVit['destroy']();
-          pieChartVit = new CanvasJS.Chart('pie-chart-vit', chartOptions);
-          pieChartVit["options"].title.text = e.entries[0].dataPoint.label + " from food";
-          pieChartVit["options"].data[0].dataPoints = [];
-          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
-            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
-            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
-            if(value !== 0)
-            pieChartVit["options"].data[0].dataPoints.push({y: value, name: name});
-          }
-          pieChartVit['render']();
-        },
-        contentFormatter: function(e) {
-          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-vit' style='width:200px; height:300px;'></div>";
-        },
-        hidden: function() {
-          typeof pieChartVit["destroy"] === "function" && pieChartVit['destroy']();
-        }
+        enabled: false
       },
       data: [{
         type: "bar",
+        click: this.onClick,
         dataPoints: [
           { label: "Vitamin K", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"], key: "vitamin_k_mcg", nutritions: this.nutritions },
           { label: "Vitamin E", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"], key: "vitamin_e_mg", nutritions: this.nutritions },
@@ -328,29 +272,11 @@ export class MyDietComponent implements OnInit {
         valueFormatString:  "#' %'"
       },
       toolTip: {
-        shared: true,
-        updated: function(e) {
-          typeof pieChartMin["destroy"] === "function" && pieChartMin['destroy']();
-          pieChartMin = new CanvasJS.Chart('pie-chart-min', chartOptions);
-          pieChartMin["options"].title.text = e.entries[0].dataPoint.label + " from food";
-          pieChartMin["options"].data[0].dataPoints = [];
-          for (let i = 0; i < e.entries[0].dataPoint.nutritions.length; i++) {
-            const name = e.entries[0].dataPoint.nutritions[i].nutrition["name"];
-            const value = e.entries[0].dataPoint.nutritions[i].quantity * e.entries[0].dataPoint.nutritions[i].nutrition[e.entries[0].dataPoint.key];
-            if(value !== 0)
-            pieChartMin["options"].data[0].dataPoints.push({y: value, name: name});
-          }
-          pieChartMin['render']();
-        },
-        contentFormatter: function(e) {
-          return "<span style=\"color: " + e.entries[0].dataPoint.color + "\">" + e.entries[0].dataPoint.label + ": </span>" + e.entries[0].dataPoint.y.toFixed(2) + "%<br><span style=\"color:#4CAF50\">" + e.entries[1].dataSeries.name + "</span>: "+e.entries[1].dataPoint.y[0] + "% - " + e.entries[1].dataPoint.y[1].toFixed(2) + "%" +  "<div id='pie-chart-min' style='width:200px; height:300px;'></div>";
-        },
-        hidden: function() {
-          typeof pieChartMin["destroy"] === "function" && pieChartMin['destroy']();
-        }
+        enabled: false
       },
       data: [{
         type: "bar",
+        click: this.onClick,
         yValueFormatString:"#.00",
         dataPoints: [
           { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"], key: "zink_mg", nutritions: this.nutritions},

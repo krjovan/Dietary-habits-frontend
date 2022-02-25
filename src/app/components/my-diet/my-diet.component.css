@@ -75,13 +75,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
   height: 100%;
 }
 
-canvas {
-  padding: 0 !important;
-  margin: auto !important;
-  display: block !important;
-  width: 100% !important;
-}
-
 .box {
   float: left;
   height: 20px;
