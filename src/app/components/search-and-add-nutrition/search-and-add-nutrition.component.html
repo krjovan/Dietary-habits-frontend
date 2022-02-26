@@ -1,15 +1,17 @@
-<div style="display: table; margin-top: 10px; margin-left: auto; margin-right: auto; margin-bottom: 10px;">
-<div id="date_label" style="font-size: 20px; display: table-cell;" class="w3-center w3-padding">Date </div>
+<div style="display: flex; align-items: center; justify-content: center;" class="w3-padding">
+  <div class="w3-padding">Date </div>
 <div>
 	<input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
 </div>
 </div>
 
-<div class="search-container w3-center w3-padding">
-  <input [(ngModel)]="search" type="text" placeholder="Search by name" name="search">
-  <button (click)="getNutritions()" style="margin-right: 15pt;" class="w3-button">
-    <i class="fa fa-search"></i>
-  </button>
+<div style="display: flex; align-items: center; justify-content: center;" class="w3-padding">
+  <form style="max-width: 200px; margin: auto;" #formControlSearch="ngForm">
+    <input style="max-width: 150px; margin: 0; float: left;" [(ngModel)]="search" class="w3-input" required minlength="2" type="text" placeholder="Search by name" name="search">
+    <button [disabled]="!formControlSearch.valid" (click)="getNutritions()" style="" class="w3-button">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
 </div>
 
 <div *ngIf="!isLoaded" class="loader"></div>
