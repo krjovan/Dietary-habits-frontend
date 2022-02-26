@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'search-add', component: SearchAndAddNutritionComponent, canActivate: [AuthGuardService] },
   { path: 'my-diet', component: MyDietComponent, canActivate: [AuthGuardService] },
   { path: 'my-dri', component: MyDriComponent, canActivate: [AuthGuardService] },
+  { path: 'stats', component: StatsComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 

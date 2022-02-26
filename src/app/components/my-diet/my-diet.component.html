@@ -6,6 +6,9 @@
 </div>
 </div>
 
+<!--Fixed mobile button-->
+<div routerLink="/search-add" class="mobile-btn">+</div>
+
 <div *ngIf="!isLoaded" class="loader"></div>
 
 <h3 style="margin-bottom: 120vh;" class="w3-center w3-padding" *ngIf="nutritions.length == 0 && isLoaded">No data for this date</h3>
@@ -40,10 +43,9 @@
   <div class="box" style="background-color:#f44336;"></div><div> - Above UI</div>
 </div>
 
-<div *ngIf="nutritions.length > 0 && isLoaded">
 
-<!--Fixed mobile button-->
-<div routerLink="/search-add" class="mobile-btn">+</div>
+
+<div *ngIf="nutritions.length > 0 && isLoaded">
 
 <div *ngIf="isLoaded" id="divForTable" class="tableFixHead">
   <table style="width:80vw;" id="user-nutritions">
