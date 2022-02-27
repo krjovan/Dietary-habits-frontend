@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   currentPassword = '';
   newPassword = '';
   confirmationPassword = '';
+  isLoaded: Boolean = false;
 
   constructor(private auth: AuthenticationService, private toastr: ToastrService) {}
 
@@ -22,8 +23,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserDetails() {
+    this.isLoaded = false;
     this.auth.profile().subscribe(user => {
       this.details = user;
+      this.isLoaded = true;
     }, (err) => {
       console.error(err);
     });
