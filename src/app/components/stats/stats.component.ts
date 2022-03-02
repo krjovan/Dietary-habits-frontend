@@ -92,16 +92,16 @@ export class StatsComponent implements OnInit {
         }
       ]
     };
-    var pieChartMacro = {};
-    pieChartMacro = new CanvasJS.Chart('pie-chart', chartOptions);
-    pieChartMacro["options"].data[0].dataPoints = [];
+    var pieNutritionFood = {};
+    pieNutritionFood = new CanvasJS.Chart('pie-chart', chartOptions);
+    pieNutritionFood["options"].data[0].dataPoints = [];
     for (let i = 0; i < e.dataPoint.nutritions.length; i++) {
       const name = e.dataPoint.nutritions[i].nutrition["name"];
       const value = e.dataPoint.nutritions[i].quantity * e.dataPoint.nutritions[i].nutrition[e.dataPoint.key];
       if(value !== 0)
-      pieChartMacro["options"].data[0].dataPoints.push({y: value, name: name});
+        pieNutritionFood["options"].data[0].dataPoints.push({y: value, name: name});
     }
-    pieChartMacro['render']();
+    pieNutritionFood['render']();
     document.getElementById('myDiv').innerHTML = e.dataPoint.label.toString() + " from food";
     document.getElementById('myContainer').style.backgroundColor = e.dataPoint.color;
   }
@@ -284,9 +284,8 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     this.driService.getUserActiveDris()
       .subscribe(dris => {
-        this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
         Object.assign(this.dri, dris[0]);
-        this.updateCharts();
+        this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
       });
   }
 

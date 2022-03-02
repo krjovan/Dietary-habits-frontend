@@ -11,12 +11,10 @@
 
 <div *ngIf="!isLoaded" class="loader"></div>
 
-<h3 style="margin-bottom: 120vh;" class="w3-center w3-padding" *ngIf="nutritions.length == 0 && isLoaded">No data for this date</h3>
+<h3 style="margin-bottom: 120vh;" class="w3-center w3-padding w3-animate-opacity" *ngIf="nutritions.length == 0 && isLoaded">No data for this date</h3>
 
-<div *ngIf="nutritions.length > 0 && isLoaded">
-
-<div *ngIf="isLoaded" id="divForTable" class="tableFixHead">
-  <table style="width:80vw;" id="user-nutritions">
+<div *ngIf="isLoaded && nutritions.length > 0" id="divForTable" class="tableFixHead w3-animate-opacity">
+  <table>
   <thead>
     <tr class="w3-blue">
       <th class="w3-center"><div style="width: 200px;">Food</div></th>
@@ -153,8 +151,4 @@
     </tr>
 	</tfoot>
   </table>
-
-</div>
-<div style="margin-bottom: 4vw;"></div>
-
 </div>

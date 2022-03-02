@@ -150,7 +150,7 @@
 <div *ngIf="!isLoaded" class="loader"></div>
 
 
-<div *ngIf="isLoaded" class="w3-padding" style="overflow: auto;">
+<div *ngIf="isLoaded" class="w3-padding w3-animate-opacity" style="overflow: auto;">
   <table class="divForTable" style="width:80vw;">
     <thead>
       <tr class="w3-blue">
@@ -167,13 +167,13 @@
       </td>
       <td class="w3-center">
         <div class="w3-center">
-          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(2, nutrition)" class="w3-blue">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(2, nutrition)" class="w3-btn w3-blue">
             <i class="fa fa-edit"> Update</i>
           </button>
         </div>
         <div style="padding-top: 4px;"></div>
         <div class="w3-center">
-          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(3, nutrition)" class="w3-red">
+          <button style="font-family : inherit; width: 100px; height: 40px;" (click)="selectNutrition(3, nutrition)" class="w3-btn w3-red">
             <i class="fa fa-trash"> Delete</i>
           </button>
         </div>
