@@ -5,3 +5,7 @@
 .g-recaptcha {
   display: inline-block;
 }
+
+#resend-verification {
+  display: none;
+}

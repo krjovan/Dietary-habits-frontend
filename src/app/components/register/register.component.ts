@@ -51,9 +51,10 @@ export class RegisterComponent implements OnInit {
     }
     if (this.credentials.password === this.confirmationPassword) {
       this.credentials.name = this.firstName + ' ' + this.lastName;
-      this.auth.register(this.credentials).subscribe(() => {
-		this.toastr.success('You successfully made an account!', 'Welcome ' + this.auth.getUserDetails().name);
-        this.router.navigateByUrl('/my-diet');
+      this.auth.register(this.credentials).subscribe(res => {
+        document.getElementById("register-form").style.display = 'none';
+        document.getElementById("resend-verification").style.display = 'block';
+        document.getElementById("resend-verification").innerHTML = res.message;
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
