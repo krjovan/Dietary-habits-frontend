@@ -1,17 +1,19 @@
 <div style="display: flex; align-items: center; justify-content: center;" class="w3-padding">
-  <a class="desktop-button" style="cursor: pointer;" routerLink="/search-add"> <button class="w3-btn w3-green"><i class="fa fa-cutlery"></i> Add food</button></a>
-  <div style="margin-left: 2pt; margin-right: 2pt;">Date</div>
   <div>
     <input type="date" [ngModel] ="dateOfConsumption | date:'yyyy-MM-dd'" (ngModelChange)="onDateChange($event)">
   </div>
 </div>
 
 <!--Fixed mobile button-->
-<div routerLink="/search-add" class="mobile-btn">+</div>
+<div (click)="openAddForm()" class="mobile-btn">+</div>
 
 <div *ngIf="!isLoaded" class="loader"></div>
 
-<h3 style="margin-bottom: 120vh;" class="w3-center w3-padding w3-animate-opacity" *ngIf="nutritions.length == 0 && isLoaded">No data for this date</h3>
+<div style="margin-top: 20vh; margin-bottom: 70vh;" class="w3-center w3-padding w3-animate-opacity" *ngIf="nutritions.length == 0 && isLoaded">
+  <h3>No data for this date</h3>
+  <h5><button class="w3-btn w3-green w3-round-xxlarge" (click)="openAddForm()">
+    <i class="fa fa-plus" aria-hidden="true"></i> Add food</button></h5>
+</div>
 
 <div *ngIf="isLoaded && nutritions.length > 0" id="divForTable" class="tableFixHead w3-animate-opacity">
   <table>
@@ -19,7 +21,10 @@
     <tr class="w3-blue">
       <th class="w3-center"><div style="width: 200px;">Food</div></th>
       <th class="w3-center">Quantity (g)</th>
-      <th class="w3-center">Action</th>
+      <th class="w3-center">Action
+          <button class="w3-btn w3-green desktop-button" (click)="openAddForm()">
+              <i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+      </th>
 
       <th class="w3-center">Calories</th>
       <th class="w3-center">Carbohydrate (g)</th>
@@ -151,4 +156,19 @@
     </tr>
 	</tfoot>
   </table>
+</div>
+
+
+<div class="w3-container w3-center">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-blue">
+        <span (click)="closedAddFoodDialog()" onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <h2>Search food</h2>
+      </header>
+      <div class="w3-container">
+        <app-search-and-add-nutrition></app-search-and-add-nutrition>
+      </div>
+    </div>
+  </div>
 </div>

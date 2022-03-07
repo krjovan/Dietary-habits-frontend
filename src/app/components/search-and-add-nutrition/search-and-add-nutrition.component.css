@@ -1,32 +1,7 @@
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid rgb(46, 143, 235);
-  border-bottom: 16px solid blue;
-  width: 120px;
-  height: 120px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20%;
-  margin-bottom: 20%;
-  -webkit-animation: spin 1s linear infinite;
-  animation: spin 1s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 .column {
   float: left;
-  width: 24%;
-  margin: 3pt;
+  width: 23%;
+  margin: 1%;
 }
 
 /* Clear floats after the columns */
@@ -36,6 +11,10 @@
   clear: both;
 }
 
+.scrollable-text {
+  overflow: auto;
+  height: 15vh;
+}
 
 .search-containter button {
   float: right;
@@ -48,115 +27,37 @@
   cursor: pointer;
 }
 
-
-
-
-
-
-/* Float cancel and delete buttons and add an equal width */
-.cancelbtn, .deletebtn {
-  float: left;
-  width: 50%;
+/*Scrollbar design - start*/
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
 }
 
-/* Add a color to the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  opacity: 0.9;
-  background-color: #ccc;
-  color: black;
-  cursor: pointer;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.cancelbtn:hover {
-  opacity: 1;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
 }
 
-/* Add a color to the delete button */
-.deletebtn {
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  opacity: 0.9;
-  background-color: #f44336;
-  cursor: pointer;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
+/*Scrollbar design - end*/
 
-.deletebtn:hover {
-  opacity: 1;
-}
-
-/* Add padding and center-align text to the container */
-.container {
-  padding: 16px;
-  text-align: center;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #ddd;
-  padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* Style the horizontal ruler */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* The Modal Close Button (x) */
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.close:hover,
-.close:focus {
-  color: #f44336;
-  cursor: pointer;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and delete button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .deletebtn {
-     width: 100%;
-  }
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .column {
     width: 97%;
     display: block;
     margin-bottom: 10px;
+  }
+
+  .scrollable-text {
+    overflow: visible;
+    height: auto;
   }
 }

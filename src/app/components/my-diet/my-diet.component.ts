@@ -88,6 +88,15 @@ export class MyDietComponent implements OnInit {
     });
   }
 
+  openAddForm() {
+    document.getElementById('id01').style.display = 'block';
+  }
+
+  closedAddFoodDialog() {
+    document.getElementById('id01').style.display='none';
+    this.onDateChange(this.dateOfConsumption.toISOString().split('T')[0]);
+  }
+
   ngOnInit(): void {
     this.driService.getUserActiveDris()
       .subscribe(dris => {
