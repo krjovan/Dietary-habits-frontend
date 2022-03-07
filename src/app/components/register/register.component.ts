@@ -51,10 +51,10 @@ export class RegisterComponent implements OnInit {
     }
     if (this.credentials.password === this.confirmationPassword) {
       this.credentials.name = this.firstName + ' ' + this.lastName;
+      document.getElementById("register-btn").innerHTML = "<i class='fa fa-circle-o-notch fa-spin' style='margin-right: 8px;'></i>Registering";
       this.auth.register(this.credentials).subscribe(res => {
         document.getElementById("register-form").style.display = 'none';
         document.getElementById("resend-verification").style.display = 'block';
-        document.getElementById("resend-verification").innerHTML = res.message;
       }, (err) => {
         this.toastr.error(err.error.message, 'Error');
       });
@@ -62,6 +62,10 @@ export class RegisterComponent implements OnInit {
       this.toastr.error('Password and Confirmation password do not match!', 'Error');
     }
 
+  }
+
+  resend() {
+    console.log(this.credentials.email);
   }
 
 }

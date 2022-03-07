@@ -55,13 +55,19 @@
         <re-captcha class="g-recaptcha" required id="recaptcha" name="recaptcha" (resolved)="resolved($event)"></re-captcha>
       </div>
         <p class="w3-center">
-          <button [disabled]="!formControl.valid" (click)="register()" class="w3-btn w3-blue">Register</button>
+          <button id="register-btn" [disabled]="!formControl.valid" (click)="register()" class="w3-btn w3-blue">Register</button>
         </p>
       </form>
     </div>
   </div>
 
 
-  <div id="resend-verification" class="w3-center w3-padding" style="margin:0 auto; max-width: 600px;">
-
-  </div>
+<div id="resend-verification" class="w3-center w3-padding-64 w3-animate-opacity" style="margin:0 auto; max-width: 600px;">
+  <p>A verification email has been sent to: <b>{{credentials.email}}</b><br>
+    If the email is not in your Inbox section, check for it in the Spam sections. If you have not recevied
+    a verification mail, click on the button below to resend a new one.
+  </p>
+  <button class="w3-btn w3-blue" (click)="resend()">Resend verification email</button>
+  <p>
+  </p>
+</div>
