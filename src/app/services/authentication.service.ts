@@ -136,6 +136,10 @@ export class AuthenticationService {
     return this.http.put(this.BACKEND_URL_USERS + '/update/' + user._id, user ,httpOptions);
   }
 
+  public resendVerificationEmail(req): Observable<any> {
+    return this.http.post(this.BACKEND_URL_USERS + '/resend-verification-email', req, httpOptions);
+  }
+
   public verifyRecaptcha(responseFromClientSide): Observable<any> {
     responseFromClientSide.secret = environment.recaptcha.secreatKey;
     return this.http.post(this.BACKEND_URL_USERS + '/verifyRecaptcha', responseFromClientSide);

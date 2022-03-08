@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   lastName: '';
   confirmationPassword: '';
   isRecaptchaValid = false;
+  resendVerifEmailCount = 0;
 
   credentials: TokenPayload = {
     name:'',
@@ -66,6 +67,21 @@ export class RegisterComponent implements OnInit {
 
   resend() {
     console.log(this.credentials.email);
+    console.log(this.resendVerifEmailCount);
+    if (this.resendVerifEmailCount < 5) {
+      var req = {
+        email: this.credentials.email
+      }
+      this.auth.resendVerificationEmail(req).subscribe(res => {
+        this.resendVerifEmailCount++;
+        this.toastr.success('Resent verification email to: ' + this.credentials.email, 'Success');
+      }, (err) => {
+        this.toastr.error(err.error.message, 'Error');
+      });
+    } else {
+      this.toastr.error('Already sent 5 (five) verification emails. Cannot send more.', 'Error');
+    }
+
   }
 
 }
