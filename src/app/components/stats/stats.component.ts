@@ -138,7 +138,7 @@ export class StatsComponent implements OnInit {
           { label: "Proteins", y: this.sumNutritions.protein_g / this.dri.protein_g * 100, color:this.colors["protein_g"], key: "protein_g", nutritions: this.nutritions },
           { label: "Fiber", y: this.sumNutritions.fiber_g / this.dri.fiber_g * 100, color:this.colors["fiber_g"], key: "fiber_g", nutritions: this.nutritions },
           { label: "Carbohydrates", y: this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100, color:this.colors["carbohydrate_g"], key: "carbohydrate_g", nutritions: this.nutritions },
-          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"], key: "calories", nutritions: this.nutritions }
+          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"], key: "calories", nutritions: this.nutritions, indexLabel: "{y}"}
         ]
       },
       {

@@ -66,8 +66,6 @@ export class RegisterComponent implements OnInit {
   }
 
   resend() {
-    console.log(this.credentials.email);
-    console.log(this.resendVerifEmailCount);
     if (this.resendVerifEmailCount < 5) {
       var req = {
         email: this.credentials.email
@@ -81,7 +79,5 @@ export class RegisterComponent implements OnInit {
     } else {
       this.toastr.error('Already sent 5 (five) verification emails. Cannot send more.', 'Error');
     }
-
   }
-
 }
