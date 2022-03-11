@@ -86,6 +86,8 @@ export class StatsComponent implements OnInit {
         {
           type: "pie",
           indexLabelPlacement: "inside",
+          indexLabelFontWeight: "bold",
+          indexLabelFontColor: "white",
           indexLabel: "#percent%",
           showInLegend: true,
           dataPoints: []
@@ -128,6 +130,11 @@ export class StatsComponent implements OnInit {
       data: [{
         type: "bar",
         click: this.onClick,
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bold",
+        indexLabelFormatter: function(e){
+          return  e.dataPoint.y.toFixed(2) + "%";
+        },
         dataPoints: [
           { label: "Water", y: this.sumNutritions.water_g / this.dri.water_g * 100, color:this.colors["water_g"], key: "water_g", nutritions: this.nutritions },
           { label: "Sugar", y: this.sumNutritions.sugars_g / this.dri.sugars_g * 100, color:this.colors["sugars_g"], key: "sugars_g", nutritions: this.nutritions },
@@ -138,7 +145,7 @@ export class StatsComponent implements OnInit {
           { label: "Proteins", y: this.sumNutritions.protein_g / this.dri.protein_g * 100, color:this.colors["protein_g"], key: "protein_g", nutritions: this.nutritions },
           { label: "Fiber", y: this.sumNutritions.fiber_g / this.dri.fiber_g * 100, color:this.colors["fiber_g"], key: "fiber_g", nutritions: this.nutritions },
           { label: "Carbohydrates", y: this.sumNutritions.carbohydrate_g / this.dri.carbohydrate_g * 100, color:this.colors["carbohydrate_g"], key: "carbohydrate_g", nutritions: this.nutritions },
-          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"], key: "calories", nutritions: this.nutritions, indexLabel: "{y}"}
+          { label: "Calories", y: this.sumNutritions.calories / this.dri.calories * 100, color:this.colors["calories"], key: "calories", nutritions: this.nutritions}
         ]
       },
       {
@@ -183,6 +190,11 @@ export class StatsComponent implements OnInit {
       data: [{
         type: "bar",
         click: this.onClick,
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bold",
+        indexLabelFormatter: function(e){
+          return  e.dataPoint.y.toFixed(2) + "%";
+        },
         dataPoints: [
           { label: "Vitamin K", y: this.sumNutritions.vitamin_k_mcg / this.dri.vitamin_k_mcg * 100, color:this.colors["vitamin_k_mcg"], key: "vitamin_k_mcg", nutritions: this.nutritions },
           { label: "Vitamin E", y: this.sumNutritions.vitamin_e_mg / this.dri.vitamin_e_mg * 100, color:this.colors["vitamin_e_mg"], key: "vitamin_e_mg", nutritions: this.nutritions },
@@ -244,7 +256,11 @@ export class StatsComponent implements OnInit {
       data: [{
         type: "bar",
         click: this.onClick,
-        yValueFormatString:"#.00",
+        indexLabelPlacement: "inside",
+        indexLabelFontWeight: "bold",
+        indexLabelFormatter: function(e){
+          return  e.dataPoint.y.toFixed(2) + "%";
+        },
         dataPoints: [
           { label: "Zink", y: this.sumNutritions.zink_mg / this.dri.zink_mg * 100, color:this.colors["zink_mg"], key: "zink_mg", nutritions: this.nutritions},
           { label: "Sodium", y: this.sumNutritions.sodium_mg / this.dri.sodium_mg * 100, color:this.colors["sodium_mg"], key: "sodium_mg", nutritions: this.nutritions},
