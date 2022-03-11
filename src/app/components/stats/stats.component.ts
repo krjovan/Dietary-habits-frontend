@@ -80,8 +80,12 @@ export class StatsComponent implements OnInit {
 
   onClick(e) {
     document.getElementById('id01').style.display = 'block';
+    console.log(e);
     var chartOptions = {
       animationEnabled: true,
+      toolTip:{
+        content: "{name}"
+      },
       data: [
         {
           type: "pie",
@@ -106,6 +110,7 @@ export class StatsComponent implements OnInit {
     pieNutritionFood['render']();
     document.getElementById('myDiv').innerHTML = e.dataPoint.label.toString() + " from food";
     document.getElementById('myContainer').style.backgroundColor = e.dataPoint.color;
+    document.getElementById('percentage').innerHTML = "Total <span style='color:"+ e.dataPoint.color + "'>" + e.dataPoint.y.toFixed(2) + "%</span> of DRI";
   }
 
   updateCharts() {
@@ -122,10 +127,10 @@ export class StatsComponent implements OnInit {
       axisY: {
         viewportMinimum: 0,
         viewportMaximum: 150,
-        valueFormatString:  "#' %'"
+        valueFormatString:  "#'%'"
       },
       toolTip:{
-        enabled: false,
+        enabled: false
       },
       data: [{
         type: "bar",
@@ -151,7 +156,7 @@ export class StatsComponent implements OnInit {
       {
         type: "error",
         name: "Healthy range",
-        color: "black",
+        color: "grey",
         dataPoints: [
           { y: [100, this.dri.water_g_max / this.dri.water_g * 100], label: "Water" },
           { y: [100, this.dri.sugars_g_max / this.dri.sugars_g * 100], label: "Sugar" },
@@ -182,7 +187,7 @@ export class StatsComponent implements OnInit {
       axisY: {
         viewportMinimum: 0,
         viewportMaximum: 150,
-        valueFormatString:  "#' %'"
+        valueFormatString:  "#'%'"
       },
       toolTip: {
         enabled: false
@@ -214,7 +219,7 @@ export class StatsComponent implements OnInit {
       {
         type: "error",
         name: "Healthy range",
-        color: "black",
+        color: "grey",
         dataPoints: [
           { y: [100, this.dri.vitamin_k_mcg_max / this.dri.vitamin_k_mcg * 100], label: "Vitamin K" },
           { y: [100, this.dri.vitamin_e_mg_max / this.dri.vitamin_e_mg * 100], label: "Vitamin E" },
@@ -248,7 +253,7 @@ export class StatsComponent implements OnInit {
       axisY: {
         viewportMinimum: 0,
         viewportMaximum: 150,
-        valueFormatString:  "#' %'"
+        valueFormatString:  "#'%'"
       },
       toolTip: {
         enabled: false
@@ -277,8 +282,7 @@ export class StatsComponent implements OnInit {
       {
         type: "error",
         name: "Healthy",
-        color: "black",
-        yValueFormatString:"#.00",
+        color: "grey",
         dataPoints: [
           { y: [100, this.dri.zink_mg_max / this.dri.zink_mg * 100], label: "Zink" },
           { y: [100, this.dri.sodium_mg_max / this.dri.sodium_mg * 100], label: "Sodium" },
