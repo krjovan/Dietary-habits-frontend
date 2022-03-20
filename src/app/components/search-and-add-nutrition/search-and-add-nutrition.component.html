@@ -9,6 +9,7 @@
   <form style="max-width: 200px; margin: auto;" #formControlSearch="ngForm">
     <input style="max-width: 150px; margin: 0; float: left;" [(ngModel)]="search" class="w3-input" required minlength="2" type="text" placeholder="Search by name" name="search">
     <button [disabled]="!formControlSearch.valid" (click)="getNutritions()" class="w3-button">
+      <!--To do this-->
       <i class="fa fa-search"></i>
     </button>
   </form>
