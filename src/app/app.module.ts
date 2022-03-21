@@ -22,6 +22,9 @@ import { SearchAndAddNutritionComponent } from './components/search-and-add-nutr
 import { MyDietComponent } from './components/my-diet/my-diet.component';
 import { MyDriComponent } from './components/my-dri/my-dri.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { CreateFoodComponent } from './components/create-food/create-food.component';
+import { SimpleFoodCreationComponent } from './components/simple-food-creation/simple-food-creation.component';
+import { CompositeFoodCreationComponent } from './components/composite-food-creation/composite-food-creation.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +37,7 @@ const routes: Routes = [
   { path: 'my-diet', component: MyDietComponent, canActivate: [AuthGuardService] },
   { path: 'my-dri', component: MyDriComponent, canActivate: [AuthGuardService] },
   { path: 'stats', component: StatsComponent, canActivate: [AuthGuardService] },
+  { path: 'create-food', component: CreateFoodComponent, canActivate: [AuthGuardService] },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -49,7 +53,10 @@ const routes: Routes = [
     SearchAndAddNutritionComponent,
     MyDietComponent,
     MyDriComponent,
-    StatsComponent
+    StatsComponent,
+    CreateFoodComponent,
+    SimpleFoodCreationComponent,
+    CompositeFoodCreationComponent
   ],
   imports: [
     BrowserModule,

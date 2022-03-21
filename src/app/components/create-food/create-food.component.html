@@ -1,0 +1,16 @@
+<h3 class="w3-center">Create new food</h3>
+
+<div class="w3-padding">
+    <div class="tab">
+        <button id="simpleBtn" class="tablinks" (click)="openTab('simple')">Simple food</button>
+        <button id="compositeBtn" class="tablinks" (click)="openTab('composite')">Composite food</button>
+    </div>
+</div>
+
+<div id="simple" class="tabcontent">
+    <app-simple-food-creation></app-simple-food-creation>
+</div>
+
+<div id="composite" class="tabcontent">
+    <app-composite-food-creation></app-composite-food-creation>
+</div>

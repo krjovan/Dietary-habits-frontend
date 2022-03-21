@@ -10,6 +10,7 @@
   <a *ngIf="auth.isLoggedIn()" (click)="collapse()" routerLink="/my-diet"><i class="fa fa-cutlery"></i> My diet</a>
   <a *ngIf="auth.isLoggedIn()" (click)="collapse()" routerLink="/my-dri"><i class="fa fa-dot-circle-o"></i> My DRI</a>
   <a *ngIf="auth.isLoggedIn()" (click)="collapse()" routerLink="/stats"><i class="fa fa-bar-chart"></i> Stats</a>
+  <a *ngIf="auth.isLoggedIn()" (click)="collapse()" routerLink="/create-food"><i class="fa fa-plus"></i> Create food</a>
   <a *ngIf="auth.isLoggedIn()" (click)="collapse()" routerLink="/profile"><i class="fa fa-user"></i> My profile</a>
   <a *ngIf="auth.isLoggedIn()" (click)="collapse()" (click)="auth.logout()" id="logout"><i class="fa fa-sign-out"></i> Logout</a>
   <a style="font-size:15px;" class="icon" (click)="myFunction()">
