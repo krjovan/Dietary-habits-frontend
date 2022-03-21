@@ -43,7 +43,8 @@ export class MyDietComponent implements OnInit {
         this.nutritions = nutritions;
         this.calculateSum(nutritions);
         this.isLoaded = true;
-        this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
+        if (nutritions.length > 0)
+          this.toastr.success('Found ' + nutritions.length + ' nutrition/s', 'Success');
       });
   }
 
