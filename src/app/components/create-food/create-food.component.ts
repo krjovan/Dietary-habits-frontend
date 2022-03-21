@@ -25,6 +25,6 @@ export class CreateFoodComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    document.getElementById("simpleBtn").click();
   }
 }
