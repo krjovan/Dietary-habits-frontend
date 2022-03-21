@@ -6,11 +6,15 @@
 </div>
 
 <div style="display: flex; align-items: center; justify-content: center;" class="w3-padding">
-  <form style="max-width: 200px; margin: auto;" #formControlSearch="ngForm">
+  <form style="max-width: 250px; margin: auto;" #formControlSearch="ngForm">
     <input style="max-width: 150px; margin: 0; float: left;" [(ngModel)]="search" class="w3-input" required minlength="2" type="text" placeholder="Search by name" name="search">
     <button [disabled]="!formControlSearch.valid" (click)="getNutritions()" class="w3-button">
       <i class="fa fa-search"></i>
     </button>
+    <div  class="tooltip">
+      <i style="margin-left: 5pt; font-size: 13pt;" class="fa fa-info-circle"></i>
+      <span class="tooltiptext">Enter at least 2 characters. Resulting food contains all words (divided by spaces) in its name.</span>
+    </div>
   </form>
 </div>
 
