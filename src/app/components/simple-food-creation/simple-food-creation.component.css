@@ -1,0 +1,9 @@
+p {
+    width: 500px;
+}
+
+@media screen and (max-width: 700px) {
+    p {
+        width: 90vw;
+    }
+}
