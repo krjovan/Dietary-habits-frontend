@@ -1,38 +1,98 @@
 <div class="siva">
-    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+    <header class="w3-display-container w3-content" style="line-height: 1; max-width:1500px;" id="home">
         <img class="w3-image" src="../../../assets/bg.jpg" alt="Food table" width="1500" height="800">
-        <div style="background-color: white; opacity: 0.8;" class="w3-display-middle w3-center">
+        <div style="background-color: rgba(255,255,255, 0.8);" class="w3-display-middle w3-center">
           <h1 style="font-size:8vw;"><b>Dietary habits</b></h1>
+          <p><button class="w3-btn w3-blue" routerLink="/register">Sign up</button></p>
         </div>
       </header>
 </div>
 
-<div class="w3-row-padding w3-padding-64 w3-container">
+<div class="w3-padding-16 w3-container">
   <div class="w3-content">
-    <div class="w3-twothird">
-      <h1>Nutrition</h1>
-      <h5 class="w3-padding-32">Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It includes ingestion, absorption, assimilation, biosynthesis, catabolism and excretion. The science that studies the physiological process of nutrition is called nutritional science (also nutrition science).</h5>
+      <h2>Track what you eat</h2>
+      <h5 class="w3-padding-16">
+        The <b>Dietary habits app</b> allows you to input all of the food you ate (or are going to eat) and show you the nutritional gain from it, in detail.
+        Our database has 8000+ foods and it is constantly growing thanks to user inputs. Every food is broken down into 3 segments:
+      </h5>
 
+      <div class="row">
+        <div class="column" style="background-color:rgb(107, 163, 228);">
+          <h2>Macronutrients</h2>
+          <div>
+            <ul style="line-height: 1.2;">
+              <li>Calories</li>
+              <li>Carbohydrate</li>
+              <li>Fiber</li>
+              <li>Protein</li>
+              <li>Total fat</li>
+              <li>Saturated fat</li>
+              <li>Fatty acids total trans</li>
+              <li>Cholesterol</li>
+              <li>Sugars</li>
+              <li>Water</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column" style="background-color:rgb(125, 174, 230);">
+          <h2>Vitamins</h2>
+          <div>
+            <ul style="line-height: 1.2;">
+              <li>Vitamin A RAE </li>
+              <li>Thiamin - B1</li>
+              <li>Riboflavin - B2</li>
+              <li>Niacin - B3</li>
+              <li>Pantothenic acid - B5</li>
+              <li>Vitamin B6</li>
+              <li>Folate - B9 </li>
+              <li>Vitamin B12 </li>
+              <li>Choline</li>
+              <li>Vitamin C</li>
+              <li>Vitamin D</li>
+              <li>Vitamin E</li>
+              <li>Vitamin K </li>
+            </ul>
+          </div>
+        </div>
+        <div class="column" style="background-color:rgb(138, 182, 233);">
+          <h2>Minerals</h2>
+          <div>
+            <ul style="line-height: 1.2;">
+              <li>Calcium</li>
+              <li>Copper</li>
+              <li>Iron</li>
+              <li>Magnesium</li>
+              <li>Manganese</li>
+              <li>Phosphorous</li>
+              <li>Potassium</li>
+              <li>Selenium </li>
+              <li>Sodium</li>
+              <li>Zink</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <p class="w3-text-grey">Nutrients are substances used by an organism to survive, grow, and reproduce. The seven major classes of relevant nutrients for animals (including humans) are carbohydrates, dietary fiber, fats, proteins, minerals, vitamins, and water. Nutrients can be grouped as either macronutrients (carbohydrates, dietary fiber, fats, proteins, and water needed in gram quantities) or micronutrients (vitamins and minerals needed in milligram or microgram quantities).</p>
-    </div>
-
-    <div class="w3-third w3-center">
-      <i style="font-size:200px" class="fa fa-heartbeat w3-padding-64 w3-text-red"></i>
-    </div>
   </div>
 </div>
 
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+<div class="w3-light-grey w3-padding-16 w3-container">
   <div class="w3-content">
-    <div class="w3-third w3-center">
-      <i style="font-size:200px" class="fa fa-cutlery w3-padding-64 w3-text-black w3-margin-right"></i>
-    </div>
+    <h2>Custom DRI</h2>
+    <h5 class="w3-padding-16">The <b>Dietary habits app</b> allows you to adjust the Dietary Reference Intake (DRI) based on your preferences.
+    You can set the minimal DRI you want to accomplish in any of the aforementioned nutritions as well as the maximum or Upper Intake (UI) values.
+    Also, you can create multiple DRI presets and easily switch between them.</h5>
+  </div>
+</div>
 
-    <div class="w3-twothird">
-      <h1>Nutrition</h1>
-      <h5 class="w3-padding-32">Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It includes ingestion, absorption, assimilation, biosynthesis, catabolism and excretion. The science that studies the physiological process of nutrition is called nutritional science.</h5>
-
-      <p class="w3-text-grey">Nutrients are substances used by an organism to survive, grow, and reproduce. The seven major classes of relevant nutrients for animals (including humans) are carbohydrates, dietary fiber, fats, proteins, minerals, vitamins, and water. Nutrients can be grouped as either macronutrients (carbohydrates, dietary fiber, fats, proteins, and water needed in gram quantities) or micronutrients (vitamins and minerals needed in milligram or microgram quantities).</p>
-    </div>
+<div class="w3-padding-16 w3-container">
+  <div class="w3-content">
+    <h2>Analytics</h2>
+    <h5 class="w3-padding-16">The <b>Dietary habits app</b> analytics section shows you in a graphic way how you are doing in regards to all of the 
+    nutrition values. This is based on the set DRI values and shows daily intakes as well as per certain nutrition from foods.</h5>
+  </div>
+  <div class="w3-center">
+    <h3>If you haven't already, sign up</h3>
+    <p><button class="w3-btn w3-blue" routerLink="/register">Sign up</button></p>
   </div>
 </div>
