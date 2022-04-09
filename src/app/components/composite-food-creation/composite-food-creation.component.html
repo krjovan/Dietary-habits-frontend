@@ -1,1 +1,51 @@
-<h3 class="w3-center">Composite food creation coming soon!</h3>
+<div class="w3-container w3-center">
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container w3-blue">
+                <span onclick="document.getElementById('id01').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Search food</h2>
+            </header>
+            <div class="w3-container">
+                <div style="display: flex; align-items: center; justify-content: center;" class="w3-padding">
+                    <form style="max-width: 250px; margin: auto;" #formControlSearch="ngForm">
+                        <input style="max-width: 150px; margin: 0; float: left;" [(ngModel)]="search" class="w3-input"
+                            required minlength="2" type="text" placeholder="Search by name" name="search">
+                        <button [disabled]="!formControlSearch.valid" (click)="getNutritions()" class="w3-button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <div class="tooltip">
+                            <i style="margin-left: 5pt; font-size: 13pt;" class="fa fa-info-circle"></i>
+                            <span class="tooltiptext">Enter at least 2 characters. Resulting food contains all words
+                                (divided by spaces)
+                                in its name.</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="!isLoaded" class="loader"></div>
+
+                <div *ngIf="isLoaded">
+                    <div class="row">
+                        <div class="column w3-card w3-hover-blue" *ngFor="let nutrition of nutritions">
+                            <p class="scrollable-text w3-padding" style="text-align: center;">{{nutrition.name}}</p>
+                            <div class="w3-center">
+                                <label style="margin-right:5px;">Quantity</label>
+                                <input attr.id="{{nutrition._id}}" type="number" style="width: 50pt;">
+                                <label style="margin-left:5px;">(g)</label>
+                            </div>
+                            <div class="w3-center w3-padding">
+                                <button style="margin-right: 5pt" class="w3-button w3-green"
+                                    (click)="addIngredient(nutrition._id)">
+                                    Add <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div (click)="openAddForm()"><button class="w3-btn w3-green">Add</button></div>
