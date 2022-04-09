@@ -1,0 +1,133 @@
+.column {
+    float: left;
+    width: 23%;
+    margin: 1%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.scrollable-text {
+    overflow: auto;
+    height: 15vh;
+}
+
+
+/*Tooltip*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*Tooltip-end*/
+
+/*Scrollbar design - start*/
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*table*/
+#divForTable {
+    margin: 0 auto;
+    margin-bottom: 4vw;
+    overflow: auto;
+    max-height: 60vh;
+    width: 95vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+thead,
+tfoot {
+    position: sticky;
+    background-color: #000;
+    color: #fff;
+}
+
+thead {
+    top: 0;
+}
+
+tfoot {
+    bottom: 0;
+}
+
+tr:hover {
+    background-color: #bdf79c;
+}
+
+tr:nth-child(even):hover {
+    background-color: #bdf79c;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px 16px;
+}
+
+thead {
+    background: #2196F3;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+/*table-end*/
+
+/*Scrollbar design - end*/
+@media screen and (max-width: 900px) {
+    .column {
+        width: 97%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .scrollable-text {
+        overflow: visible;
+        height: auto;
+    }
+}

@@ -36,7 +36,7 @@
                             </div>
                             <div class="w3-center w3-padding">
                                 <button style="margin-right: 5pt" class="w3-button w3-green"
-                                    (click)="addIngredient(nutrition._id)">
+                                    (click)="addIngredient(nutrition)">
                                     Add <i class="fa fa-check"></i>
                                 </button>
                             </div>
@@ -48,4 +48,42 @@
     </div>
 </div>
 
-<div (click)="openAddForm()"><button class="w3-btn w3-green">Add</button></div>
+<div id="divForTable" class="w3-animate-opacity">
+    <table>
+        <thead>
+            <tr class="w3-blue">
+                <th class="w3-center">Name</th>
+                <th class="w3-center">Quantity</th>
+                <th class="w3-center">Action
+                    <button class="w3-btn w3-green" (click)="openAddForm()">
+                        <i class="fa fa-plus" aria-hidden="true"></i></button>
+                </th>
+            </tr>
+        </thead>
+        <tr *ngFor="let ingredient of ingredients">
+            <td class="w3-center">
+                <div>{{ingredient.nutrition.name}}</div>
+            </td>
+            <td class="w3-center">
+                <div>{{ingredient.ingredient_quantity}}</div>
+            </td>
+            <td class="w3-center">
+                <div style="padding-top: 4px;"></div>
+                <div class="w3-center">
+                    <button (click)="removeIngredient(ingredient.nutrition._id)" class="w3-btn w3-red">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="w3-center" style="margin-top: 15vh; margin-bottom: 15vh;" *ngIf="ingredients.length === 0">
+    <h4>No ingredients for now.</h4>
+    <h4>Add some!
+        <button class="w3-btn w3-green" (click)="openAddForm()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </h4>
+</div>
