@@ -37,7 +37,11 @@
     z-index: 1;
     bottom: 100%;
     left: 50%;
-    margin-left: -100px;
+    margin-left: -200px;
+}
+
+.centered-input {
+    margin-left: 30vw;
 }
 
 .tooltip:hover .tooltiptext {
@@ -69,7 +73,7 @@
 /*table*/
 #divForTable {
     margin: 0 auto;
-    margin-bottom: 4vw;
+    margin-bottom: 15px;
     overflow: auto;
     max-height: 60vh;
     width: 95vw;
@@ -129,5 +133,15 @@ tr:nth-child(even) {
     .scrollable-text {
         overflow: visible;
         height: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .centered-input {
+        margin: 0;
+    } 
+
+    .tooltip .tooltiptext {
+        margin-left: -175px;
     }
 }

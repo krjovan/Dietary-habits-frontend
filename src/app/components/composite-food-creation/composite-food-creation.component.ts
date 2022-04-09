@@ -11,6 +11,7 @@ import { NutritionService } from 'src/app/services/nutrition.service';
 export class CompositeFoodCreationComponent implements OnInit {
 
   search = '';
+  compositeName = '';
   nutritions: any [] = [];
   isLoaded: Boolean = true;
   ingredients: any[] = [];
@@ -34,6 +35,7 @@ export class CompositeFoodCreationComponent implements OnInit {
       this.toastr.error('You must enter a proper value for quantity.', 'Error');
     } else {
       this.ingredients.push({nutrition: nutrition, ingredient_quantity: qunatity.value});
+      this.nutritions = [];
       console.table(this.ingredients);
     }
   }
@@ -46,6 +48,11 @@ export class CompositeFoodCreationComponent implements OnInit {
     let indexOfIngredientToBeRemoved = this.ingredients.map((element) => element.nutrition._id).indexOf(id);
     this.ingredients.splice(indexOfIngredientToBeRemoved, 1);
     console.table(this.ingredients);
+  }
+
+  createCompositeFood() {
+    console.log(this.compositeName);
+    console.log(this.ingredients);
   }
 
   ngOnInit(): void {

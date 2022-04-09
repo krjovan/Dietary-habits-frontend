@@ -48,36 +48,55 @@
     </div>
 </div>
 
-<div id="divForTable" class="w3-animate-opacity">
-    <table>
-        <thead>
-            <tr class="w3-blue">
-                <th class="w3-center">Name</th>
-                <th class="w3-center">Quantity</th>
-                <th class="w3-center">Action
-                    <button class="w3-btn w3-green" (click)="openAddForm()">
-                        <i class="fa fa-plus" aria-hidden="true"></i></button>
-                </th>
+<form #formControlName="ngForm">
+
+    <div class="centered-input">
+        <div style="min-width: 200px; max-width: 40vw; display: flex; align-items: center;" class="w3-padding">
+            <input [(ngModel)]="compositeName" class="w3-input" required minlength="5" type="text" placeholder="Composite name" name="compositeName">
+            <div  class="tooltip">
+                <i style="margin-left: 5pt; font-size: 13pt;" class="fa fa-info-circle"></i>
+                <span class="tooltiptext">Enter at least 5 characters.</span>
+            </div>
+        </div>
+    </div>
+      
+    <div *ngIf="ingredients.length > 0" id="divForTable" class="w3-animate-opacity">
+        <table>
+            <thead>
+                <tr class="w3-blue">
+                    <th class="w3-center">Name</th>
+                    <th class="w3-center">Quantity</th>
+                    <th class="w3-center">Action
+                        <button class="w3-btn w3-green" (click)="openAddForm()">
+                            <i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </th>
+                </tr>
+            </thead>
+            <tr *ngFor="let ingredient of ingredients">
+                <td class="w3-center">
+                    <div>{{ingredient.nutrition.name}}</div>
+                </td>
+                <td class="w3-center">
+                    <div>{{ingredient.ingredient_quantity}}</div>
+                </td>
+                <td class="w3-center">
+                    <div style="padding-top: 4px;"></div>
+                    <div class="w3-center">
+                        <button (click)="removeIngredient(ingredient.nutrition._id)" class="w3-btn w3-red">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
             </tr>
-        </thead>
-        <tr *ngFor="let ingredient of ingredients">
-            <td class="w3-center">
-                <div>{{ingredient.nutrition.name}}</div>
-            </td>
-            <td class="w3-center">
-                <div>{{ingredient.ingredient_quantity}}</div>
-            </td>
-            <td class="w3-center">
-                <div style="padding-top: 4px;"></div>
-                <div class="w3-center">
-                    <button (click)="removeIngredient(ingredient.nutrition._id)" class="w3-btn w3-red">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+        </table>
+    </div>
+    <div class="w3-center" style="margin-bottom: 25px;">
+    <button *ngIf="ingredients.length > 0" [disabled]="!formControlName.valid" (click)="createCompositeFood()" class="w3-btn w3-green">
+        <i class="fa fa-plus"></i> Create food
+    </button>
+    </div>
+
+</form>
 
 <div class="w3-center" style="margin-top: 15vh; margin-bottom: 15vh;" *ngIf="ingredients.length === 0">
     <h4>No ingredients for now.</h4>
