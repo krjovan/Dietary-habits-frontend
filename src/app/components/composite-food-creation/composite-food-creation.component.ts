@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Nutrition } from 'src/app/models/nutrition';
+import { SummedUpNutritions } from 'src/app/models/summed-up-nutritions';
 import { NutritionService } from 'src/app/services/nutrition.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class CompositeFoodCreationComponent implements OnInit {
     if(Number(qunatity.value) === 0) {
       this.toastr.error('You must enter a proper value for quantity.', 'Error');
     } else {
-      this.ingredients.push({nutrition: nutrition, ingredient_quantity: qunatity.value});
+      this.ingredients.push({nutrition: nutrition, ingredient_quantity: Number(qunatity.value)});
       this.nutritions = [];
       console.table(this.ingredients);
     }
@@ -53,6 +53,17 @@ export class CompositeFoodCreationComponent implements OnInit {
   createCompositeFood() {
     console.log(this.compositeName);
     console.log(this.ingredients);
+    let calculatedNutritionValues = new SummedUpNutritions();
+    let initialValue: number = 0
+    let sum = this.ingredients.reduce((previousValue, currentValue) => previousValue + currentValue.ingredient_quantity
+      , initialValue);
+
+    let newIngredienst = this.ingredients.map((element) => {return {nutrition: element.nutrition, ingredient_quantity: element.ingredient_quantity / sum}});
+    console.log(sum)
+    console.log(this.ingredients);
+    console.log(newIngredienst);
+
+
   }
 
   ngOnInit(): void {
