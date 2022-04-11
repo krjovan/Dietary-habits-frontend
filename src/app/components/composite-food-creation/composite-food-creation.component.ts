@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { SummedUpNutritions } from 'src/app/models/summed-up-nutritions';
+import { CompositeFoodService } from 'src/app/services/composite-food.service';
 import { NutritionService } from 'src/app/services/nutrition.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class CompositeFoodCreationComponent implements OnInit {
   ingredients: any[] = [];
 
   constructor(private nutritionService: NutritionService,
+    private compositeFoodService: CompositeFoodService,
     private toastr: ToastrService) { }
 
   getNutritions() {
@@ -36,7 +38,6 @@ export class CompositeFoodCreationComponent implements OnInit {
     } else {
       this.ingredients.push({nutrition: nutrition, ingredient_quantity: Number(qunatity.value)});
       this.nutritions = [];
-      console.table(this.ingredients);
     }
   }
 
@@ -47,7 +48,6 @@ export class CompositeFoodCreationComponent implements OnInit {
   removeIngredient(id) {
     let indexOfIngredientToBeRemoved = this.ingredients.map((element) => element.nutrition._id).indexOf(id);
     this.ingredients.splice(indexOfIngredientToBeRemoved, 1);
-    console.table(this.ingredients);
   }
 
   createCompositeFood() {
@@ -58,13 +58,13 @@ export class CompositeFoodCreationComponent implements OnInit {
       , initialValue);
 
     let ingredientRatios = this.ingredients.map((ingredient) => { 
-      return { ingredient_quantity: ingredient.ingredient_quantity / totalQuantity, ingredient_id: ingredient.nutrition._id };
+      return { ingredient_ratio: ingredient.ingredient_quantity / totalQuantity, ingredient_id: ingredient.nutrition._id };
     })
 
     let nutritionKeys = Object.keys(calculatedNutritionValues);
     for (let i = 0; i < this.ingredients.length; i++) {
       nutritionKeys.forEach(key => {
-        calculatedNutritionValues[key] += this.ingredients[i].nutrition[key] * ingredientRatios[i].ingredient_quantity;
+        calculatedNutritionValues[key] += this.ingredients[i].nutrition[key] * ingredientRatios[i].ingredient_ratio;
       });
     }
 
@@ -76,7 +76,12 @@ export class CompositeFoodCreationComponent implements OnInit {
       ingredients: ingredientRatios
     }
 
-    console.log(compositeFood);
+    this.compositeFoodService.addCompositeFood(compositeFood)
+      .subscribe(() => {
+        this.toastr.success('Created "' + this.compositeName + '" composite food!', 'Success');
+      }, (err) => {
+        this.toastr.error(err.message, 'Error');
+      });
   }
 
   ngOnInit(): void {
