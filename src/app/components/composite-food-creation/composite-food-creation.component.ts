@@ -55,16 +55,16 @@ export class CompositeFoodCreationComponent implements OnInit {
     console.log(this.ingredients);
     let calculatedNutritionValues = new SummedUpNutritions();
     let initialValue: number = 0;
-    let sum = this.ingredients.reduce((previousValue, currentValue) => previousValue + currentValue.ingredient_quantity
+
+    let totalQuantity = this.ingredients.reduce((previousValue, currentValue) => previousValue + currentValue.ingredient_quantity
       , initialValue);
 
     let nutritionKeys = Object.keys(calculatedNutritionValues);
-
-    for (let i = 0; i < this.ingredients.length; i++) {
+    this.ingredients.forEach(ingredient => {
       nutritionKeys.forEach(key => {
-        calculatedNutritionValues[key] += this.ingredients[i].nutrition[key] * this.ingredients[i].ingredient_quantity / sum;
+        calculatedNutritionValues[key] += ingredient.nutrition[key] * ingredient.ingredient_quantity / totalQuantity;
       });
-    }
+    });
 
     console.log(calculatedNutritionValues);
   }
