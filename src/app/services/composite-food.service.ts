@@ -11,7 +11,7 @@ export class CompositeFoodService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public addNutrition(compositeFood: any): Observable<any> {
+  public addCompositeFood(compositeFood: any): Observable<any> {
     return this.httpClient.post(this.API_URL + '/add', compositeFood);
   }
 }

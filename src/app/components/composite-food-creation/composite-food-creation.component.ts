@@ -51,22 +51,34 @@ export class CompositeFoodCreationComponent implements OnInit {
   }
 
   createCompositeFood() {
-    console.log(this.compositeName);
-    console.log(this.ingredients);
     let calculatedNutritionValues = new SummedUpNutritions();
     let initialValue: number = 0;
 
     let totalQuantity = this.ingredients.reduce((previousValue, currentValue) => previousValue + currentValue.ingredient_quantity
       , initialValue);
 
-    let nutritionKeys = Object.keys(calculatedNutritionValues);
-    this.ingredients.forEach(ingredient => {
-      nutritionKeys.forEach(key => {
-        calculatedNutritionValues[key] += ingredient.nutrition[key] * ingredient.ingredient_quantity / totalQuantity;
-      });
-    });
+    let ingredientRatios = this.ingredients.map((ingredient) => { 
+      return { ingredient_quantity: ingredient.ingredient_quantity / totalQuantity, ingredient_id: ingredient.nutrition._id };
+    })
 
-    console.log(calculatedNutritionValues);
+    console.log(ingredientRatios);
+
+    let nutritionKeys = Object.keys(calculatedNutritionValues);
+    for (let i = 0; i < this.ingredients.length; i++) {
+      nutritionKeys.forEach(key => {
+        calculatedNutritionValues[key] += this.ingredients[i].nutrition[key] * ingredientRatios[i].ingredient_quantity;
+      });
+    }
+
+    let nutrition = JSON.parse(JSON.stringify(calculatedNutritionValues));
+    nutrition.name = this.compositeName;
+
+    let compositeFood = {
+      calculatedNutrition: nutrition,
+      ingredients: ingredientRatios
+    }
+
+    console.log(compositeFood);
   }
 
   ngOnInit(): void {
