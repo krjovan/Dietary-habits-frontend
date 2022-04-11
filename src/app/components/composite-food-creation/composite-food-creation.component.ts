@@ -61,8 +61,6 @@ export class CompositeFoodCreationComponent implements OnInit {
       return { ingredient_quantity: ingredient.ingredient_quantity / totalQuantity, ingredient_id: ingredient.nutrition._id };
     })
 
-    console.log(ingredientRatios);
-
     let nutritionKeys = Object.keys(calculatedNutritionValues);
     for (let i = 0; i < this.ingredients.length; i++) {
       nutritionKeys.forEach(key => {

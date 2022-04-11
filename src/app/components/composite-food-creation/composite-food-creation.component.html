@@ -91,7 +91,7 @@
         </table>
     </div>
     <div class="w3-center" style="margin-bottom: 25px;">
-    <button *ngIf="ingredients.length > 0" [disabled]="!formControlName.valid" (click)="createCompositeFood()" class="w3-btn w3-green">
+    <button *ngIf="ingredients.length > 1" [disabled]="!formControlName.valid" (click)="createCompositeFood()" class="w3-btn w3-green">
         <i class="fa fa-plus"></i> Create food
     </button>
     </div>
@@ -100,7 +100,7 @@
 
 <div class="w3-center" style="margin-top: 15vh; margin-bottom: 15vh;" *ngIf="ingredients.length === 0">
     <h4>No ingredients for now.</h4>
-    <h4>Add some!
+    <h4>To create composite food you need to add at least 2 ingredients.
         <button class="w3-btn w3-green" (click)="openAddForm()">
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
