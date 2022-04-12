@@ -51,6 +51,7 @@ export class CompositeFoodCreationComponent implements OnInit {
   }
 
   createCompositeFood() {
+    document.getElementById("create-btn").innerHTML = "<i class='fa fa-circle-o-notch fa-spin' style='margin-right: 8px;'></i>Creating";
     let calculatedNutritionValues = new SummedUpNutritions();
     let initialValue: number = 0;
 
@@ -78,8 +79,10 @@ export class CompositeFoodCreationComponent implements OnInit {
 
     this.compositeFoodService.addCompositeFood(compositeFood)
       .subscribe(() => {
+        document.getElementById("create-btn").innerHTML = "<i class='fa fa-plus'></i> Create food";
         this.toastr.success('Created "' + this.compositeName + '" composite food!', 'Success');
       }, (err) => {
+        document.getElementById("create-btn").innerHTML = "<i class='fa fa-plus'></i> Create food";
         this.toastr.error(err.message, 'Error');
       });
   }

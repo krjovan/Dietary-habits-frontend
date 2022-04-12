@@ -91,7 +91,7 @@
         </table>
     </div>
     <div class="w3-center" style="margin-bottom: 25px;">
-    <button *ngIf="ingredients.length > 1" [disabled]="!formControlName.valid" (click)="createCompositeFood()" class="w3-btn w3-green">
+    <button id="create-btn" *ngIf="ingredients.length > 1" [disabled]="!formControlName.valid" (click)="createCompositeFood()" class="w3-btn w3-green">
         <i class="fa fa-plus"></i> Create food
     </button>
     </div>
