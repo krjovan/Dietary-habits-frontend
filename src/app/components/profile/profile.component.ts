@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDetails, AuthenticationService } from '../../services/authentication.service';
-import * as CryptoJS from 'crypto-js';
+import { AuthenticationService } from '../../services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
