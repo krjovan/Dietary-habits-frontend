@@ -1,27 +1,20 @@
-# DietaryHabitsFrontend
+# Dietary Habits
 
-This PROJECT was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4. To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Development server
+## About the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The project represents the frontend layer of a fullstack web application, done in the MEAN stack. The Angular app delivers a responsive UI, shows messages regarding the work flow (`ngx-toastr`), does data validation, frontend route protection based on user role with built in `@angular/router CanActivate`, recaptcha verification upon registration with `ng-recaptcha` in cooperation with the server side recaptcha, displaying analytics based on user genarated data with `canvasjs`, uses the API created in `Node.js`, uses the `w3.css` style, etc.
 
-## Code scaffolding
+## Goal of the project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The goal of the project was to create an application for tracking nutritional intake of macronutrients, vitamins and minerals from consumed food. Users can add food they ate or are going to eat for a specific date.
 
-## Build
+## Demo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Here, a demonstration of the working app and UI are provided.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Manipulation of consumed foods
+Desktop             |  Mobile
+:-------------------------:|:-------------------------:
+![](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-dri.gif)  |  ![](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-dri-mobile.gif)
