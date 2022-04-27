@@ -17,4 +17,4 @@ Here, a demonstration of the working app and UI are provided.
 ### Manipulation of consumed foods
 Desktop             |  Mobile
 :-------------------------:|:-------------------------:
-![](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-dri.gif)  |  ![](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-dri-mobile.gif)
+![Desktop UI for My-diet](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-diet.gif)  |  ![Mobile UI for My-diet](https://github.com/krjovan/Dietary-habits-frontend/blob/master/src/assets/gifs/my-diet-mobile.gif)
