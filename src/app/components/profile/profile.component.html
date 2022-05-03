@@ -28,7 +28,7 @@
           <label class="w3-text-blue">
             <b>New password</b>
           </label>
-          <input [(ngModel)]="newPassword" name="newpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&()])[A-Za-z\d@$!%*?&()]{8,20}$"
+          <input [(ngModel)]="newPassword" name="newpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#^_+\-=\[\]{};%*?&()])[A-Za-z\d@$!#^_+\-=\[\]{};%*?&()]{8,20}$"
             type="password" style="text-align: center;" class="w3-input w3-border w3-light-grey">
           <label class="w3-text-grey" style="font-style: italic">
             <b style="font-size: 9pt;">Minimum 8 and maximum 20 characters. It must contain at least one lowercase and uppercase letter, a number as well
@@ -41,7 +41,7 @@
           <label class="w3-text-blue">
             <b>Confirmation password</b>
           </label>
-          <input [(ngModel)]="confirmationPassword" name="confirmationpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&()])[A-Za-z\d@$!%*?&()]{8,20}$"
+          <input [(ngModel)]="confirmationPassword" name="confirmationpassword" minlength="8" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#^_+\-=\[\]{};%*?&()])[A-Za-z\d@$!#^_+\-=\[\]{};%*?&()]{8,20}$"
             type="password" style="text-align: center;" class="w3-input w3-border w3-light-grey">
           <label class="w3-text-grey" style="font-style: italic">
               <b style="font-size: 9pt;">Enter the new password again to confirm it.
